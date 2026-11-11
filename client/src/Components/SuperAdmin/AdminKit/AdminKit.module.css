@@ -1,0 +1,316 @@
+/* Super admin shared look — list, form and view pages.
+   Layered on each page's own CSS module by withAdminKit(): a kit class sits next to the
+   page's class of the same name and wins through doubled selectors. Only restyles;
+   layout widths set by a page (e.g. view label column) are kept.
+   globals.css forces 15px text, so sizes use !important. */
+
+/* ── Page header ──────────────────────────────────────────── */
+.pageHeader.pageHeader { margin-bottom: 18px; align-items: flex-end !important; flex-wrap: wrap; }
+.pageTitle.pageTitle { margin: 0; color: #12302f; font-weight: 800; letter-spacing: -0.01em; font-size: 24px !important; }
+.pageSubtitle.pageSubtitle { margin: 4px 0 0; color: #6b7d7d; font-size: 14px !important; }
+
+/* ── Primary / secondary buttons ──────────────────────────── */
+.btnAdd.btnAdd, .btnSave.btnSave, .btnSubmit.btnSubmit, .btnPublish.btnPublish {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; border: 1px solid #047279; border-radius: 10px;
+  font-weight: 700; cursor: pointer; box-shadow: none; opacity: 1; transition: box-shadow 0.15s; font-size: 14px !important;
+}
+.btnAdd.btnAdd:hover:not(:disabled), .btnSave.btnSave:hover:not(:disabled),
+.btnSubmit.btnSubmit:hover:not(:disabled), .btnPublish.btnPublish:hover:not(:disabled) { box-shadow: 0 6px 14px rgba(4, 114, 121, 0.25); opacity: 1; }
+.btnSave.btnSave:disabled, .btnSubmit.btnSubmit:disabled, .btnPublish.btnPublish:disabled { opacity: 0.55; cursor: not-allowed; }
+.btnCancel.btnCancel {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px;
+  background: #fff; color: #2b4141; border: 1px solid #d7e2e2; border-radius: 10px; font-weight: 600; cursor: pointer;
+  box-shadow: none; opacity: 1; font-size: 14px !important;
+}
+.btnCancel.btnCancel:hover:not(:disabled) { background: #f6f9f9; border-color: #b9cccc; opacity: 1; }
+.btnAdd.btnAdd:focus-visible, .btnSave.btnSave:focus-visible, .btnSubmit.btnSubmit:focus-visible,
+.btnPublish.btnPublish:focus-visible, .btnCancel.btnCancel:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* Back link: compact outline instead of a solid button */
+.backBtn.backBtn {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; margin-bottom: 14px;
+  background: #fff; color: #0b6767; border: 1px solid #cfe5e5; border-radius: 9px; font-weight: 600; box-shadow: none; opacity: 1;
+  transition: background 0.15s, border-color 0.15s; font-size: 13.5px !important;
+}
+.backBtn.backBtn:hover { background: #eef8f8; border-color: #0b7b7b; opacity: 1; }
+.backBtn.backBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.backBtn.backBtn svg { width: 15px; height: 15px; }
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card.card, .formCard.formCard, .sectionCard.sectionCard, .sidePanelCard.sidePanelCard {
+  background: #fff; border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.cardHeader.cardHeader, .cardHead.cardHead, .sectionHeader.sectionHeader {
+  border-bottom: 1px solid #eef3f3; background: transparent;
+}
+.cardTitle.cardTitle, .sidePanelTitle.sidePanelTitle { color: #12302f; font-weight: 800; text-transform: none; letter-spacing: 0; font-size: 16px !important; }
+
+/* ── List toolbar: search ─────────────────────────────────── */
+.searchWrap.searchWrap { position: relative; display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #eef3f3; }
+.searchWrap.searchWrap > svg { position: absolute; left: 28px; width: 16px; height: 16px; color: #8aa0a0; pointer-events: none; }
+.searchInput.searchInput {
+  width: 100%; max-width: 440px; height: 40px; padding: 0 12px 0 36px; border: 1.5px solid #e2e9ec; border-radius: 10px; background: #fff;
+  color: #12302f; outline: none; transition: border-color 0.15s, box-shadow 0.15s; font-size: 14px !important;
+}
+.searchInput.searchInput:hover { border-color: #c5dcdc; }
+.searchInput.searchInput:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+
+/* ── Tables ───────────────────────────────────────────────── */
+.tableWrap.tableWrap { overflow-x: auto; }
+.table.table { width: 100%; border-collapse: collapse; }
+.table.table th {
+  padding: 10px 14px; background: #f8fbfb; border-bottom: 1px solid #eef3f3; text-align: left;
+  color: #6b7d7d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; font-size: 11px !important;
+}
+.table.table td { padding: 11px 14px; border-bottom: 1px solid #f1f5f5; color: #2b4141; vertical-align: middle; background: transparent; font-size: 14px !important; }
+.table.table tbody tr { transition: background 0.12s; background: transparent; }
+.table.table tbody tr:nth-child(even) { background: transparent; }
+.table.table tbody tr:hover { background: #fafcfc; }
+.table.table tbody tr:last-child td { border-bottom: none; }
+.checkTh.checkTh, .checkTd.checkTd { width: 44px; text-align: center; }
+.checkTh input, .checkTd input { width: 16px; height: 16px; accent-color: #0b7b7b; cursor: pointer; }
+.nameCell.nameCell { color: #12302f; font-weight: 600; }
+.emptyRow.emptyRow td { padding: 40px 14px; text-align: center; color: #6b7d7d; }
+
+/* Status pills */
+.badgeActive.badgeActive, .badgeInactive.badgeInactive {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: none;
+  font-weight: 700; white-space: nowrap; text-transform: capitalize; font-size: 12px !important;
+}
+.badgeActive.badgeActive::before, .badgeInactive.badgeInactive::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badgeActive.badgeActive { background: #e7f7ee; color: #15803d; }
+.badgeInactive.badgeInactive { background: #f1f5f5; color: #4d6464; }
+
+/* Row actions: outline icon buttons (View / Edit / Delete) */
+.actions.actions { display: inline-flex; align-items: center; gap: 6px; }
+.actions .btnView.btnView, .actions .btnEdit.btnEdit, .actions .btnDelete.btnDelete {
+  width: 32px; height: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; border-radius: 8px; cursor: pointer;
+  background: #fff; color: #0b6767; border: 1px solid #d7e5e5; box-shadow: none; opacity: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+.actions .btnView.btnView svg, .actions .btnEdit.btnEdit svg, .actions .btnDelete.btnDelete svg { width: 15px; height: 15px; }
+.actions .btnView.btnView:hover, .actions .btnEdit.btnEdit:hover { background: #f4f9f9; border-color: #0b7b7b; opacity: 1; }
+.actions .btnDelete.btnDelete { color: #b91c1c; border-color: #f3d0d0; }
+.actions .btnDelete.btnDelete:hover { background: #fdf2f2; border-color: #dc2626; opacity: 1; }
+.actions .btnView.btnView:focus-visible, .actions .btnEdit.btnEdit:focus-visible, .actions .btnDelete.btnDelete:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* ── Pagination footer ────────────────────────────────────── */
+.paginationWrap.paginationWrap, .pagination.pagination, .tableFooter.tableFooter { border-top: none; }
+.paginInfo.paginInfo { color: #6b7d7d; font-variant-numeric: tabular-nums; font-size: 13px !important; }
+.paginBtn.paginBtn, .pageBtn.pageBtn {
+  min-width: 32px; height: 32px; padding: 0 9px; border-radius: 8px; border: 1px solid #e2e9ec; background: #fff; color: #2b4141;
+  font-weight: 700; cursor: pointer; font-size: 13px !important;
+}
+.paginBtn.paginBtn:hover:not(:disabled), .pageBtn.pageBtn:hover:not(:disabled) { background: #f4f9f9; border-color: #c5dcdc; }
+.paginBtn.paginBtn:disabled, .pageBtn.pageBtn:disabled { opacity: 0.4; cursor: default; }
+.paginBtnActive.paginBtnActive, .paginBtnActive.paginBtnActive:hover:not(:disabled),
+.pageBtnActive.pageBtnActive, .pageBtnActive.pageBtnActive:hover:not(:disabled) { background: #0b7b7b; border-color: #0b7b7b; color: #fff; }
+.btnBulkDelete.btnBulkDelete {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-radius: 9px; cursor: pointer;
+  background: #fff; color: #b91c1c; border: 1px solid #f0b8b8; font-weight: 700; box-shadow: none; font-size: 13px !important;
+}
+.btnBulkDelete.btnBulkDelete:hover { background: #fdecec; border-color: #dc2626; }
+
+/* ── Forms ────────────────────────────────────────────────── */
+.label.label { color: #2b4141; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 13.5px !important; }
+.required.required { color: #dc2626; }
+.input.input, .select.select, .textarea.textarea {
+  min-height: 40px; border: 1.5px solid #e2e9ec; border-radius: 9px; background-color: #fff; color: #12302f; outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s; font-size: 14px !important; margin-bottom: 10px;
+}
+.input.input::placeholder, .textarea.textarea::placeholder { color: #9aa9a9; }
+.input.input:hover:not(:disabled), .select.select:hover:not(:disabled), .textarea.textarea:hover:not(:disabled) { border-color: #c5dcdc; }
+.input.input:focus, .select.select:focus, .textarea.textarea:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+.input.input:disabled, .select.select:disabled, .textarea.textarea:disabled { background-color: #f6f9f9; color: #8a9a9a; }
+.errorMsg.errorMsg, .errorText.errorText { color: #b91c1c; font-size: 12.5px !important; }
+.formActions.formActions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* ── View (detail) pages ──────────────────────────────────── */
+.viewToolbar.viewToolbar { align-items: center; }
+.breadcrumbLink.breadcrumbLink { color: #0b6767; font-weight: 600; font-size: 13.5px !important; }
+.breadcrumbCurr.breadcrumbCurr { color: #4d6464; font-weight: 600; font-size: 13.5px !important; }
+.viewToolbar .btnEdit.btnEdit {
+  display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 9px;
+  background: #fff; color: #0b6767; border: 1px solid #b9dcdc; font-weight: 700; box-shadow: none; opacity: 1; font-size: 13.5px !important;
+}
+.viewToolbar .btnEdit.btnEdit:hover { background: #eef8f8; border-color: #0b7b7b; opacity: 1; }
+.viewToolbar .btnEdit.btnEdit svg { width: 14px; height: 14px; }
+.detailCard.detailCard {
+  border: 1px solid #e6eded; border-left: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+  background: #fff; overflow: hidden;
+}
+.detailRow.detailRow { border-bottom: 1px solid #f1f5f5; }
+.detailRow.detailRow:last-child { border-bottom: none; }
+.detailRow.detailRow:hover { background: #fafcfc; }
+.detailLabel.detailLabel { color: #6b7d7d; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 13.5px !important; }
+.detailValue.detailValue { color: #12302f; font-weight: 600; font-size: 14px !important; }
+.detailValueMono.detailValueMono { color: #12302f; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px !important; }
+.loadingText.loadingText { color: #6b7d7d; }
+
+/* ── Status pills for orders / invoices / support tickets (each status its own colour) ── */
+.badgeSuccess, .badgePaid, .badgePending, .badgeFailed, .badgeRefunded, .badgeCanceled,
+.badgeOpen, .badgeInProgress, .badgeResolved, .badgeClosed, .badgeNotPossible, .badgeDeleted {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: none;
+  font-weight: 700; white-space: nowrap; text-transform: capitalize;
+}
+.badgeSuccess::before, .badgePaid::before, .badgePending::before, .badgeFailed::before, .badgeRefunded::before, .badgeCanceled::before,
+.badgeOpen::before, .badgeInProgress::before, .badgeResolved::before, .badgeClosed::before, .badgeNotPossible::before, .badgeDeleted::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+.badgeSuccess.badgeSuccess, .badgePaid.badgePaid, .badgeResolved.badgeResolved { background: #e7f7ee; color: #15803d; font-size: 12px !important; }
+.badgePending.badgePending, .badgeInProgress.badgeInProgress { background: #fff4e0; color: #b45309; font-size: 12px !important; }
+.badgeFailed.badgeFailed, .badgeNotPossible.badgeNotPossible, .badgeDeleted.badgeDeleted { background: #fdecec; color: #b91c1c; font-size: 12px !important; }
+.badgeRefunded.badgeRefunded, .badgeOpen.badgeOpen { background: #eaf1fe; color: #1d4ed8; font-size: 12px !important; }
+.badgeCanceled.badgeCanceled, .badgeClosed.badgeClosed { background: #f1f5f5; color: #4d6464; font-size: 12px !important; }
+
+/* List-page filter selects (organization picker, level / category filters) */
+.orgSelect.orgSelect, .filterControl.filterControl, .filterSelect.filterSelect {
+  height: 40px; min-height: 40px; padding: 0 32px 0 12px; border: 1.5px solid #e2e9ec; border-radius: 9px; background-color: #fff;
+  color: #12302f; outline: none; transition: border-color 0.15s, box-shadow 0.15s; font-size: 14px !important;
+}
+.orgSelect.orgSelect:hover, .filterControl.filterControl:hover, .filterSelect.filterSelect:hover { border-color: #c5dcdc; }
+.orgSelect.orgSelect:focus, .filterControl.filterControl:focus, .filterSelect.filterSelect:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+
+/* ── Sectioned detail pages (invoice / order / support ticket view) ── */
+.detailCardWide.detailCardWide { background: #fff; border: 1px solid #e6eded; border-left: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); overflow: hidden; }
+.detailHead.detailHead { background: linear-gradient(135deg, #f3faf9 0%, #ffffff 65%); border-bottom: 1px solid #eef3f3; }
+.detailTitle.detailTitle { color: #12302f; font-weight: 800; letter-spacing: -0.01em; font-size: 20px !important; }
+.sectionBlock.sectionBlock { background: #fff; border: 1px solid #eef3f3; border-radius: 12px; overflow: hidden; }
+.sectionBlock .sectionTitle.sectionTitle {
+  margin: 0; padding: 12px 16px; background: #f8fbfb; border-bottom: 1px solid #eef3f3;
+  color: #12302f; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: 14px !important;
+}
+.sectionRow.sectionRow { border-bottom: 1px solid #f1f5f5; }
+.sectionRow.sectionRow:last-child { border-bottom: none; }
+.sectionRow .sectionLabel.sectionLabel { color: #6b7d7d; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: 13.5px !important; }
+.sectionRow .sectionValue.sectionValue { color: #12302f; font-weight: 600; font-size: 14px !important; }
+.sectionValueEmph.sectionValueEmph { color: #0b6767; font-weight: 800; font-variant-numeric: tabular-nums; font-size: 16px !important; }
+
+/* Support ticket response history card */
+.logsCard.logsCard { background: #fff; border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); }
+.logsTitle.logsTitle { color: #12302f; font-weight: 800; text-transform: none; letter-spacing: 0; font-size: 16px !important; }
+
+/* ── Filter row text = table header size (12px), super admin listings ── */
+.filterControl.filterControl.filterControl,
+.filterSelect.filterSelect.filterSelect,
+.orgSelect.orgSelect.orgSelect,
+.filterControl.filterControl.filterControl::placeholder,
+.filterSelect.filterSelect.filterSelect::placeholder,
+.orgSelect.orgSelect.orgSelect::placeholder {
+  font-size: 12px !important;
+}
+
+/* ══ List pages: one finished look ═══════════════════════════════════════════
+   Everything below is for the list (table) pages. Some pages still carry their own
+   older rules with !important, so the rules that must be the same everywhere are
+   !important here too (doubled selectors keep them ahead of the page's). */
+
+/* Card holding the toolbar, table and footer. Not clipped: filter dropdowns (e.g. Course
+   Builder's categories) must open over the table. The parts touching the card's rounded
+   corners round themselves instead. */
+.card.card { overflow: visible !important; }
+.card > :first-child { border-top-left-radius: 14px; border-top-right-radius: 14px; }
+.card > :last-child { border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; }
+
+/* Rows: light dividers, roomy height, hover and "ticked" states */
+.table.table th { height: 42px; }
+.table.table td { height: 56px; }
+.table.table tbody tr { border-bottom: 1px solid #f1f5f5 !important; }
+.table.table tbody tr:last-child { border-bottom: none !important; }
+.table.table.table tbody tr:hover { background: #f6fafa; }
+.table.table.table tbody tr:has(> td:first-child input[type="checkbox"]:checked),
+.table.table.table tbody tr:has(> td:first-child input[type="checkbox"]:checked):hover { background: #eef8f7; }
+.table.table tbody tr:has(> td:first-child input[type="checkbox"]:checked) > td:first-child { box-shadow: inset 3px 0 0 #0b7b7b; }
+.tableWrap.tableWrap { border: none !important; border-radius: 0; }
+
+/* Text inside cells is one size (status pills and action icons keep their own) */
+.table td :where(span, a, div, p, strong, b, em, small, label) { font-size: 14px !important; }
+
+/* Footer: result count on the left, page buttons on the right */
+.tableFooter.tableFooter, .paginationWrap.paginationWrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 14px 16px !important; margin: 0; background: #fbfdfd; color: #6b7d7d;
+  border-top: none !important; font-size: 13px !important;
+}
+.tableFooter :where(span, div, p, strong, b), .paginationWrap :where(span, div, p, strong, b) {
+  font-size: 13px !important; font-variant-numeric: tabular-nums;
+}
+.pagination.pagination, .paginationBtns.paginationBtns, .paginBtns.paginBtns {
+  display: flex; align-items: center; gap: 4px; flex-wrap: wrap; padding: 0; margin: 0;
+}
+.pageBtn.pageBtn:focus-visible, .paginBtn.paginBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* ── List parts (AdminKit/ListParts.js) ───────────────────── */
+/* Sort arrows in a column header */
+.sortIcon { display: inline-block; width: 8px !important; height: 12px !important; margin-left: 6px; vertical-align: -1px; fill: #c3cfcf; }
+.sortOn { fill: #0b7b7b; }
+
+/* "+" of the add button */
+.plusIcon { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Loading rows */
+.table.table.table tbody tr.skeletonRow:hover { background: transparent; }
+.skeleton {
+  display: inline-block; min-width: 24px; height: 12px; border-radius: 6px; vertical-align: middle;
+  background: linear-gradient(90deg, #eef3f3 25%, #f7fafa 50%, #eef3f3 75%);
+  background-size: 200% 100%; animation: kitShimmer 1.3s linear infinite;
+}
+@keyframes kitShimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+/* Empty state */
+.table.table.table tbody tr.emptyRow:hover { background: transparent; }
+.emptyState { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 16px; }
+.emptyIcon {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 14px; background: #e6f4f3; color: #0b7b7b;
+}
+.emptyIcon svg { width: 22px; height: 22px; }
+.emptyState .emptyTitle.emptyTitle { margin: 0; color: #4d6464; font-weight: 600; font-size: 14.5px !important; }
+
+/* "…" between page buttons */
+.pageGap { min-width: 24px; text-align: center; color: #8aa0a0; font-size: 13px !important; }
+
+/* Status pills always keep their side padding (older page rules set it to 0 for plain-text statuses) */
+.badgeActive.badgeActive, .badgeInactive.badgeInactive,
+.badgeSuccess.badgeSuccess, .badgePaid.badgePaid, .badgePending.badgePending, .badgeFailed.badgeFailed,
+.badgeRefunded.badgeRefunded, .badgeCanceled.badgeCanceled, .badgeOpen.badgeOpen, .badgeInProgress.badgeInProgress,
+.badgeResolved.badgeResolved, .badgeClosed.badgeClosed, .badgeNotPossible.badgeNotPossible, .badgeDeleted.badgeDeleted {
+  padding: 3px 10px !important;
+}
+
+/* Footer on pages whose wrapper is called "pagination" (result count + a button group inside) */
+.pagination.pagination:has(> .paginationBtns),
+.pagination.pagination:has(> .paginBtns) {
+  justify-content: space-between; gap: 12px;
+  padding: 14px 16px !important; background: #fbfdfd; color: #6b7d7d;
+  border-top: none !important; font-size: 13px !important;
+}
+.pagination :where(span, div, p, strong, b) { font-size: 13px !important; font-variant-numeric: tabular-nums; }
+
+/* Search box in the filter row: same 12px as the table header */
+.searchInput.searchInput.searchInput, .searchInput.searchInput.searchInput::placeholder { font-size: 12px !important; }
+
+/* ── Lines around the table (every list page) ──────────────
+   One line under the filter / search row and one above the pagination row. The table area
+   draws both, so the rows above and below it drop their own lines (no doubled lines). */
+.tableWrap.tableWrap:not(:first-child) { border-top: 1px solid #d9e3e3 !important; }
+.tableWrap.tableWrap:not(:last-child) { border-bottom: 1px solid #d9e3e3 !important; }
+.card > :has(+ .tableWrap.tableWrap) { border-bottom: none !important; }
+.tableWrap.tableWrap + * { border-top: none !important; }
+
+/* Footer count ("Showing 1 to 10 of 42 tags") and the bulk-delete bin icon (AdminKit/ListParts.js) */
+.resultCount { color: #6b7d7d; font-variant-numeric: tabular-nums; font-size: 13px !important; }
+.resultCount strong { color: #12302f; font-weight: 700; font-size: 13px !important; }
+.trashIcon { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Main name / title in a row: dark and semibold, as on Tags (some pages drew it teal) */
+.catName.catName, .certName.certName, .courseTitle.courseTitle, .cellMain.cellMain, .orgName.orgName, .tagName.tagName {
+  color: #12302f !important; font-weight: 600 !important;
+}

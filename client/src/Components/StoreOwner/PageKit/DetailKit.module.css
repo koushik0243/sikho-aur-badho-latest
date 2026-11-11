@@ -1,0 +1,82 @@
+/* Store owner detail pages (Learner, Course, Invoice, Order, Support ticket).
+   Layered on each page's own stylesheet by withDetailKit() — doubled class
+   selectors win over the page's originals, so every detail page looks the same.
+   globals.css forces 15px text, so sizes use !important. */
+
+/* ── Back link + breadcrumb ──────────────────────────────── */
+.backBtn.backBtn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 12px; margin: 0 0 4px;
+  background: #fff; color: #0b6767; border: 1px solid #cfe5e5; border-radius: 9px;
+  font-weight: 600; font-size: 13.5px !important; box-shadow: none; opacity: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+.backBtn.backBtn:hover { background: #eef8f8; border-color: #0b7b7b; opacity: 1; }
+.backBtn.backBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.backBtn.backBtn svg { width: 15px; height: 15px; }
+
+.breadcrumb.breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; color: #8a9a9a; }
+.breadcrumb.breadcrumb, .breadcrumb.breadcrumb * { font-size: 13px !important; }
+.breadcrumbLink.breadcrumbLink { background: none; border: none; padding: 0; color: #0b6767; font-weight: 600; cursor: pointer; }
+.breadcrumbLink.breadcrumbLink:hover { text-decoration: underline; }
+.breadcrumbSep.breadcrumbSep { color: #b8c4c4; }
+.breadcrumbCurr.breadcrumbCurr { color: #4d6464; font-weight: 600; }
+
+/* ── Main card + its header ──────────────────────────────── */
+.detailCard.detailCard, .detailCardWide.detailCardWide {
+  background: #fff; border: 1px solid #e6eded; border-left: 1px solid #e6eded; border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); overflow: hidden;
+}
+.detailHead.detailHead {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  padding: 18px 22px; background: linear-gradient(135deg, #f3faf9 0%, #ffffff 65%); border-bottom: 1px solid #eef3f3;
+}
+.detailHeadLeft.detailHeadLeft { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.detailTitle.detailTitle { margin: 0; font-weight: 800; color: #12302f; letter-spacing: -0.01em; font-size: 20px !important; overflow-wrap: anywhere; }
+.detailBadges.detailBadges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+
+/* ── Sections (label · value rows) ───────────────────────── */
+.detailSectionsGrid.detailSectionsGrid { gap: 16px; padding: 20px 22px; }
+.sectionBlock.sectionBlock { padding: 0; background: #fff; border: 1px solid #eef3f3; border-radius: 12px; overflow: hidden; }
+.sectionTitle.sectionTitle, .cardTitle.cardTitle {
+  margin: 0; padding: 12px 16px; background: #f8fbfb; border-bottom: 1px solid #eef3f3;
+  color: #12302f; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: 14px !important;
+}
+.sectionRows.sectionRows { padding: 0 16px; }
+.sectionRow.sectionRow { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid #f1f5f5; }
+.sectionRow.sectionRow:last-child { border-bottom: none; }
+.sectionLabel.sectionLabel { color: #6b7d7d; font-weight: 500; text-transform: none; letter-spacing: 0; min-width: 0; flex-shrink: 0; font-size: 13.5px !important; }
+.sectionValue.sectionValue { color: #12302f; font-weight: 600; text-align: right; overflow-wrap: anywhere; font-size: 14px !important; }
+.sectionValueMono.sectionValueMono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #12302f; text-align: right; font-size: 13px !important; }
+.sectionValueEmph.sectionValueEmph { color: #0b6767; font-weight: 800; text-align: right; font-variant-numeric: tabular-nums; font-size: 16px !important; }
+
+/* Plain cards on the learner page */
+.card.card { background: #fff; border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); overflow: hidden; }
+
+.loadingText.loadingText { padding: 40px; text-align: center; color: #8a9a9a; font-size: 14px !important; }
+
+@media (max-width: 560px) {
+  .detailHead.detailHead, .detailSectionsGrid.detailSectionsGrid { padding: 14px; }
+  .sectionRow.sectionRow { flex-direction: column; gap: 2px; }
+  .sectionValue.sectionValue, .sectionValueMono.sectionValueMono, .sectionValueEmph.sectionValueEmph { text-align: left; }
+}
+
+/* ── Status badges (Invoice / Order headers) — each status its own colour ── */
+.badgePaid, .badgeSuccess, .badgePending, .badgeFailed, .badgeRefunded, .badgeCanceled {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  font-weight: 700; text-transform: capitalize; border: none;
+}
+.badgePaid.badgePaid, .badgeSuccess.badgeSuccess, .badgePending.badgePending,
+.badgeFailed.badgeFailed, .badgeRefunded.badgeRefunded, .badgeCanceled.badgeCanceled { font-size: 12px !important; }
+.badgePaid::before, .badgeSuccess::before, .badgePending::before, .badgeFailed::before, .badgeRefunded::before, .badgeCanceled::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+.badgePaid.badgePaid, .badgeSuccess.badgeSuccess { background: #e7f7ee; color: #15803d; }
+.badgePending.badgePending   { background: #fff4e0; color: #b45309; }
+.badgeFailed.badgeFailed     { background: #fdecec; color: #b91c1c; }
+.badgeRefunded.badgeRefunded { background: #eaf1fe; color: #1d4ed8; }
+.badgeCanceled.badgeCanceled { background: #f1f5f5; color: #4d6464; }
+.badgeNeutral { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-weight: 700; text-transform: capitalize; }
+.badgeNeutral.badgeNeutral { background: #f1f5f5; color: #4d6464; font-size: 12px !important; }
+.badgeNeutral::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }

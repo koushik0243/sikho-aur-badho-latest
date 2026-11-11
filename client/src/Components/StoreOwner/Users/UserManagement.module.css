@@ -1,0 +1,610 @@
+
+
+
+/* ─── Real account-status badge (users table `status` field) ─────── */
+.statusBadgeReal {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.statusBadgeLink {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.statusBadgeLink:hover { background: #f4f6f8; }
+
+
+
+/* ─── Status update modal ─────────────────────────────────────── */
+.modalOverlay {
+  position: fixed; inset: 0;
+  background: rgba(15, 30, 30, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background: #fff;
+  border-radius: 10px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  padding: 20px 22px 18px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+
+.modalTitle { font-size: 15px; font-weight: 700; color: #1a2b2b; margin-bottom: 4px; }
+
+.modalSubtitle { font-size: 12.5px; color: #7a9090; margin-bottom: 16px; }
+
+.modalLabel { display: block; font-size: 12.5px; font-weight: 500; color: #1a2b2b; margin-bottom: 6px; }
+
+.modalSelect {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 8px 32px 8px 11px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat right 10px center;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+}
+
+.modalSelect:focus { border-color: #0b7b7b; }
+
+.modalActions { display: flex; justify-content: flex-end; gap: 10px; }
+
+.modalBtnCancel {
+  background: #fff;
+  color: #4a6060;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 7px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modalBtnCancel:hover:not(:disabled) { background: #f4f6f8; }
+
+.modalBtnSave {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modalBtnSave:hover:not(:disabled) { opacity: 0.88; }
+
+.modalBtnSave:disabled, .modalBtnCancel:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+
+/* ─── Stat cards ─────────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+
+
+.statCard {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8edf0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+
+.statCardTeal {
+  background: #0b7b7b;
+  border-color: #0b7b7b;
+}
+
+
+
+.statCardTeal .statIcon { background: rgba(255,255,255,0.2); color: #fff; }
+
+
+.statCardTeal .statLabel { color: rgba(255,255,255,0.8); }
+
+
+
+.statCardTeal .statValue { color: #fff; }
+
+
+.statCardTeal .statDelta { color: rgba(255,255,255,0.65); }
+
+
+.statCardTeal .statDeltaUp { color: rgba(255,255,255,0.85); }
+
+
+.statCardTeal .statDelta, .statCardTeal .statDeltaUp { color: rgba(255,255,255,0.75); }
+
+
+
+.statBody { display: flex; flex-direction: column; min-width: 0; }
+
+
+
+.statHeader { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+
+
+
+.statIcon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  background: #e8f5f5;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.statIcon svg { width: 15px; height: 15px; }
+
+
+
+.statLabel { font-size: 11.5px; color: #7a9090; font-weight: 500; }
+
+
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2b2b;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+
+
+.statDelta { font-size: 11px; color: #7a9090; }
+
+
+.statDeltaUp { color: #0b6e4f; }
+
+
+
+/* ─── Table card ──────────────────────────────────────────────── */
+.tableCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ─── Table card ─────────────────────────────────────────────── */
+.tableCard {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+/* ─── Card header ─────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* ─── Card head ──────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+.tableCardTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+
+
+/* ─── Search ──────────────────────────────────────────────────── */
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 260px;
+  max-width: 100%;
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+
+.searchWrap svg { width: 14px; height: 14px; color: #9ca3af; flex-shrink: 0; }
+
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 12.5px;
+  color: #374151;
+  background: transparent;
+}
+
+
+.searchInput::placeholder { color: #9ca3af; }
+
+
+
+.table { width: 100%; border-collapse: collapse; }
+
+
+
+.th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #188985;
+  padding: 9px 10px;
+  border-bottom: 1px solid #f0f4f4;
+  white-space: nowrap;
+}
+
+
+
+.tr { border-bottom: 1px solid #f4f6f8; transition: background 0.1s; }
+
+
+.tr:last-child { border-bottom: none; }
+
+
+.tr:hover { background: #fafcfc; }
+
+
+
+.tr:last-child .td { border-bottom: none; }
+
+
+.tr:hover .td { background: #fafcfc; }
+
+
+
+.td {
+  padding: 9px 10px;
+  font-size: 13px;
+  color: #1a2b2b;
+  vertical-align: middle;
+}
+
+
+
+.td:last-child { border-bottom: none; }
+
+
+.trChecked .td { background: #f0f9f9; }
+
+
+
+/* ─── Skeleton row ────────────────────────────────────────────── */
+.skeletonRow {
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonRow {
+  height: 14px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+/* ─── Name cell ───────────────────────────────────────────────── */
+.nameCell { display: flex; align-items: center; gap: 10px; }
+
+
+
+.avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #e8edf0;
+  color: #4a6060;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+
+.learnerName { font-weight: 500; color: #1a2b2b; }
+
+
+.emailText, .courseCount, .lastActive { color: #4a6060; }
+
+
+
+.badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Action buttons ──────────────────────────────────────────── */
+.actionsCell { display: flex; align-items: center; gap: 6px; }
+
+
+
+/* ─── View / Edit icon buttons — matches the icon-button pattern used
+   on other list pages (e.g. IndustryTypeList) ─────────────────────── */
+.btnView, .btnEdit {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+
+.btnView svg, .btnEdit svg { width: 13px; height: 13px; }
+
+.btnView:hover, .btnEdit:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+/* Pagination */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #9aadad;
+}
+
+
+
+/* ─── Pagination ─────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4a6060;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #6b7280;
+}
+
+
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #4a6060;
+}
+
+
+
+.footerLeft { display: flex; align-items: center; gap: 10px; }
+
+
+
+.paginationBtns { display: flex; align-items: center; gap: 4px; }
+
+
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px; height: 28px;
+  padding: 0 6px;
+  border: 1px solid #e8edf0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a2b2b;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.pageBtn:hover:not(:disabled) { background: #f0f7f7; }
+
+
+.pageBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+
+
+.pageBtnActive { background: linear-gradient(180deg, #047279 0%, #299c8f 100%); border-color: #047279; color: #fff; }
+
+
+.pageBtnActive:hover:not(:disabled) { background: #0a6b6b; }
+
+
+.pageBtnActive:hover { background: #0b7b7b; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+@media (max-width: 900px) {
+  .statsRow       { grid-template-columns: repeat(2, 1fr); } }
+
+
+@media (max-width: 600px) {
+  .statsRow { grid-template-columns: 1fr 1fr; } }
+
+
+/* ─── Mobile responsive (added) ───────────────────────────────── */
+@media (max-width: 768px) {
+  /* .table has no dedicated scroll wrapper in the markup — .tableCard is
+     its direct ancestor, so the scroll container has to live here. */
+  .tableCard {
+    overflow-x: auto;
+  }
+
+  .cardHead {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .searchWrap {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow { grid-template-columns: 1fr; }
+}
+
+
+
+.table tbody tr {
+  border-bottom: 1px solid #d7d7d7 !important;
+}
+
+
+.pagination {
+  padding: 20px !important;
+  /* border-top: none !important; */
+}
+
+/* ── Restyled list (shared layout from PageKit) ───────────── */
+.nameCell { min-width: 0; }
+.nameText { display: flex; flex-direction: column; min-width: 0; }
+.nameText .emailText { color: #7a8c8c; }
+.nameText .emailText.emailText { font-size: 12.5px !important; }
+.avatar.avatar {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%;
+  background: linear-gradient(135deg, #0b7b7b, #14b8a6); color: #fff; font-weight: 800;
+  display: grid; place-items: center; font-size: 13px !important;
+}
+.courseCount.courseCount {
+  display: inline-grid; place-items: center; min-width: 28px; height: 24px; padding: 0 8px;
+  border-radius: 999px; background: #eef6f6; color: #0b6767; font-weight: 700; font-size: 12.5px !important;
+}
+.statusBtn {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px; border: none; background: none;
+  border-radius: 999px; cursor: pointer;
+}
+.statusBtn:hover .statusCaret { color: #0b7b7b; }
+.statusBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.statusCaret { color: #9aa9a9; }
+.statusCaret { width: 14px; height: 14px; }

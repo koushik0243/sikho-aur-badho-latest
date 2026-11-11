@@ -1,0 +1,313 @@
+
+
+.infoItem {}
+
+
+.infoLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+
+.infoValue {
+  font-size: 14px;
+  color: #111827;
+  word-break: break-word;
+}
+
+
+
+/* Loading / not found */
+.loading { padding: 40px; color: #6b7280; font-size: 14px; }
+
+
+.notFound { padding: 40px; color: #dc2626; font-size: 14px; }
+
+
+.backBtn:hover { opacity: 0.88; }
+
+
+.backBtn svg { width: 16px; height: 16px; }
+
+
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn { align-self: flex-start;
+ display: inline-flex; align-items: center; gap: 6px;
+ background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+ border: 1px solid #047279; border-radius: 6px; color: #fff;
+ font-size: 13px; font-weight: 500; cursor: pointer;
+ padding: 7px 14px; margin-bottom: 16px;
+ transition: opacity 0.15s;
+ 
+  white-space: nowrap;
+}
+
+
+
+/* Profile card */
+.profileCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background: #e0f2f1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.avatar svg { width: 32px; height: 32px; color: #0b7b7b; }
+
+
+.profileInfo { flex: 1; min-width: 0; }
+
+
+.profileName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+
+.profileEmail {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin: 0 0 8px;
+}
+
+
+.profileBadges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+.badgeType {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: #374151;
+  white-space: nowrap;
+}
+
+
+
+/* Status badges */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+
+/* Status badge */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+
+/* Badges */
+.badgeActive {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+
+
+/* Badges */
+.badgeActive {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+
+
+/* Status badges */
+.badgeActive   { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; background: #dcfce7; color: #16a34a; }
+
+
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+
+.badgeInactive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+
+.btnEdit svg, .btnDelete svg { width: 13px; height: 13px; }
+
+
+.btnView svg, .btnEdit svg, .btnDelete svg { width: 12px; height: 12px; }
+
+
+.btnView svg, .btnEdit svg, .btnAssign svg, .btnAdmins svg, .btnDelete svg, .btnCourses svg {
+  width: 13px;
+  height: 13px;
+}
+
+
+.btnView, .btnEdit, .btnDelete {
+  width: 26px; height: 26px; border-radius: 5px; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+
+
+
+/* ── Action buttons ──────────────────────────────────────────── */
+.btnEdit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  height: auto;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+.btnEdit:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnEdit svg { width: 14px; height: 14px; }
+
+
+
+/* Section card (collapsible) */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+
+
+/* Sections */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+
+.sectionBody { padding: 20px; }
+
+
+
+/* Info grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px 24px;
+}
+
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .backBtn {
+    width: auto;
+    white-space: nowrap;
+}
+
+  .sectionBody {
+    padding: 16px 14px;
+  }
+}

@@ -1,0 +1,156 @@
+/* Learner · My Weak Areas. Sits on top of the shared report styles (Report.module.css).
+   globals.css forces 15px text, so sizes use !important. */
+
+.page {
+  --wa-ink: #12302f;
+  --wa-ink-2: #4d6464;
+  --wa-muted: #6b7d7d;
+  --wa-line: #e6eded;
+  --wa-soft: #f4f9f9;
+  --wa-accent: #0b7b7b;
+  --wa-bad: #b91c1c;
+  --wa-bad-bg: #fdecec;
+  --wa-warn: #b45309;
+  --wa-warn-bg: #fff4e0;
+}
+
+/* ── Header: title left, course picker + export right ── */
+.eyebrow { display: block; margin-bottom: 2px; color: #0b6767; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px !important; }
+.headActions { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+.courseField { min-width: 220px; }
+
+/* ── Summary tiles ── */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.kpi {
+  display: flex; align-items: flex-start; gap: 12px; padding: 16px 18px;
+  background: #fff; border: 1px solid var(--wa-line); border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.kpiIcon { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; background: var(--wa-soft); color: var(--wa-accent); }
+.kpiIcon svg { width: 18px; height: 18px; }
+.kpiValue { color: var(--wa-ink); font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; font-size: 26px !important; }
+.kpiLabel { margin-top: 2px; color: var(--wa-ink-2); font-weight: 600; font-size: 13px !important; }
+.kpiHint { color: var(--wa-muted); font-size: 12.5px !important; }
+.kpi_bad { border-color: #f3cccc; background: linear-gradient(135deg, #fff6f6 0%, #fff 70%); }
+.kpi_bad .kpiIcon { background: var(--wa-bad-bg); color: var(--wa-bad); }
+.kpi_bad .kpiValue { color: var(--wa-bad); }
+.kpi_warn .kpiIcon { background: var(--wa-warn-bg); color: var(--wa-warn); }
+
+/* ── Plan + side column ── */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+.colHead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.colTitle { margin: 0; color: var(--wa-ink); font-weight: 800; font-size: 18px !important; }
+.colSub { color: var(--wa-muted); font-size: 13px !important; }
+
+.plans { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.plan {
+  position: relative; overflow: hidden; padding: 18px 20px 16px 24px;
+  background: #fff; border: 1px solid var(--wa-line); border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.plan::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 4px; background: #9fb5b5; }
+.plan_high::before { background: #dc2626; }
+.plan_medium::before { background: #f59e0b; }
+
+.planHead { display: flex; align-items: flex-start; gap: 12px; }
+.planNum {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center;
+  background: var(--wa-soft); color: var(--wa-accent); font-weight: 800; font-size: 13px !important;
+}
+.planHeadText { flex: 1; min-width: 0; }
+.planTitle { margin: 0; color: var(--wa-ink); font-weight: 800; font-size: 16px !important; }
+.planCourse { color: var(--wa-muted); font-size: 13px !important; }
+
+.meters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 16px; align-items: end; margin: 14px 0 12px; padding: 12px 14px; background: #fafcfc; border: 1px solid #eef3f3; border-radius: 12px; }
+.meter { min-width: 0; }
+.meterTop { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; color: var(--wa-muted); font-size: 12.5px !important; }
+.meterTop strong { color: var(--wa-ink); font-variant-numeric: tabular-nums; font-size: 13px !important; }
+.meterTrack { height: 6px; border-radius: 999px; background: #e3ecec; overflow: hidden; }
+.meterTrack span { display: block; height: 100%; border-radius: 999px; background: var(--wa-accent); }
+.meter_bad span { background: #dc2626; }
+.meter_warn span { background: #f59e0b; }
+.facts { display: flex; flex-direction: column; gap: 2px; color: var(--wa-muted); white-space: nowrap; font-size: 12.5px !important; }
+.facts strong { color: var(--wa-ink); font-size: 13px !important; }
+
+.reasons { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.reason { padding: 3px 10px; border-radius: 999px; background: #f1f5f5; color: var(--wa-ink-2); font-weight: 600; font-size: 12px !important; }
+
+.stepsTitle { margin: 0 0 8px; color: var(--wa-ink-2); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11.5px !important; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.step { display: flex; align-items: flex-start; gap: 10px; color: var(--wa-ink); line-height: 1.45; font-size: 14px !important; }
+.stepIcon { width: 24px; height: 24px; border-radius: 7px; flex-shrink: 0; display: grid; place-items: center; background: var(--wa-soft); color: var(--wa-accent); }
+.stepIcon svg { width: 14px; height: 14px; }
+.step_skip { background: var(--wa-warn-bg); color: var(--wa-warn); }
+.step_retake { background: #eaf1fe; color: #1d4ed8; }
+
+.feedback { margin-top: 14px; border: 1px solid #eef3f3; border-radius: 12px; background: #fafcfc; }
+.feedback summary { cursor: pointer; padding: 10px 14px; color: var(--wa-ink); font-weight: 700; list-style-position: inside; font-size: 13.5px !important; }
+.feedback summary:focus-visible { outline: 2px solid var(--wa-accent); outline-offset: 2px; border-radius: 12px; }
+.feedback ul { list-style: none; margin: 0; padding: 0 14px 12px; display: flex; flex-direction: column; gap: 10px; }
+.feedback li { padding: 10px 12px; background: #fff; border-left: 3px solid #cfe0e0; border-radius: 8px; }
+.feedback p { margin: 4px 0 0; color: var(--wa-ink-2); line-height: 1.45; font-size: 13.5px !important; }
+.fbHead { display: flex; justify-content: space-between; gap: 10px; }
+.fbQ { color: var(--wa-ink); font-weight: 600; font-size: 13.5px !important; }
+.fbScore { flex-shrink: 0; padding: 1px 8px; border-radius: 999px; background: var(--wa-bad-bg); color: var(--wa-bad); font-weight: 700; font-size: 12px !important; }
+.count { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: #e3ecec; color: var(--wa-ink-2); font-size: 11.5px !important; }
+
+.planFoot { display: flex; justify-content: flex-end; margin-top: 14px; }
+.cta {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 9px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; font-weight: 600; text-decoration: none;
+  transition: box-shadow 0.15s; font-size: 13.5px !important;
+}
+.cta svg { width: 15px; height: 15px; }
+.cta:hover { box-shadow: 0 6px 14px rgba(4, 114, 121, 0.25); color: #fff; }
+.cta:focus-visible { outline: 2px solid var(--wa-accent); outline-offset: 2px; }
+
+.allGood { display: flex; align-items: center; gap: 14px; padding: 20px; background: #fff; border: 1px solid #bfe8cf; border-radius: 14px; }
+.allGood p { margin: 2px 0 0; color: var(--wa-muted); }
+.allGoodIcon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #e7f7ee; color: #15803d; flex-shrink: 0; }
+.allGoodIcon svg { width: 20px; height: 20px; }
+
+/* ── Side column ── */
+.side { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 16px; }
+.tips, .rules { background: #fff; border: 1px solid var(--wa-line); border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); }
+.tips { padding: 16px 18px; background: linear-gradient(160deg, #f3faf9 0%, #fff 55%); }
+.sideTitle { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--wa-ink); font-weight: 800; font-size: 15px !important; }
+.sideIcon { width: 26px; height: 26px; border-radius: 8px; display: inline-grid; place-items: center; background: #e3f3f1; color: var(--wa-accent); flex-shrink: 0; }
+.sideIcon svg { width: 15px; height: 15px; }
+.tips ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tips li { position: relative; padding-left: 16px; color: var(--wa-ink-2); line-height: 1.5; font-size: 13.5px !important; }
+.tips li::before { content: ''; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--wa-accent); }
+.rules summary { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 14px 18px; color: var(--wa-ink); font-weight: 700; font-size: 14px !important; }
+.rules summary:focus-visible { outline: 2px solid var(--wa-accent); outline-offset: 2px; border-radius: 14px; }
+.rules ul { margin: 0; padding: 0 18px 16px 36px; display: flex; flex-direction: column; gap: 6px; color: var(--wa-ink-2); line-height: 1.5; font-size: 13px !important; }
+
+@media (max-width: 1180px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .side { position: static; }
+}
+@media (max-width: 1000px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .kpis { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .meters { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .facts { flex-direction: row; gap: 14px; }
+  .plan { padding: 14px 14px 14px 18px; }
+  .headActions { width: 100%; }
+  .courseField { flex: 1; min-width: 0; }
+  .cta { width: 100%; justify-content: center; }
+}
+
+/* globals.css forces 15px on every element — pin the small meter / fact text */
+.meterTop.meterTop span, .facts.facts span { font-size: 12.5px !important; }
+@media (max-width: 640px) {
+  .kpis.kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi { flex-direction: column; gap: 8px; padding: 14px; }
+}
+
+/* ── Same 500px cap as the report cards: the plan list and tips scroll inside ── */
+.plans.plans, .tips.tips {
+  max-height: 500px; overflow-y: auto; overscroll-behavior: contain;
+}
+.plans.plans { padding-right: 4px; }
+.feedback.feedback ul { max-height: 500px; overflow-y: auto; }
+
+/* The plan list is a 500px flex column — cards must keep their full height
+   (no shrinking) so the list scrolls instead of cutting each card off. */
+.plans.plans > .plan { flex-shrink: 0; }
+.tips.tips ul > li { flex-shrink: 0; }

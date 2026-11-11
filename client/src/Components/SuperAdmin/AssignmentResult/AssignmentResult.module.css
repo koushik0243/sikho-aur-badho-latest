@@ -1,0 +1,23 @@
+/* Super admin · Assignment Result list */
+.arFilters { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
+.arField { display: flex; flex-direction: column; gap: 6px; min-width: 220px; flex: 1 1 240px; max-width: 360px; margin: 0; }
+.arField > span { color: #4d6464; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11.5px !important; }
+.arField select:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.subText.subText { margin-top: 2px; color: #6b7d7d; font-size: 12px !important; }
+.num { font-variant-numeric: tabular-nums; }
+
+.statusPill.statusPill {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  font-weight: 700; white-space: nowrap; font-size: 12px !important;
+}
+.statusPill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.stApproved { background: #ecfdf3; color: #15803d; }
+.stWaiting  { background: #eff6ff; color: #1d4ed8; }
+.stRejected { background: #fef2f2; color: #b91c1c; }
+.stPartial  { background: #fffbeb; color: #b45309; }
+.stNone     { background: #f1f5f5; color: #5b6f6f; }
+
+@media (max-width: 700px) {
+  .arField { max-width: none; flex-basis: 100%; }
+}

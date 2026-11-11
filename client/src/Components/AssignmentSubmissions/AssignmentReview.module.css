@@ -1,0 +1,162 @@
+/* Assignment review (super admin + store owner). globals.css forces 15px text, so sizes use !important. */
+
+/* Learner / Course / Chapter (no Attempt) */
+.filterRow3.filterRow3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .filterRow3.filterRow3 { grid-template-columns: minmax(0, 1fr); } }
+
+.list { display: flex; flex-direction: column; gap: 16px; }
+.card { background: #fff; border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); overflow: hidden; }
+.cardHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #eef3f3; }
+.cardHeadText { min-width: 0; }
+.cardTitle.cardTitle { margin: 0; color: #12302f; font-weight: 800; font-size: 17px !important; }
+.cardMeta.cardMeta { margin: 4px 0 0; color: #6b7d7d; overflow-wrap: anywhere; font-size: 13px !important; }
+
+.pill.pill { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-weight: 700; white-space: nowrap; font-size: 12.5px !important; }
+.pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pillGood { background: #e7f7ee; color: #15803d; }
+.pillWarn { background: #fff4e0; color: #b45309; }
+.pillInfo { background: #eaf1fe; color: #1d4ed8; }
+.pillMuted { background: #f1f5f5; color: #4d6464; }
+
+.cardBody { display: grid; grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr); gap: 20px; padding: 20px; align-items: start; }
+@media (max-width: 1000px) { .cardBody { grid-template-columns: minmax(0, 1fr); } }
+
+/* Video: plain controls — play, pause, seek and drag freely */
+.videoBox { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #0b1414; display: grid; place-items: center; }
+.videoEmpty { background: #f4f9f9; border: 1.5px dashed #cfe0e0; }
+.video { width: 100%; height: 100%; background: #000; display: block; }
+.videoNote.videoNote { margin: 0; color: #8aa0a0; font-weight: 600; font-size: 14px !important; }
+.videoBox:not(.videoEmpty) .videoNote.videoNote { color: #cfe0e0; }
+.videoError.videoError { margin: 0; padding: 0 16px; text-align: center; color: #fca5a5; font-size: 14px !important; }
+
+/* Review panel */
+.review { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.choices { margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 10px; }
+.legend.legend { padding: 0; margin-bottom: 4px; color: #4d6464; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11.5px !important; }
+.choice { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border: 1.5px solid #e2e9ec; border-radius: 12px; cursor: pointer; background: #fff; transition: border-color 0.15s, background 0.15s; }
+.choice:hover { border-color: #b9dcdc; }
+.choice input { margin-top: 3px; width: 17px; height: 17px; accent-color: #0b7b7b; flex-shrink: 0; cursor: pointer; }
+.choice span { display: flex; flex-direction: column; gap: 2px; }
+.choice strong { color: #12302f; font-weight: 700; font-size: 14px !important; }
+.choice small { color: #6b7d7d; font-size: 12.5px !important; }
+.choiceOn { border-color: #0b7b7b; background: #f3faf9; }
+.choiceOff { opacity: 0.55; cursor: not-allowed; }
+.choiceOff input { cursor: not-allowed; }
+.choice:focus-within { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+.noteField { display: flex; flex-direction: column; gap: 6px; }
+.noteField > span { color: #2b4141; font-weight: 600; font-size: 13px !important; }
+.noteField textarea {
+  width: 100%; box-sizing: border-box; resize: none; min-height: 76px; padding: 10px 12px; border: 1.5px solid #e2e9ec; border-radius: 10px;
+  color: #12302f; outline: none; font-family: inherit; transition: border-color 0.15s, box-shadow 0.15s; font-size: 14px !important;
+}
+.noteField textarea:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+
+.actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.saveBtn.saveBtn {
+  height: 42px; padding: 0 20px; border-radius: 10px; cursor: pointer; border: 1px solid #047279;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; font-weight: 700; transition: box-shadow 0.15s; font-size: 14px !important;
+}
+.saveBtn.saveBtn:hover:not(:disabled) { box-shadow: 0 6px 14px rgba(4, 114, 121, 0.25); }
+.saveBtn.saveBtn:disabled { opacity: 0.55; cursor: not-allowed; }
+.saveBtn.saveBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.lastReview.lastReview { color: #6b7d7d; font-size: 12.5px !important; }
+
+/* Video version picker + the chosen version's comment */
+.versionCol { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.versionField { display: flex; flex-direction: column; gap: 6px; }
+.versionField > span { color: #4d6464; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11.5px !important; }
+.versionField select {
+  height: 40px; padding: 0 12px; border: 1.5px solid #e2e9ec; border-radius: 9px; background: #fff; color: #12302f; outline: none;
+  font-size: 14px !important;
+}
+.versionField select:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+.versionInfo { display: flex; flex-direction: column; gap: 6px; }
+.versionName.versionName { color: #12302f; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13.5px !important; }
+.versionComment.versionComment { margin: 0; display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; background: #f4f9f9; color: #2b4141; overflow-wrap: anywhere; font-size: 13.5px !important; }
+.versionComment strong { font-size: 13px !important; }
+.versionComment small { color: #7a8c8c; font-size: 12px !important; }
+.versionCommentWarn.versionCommentWarn { background: #fff7ed; color: #9a3412; }
+.versionCommentGood.versionCommentGood { background: #f0fdf4; color: #15803d; }
+.versionNoComment.versionNoComment { margin: 0; color: #8aa0a0; font-size: 13px !important; }
+
+/* ── Every video with its own comment, then the final review ── */
+.cardInner { display: flex; flex-direction: column; gap: 18px; padding: 20px; }
+.vGrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1000px) { .vGrid { grid-template-columns: minmax(0, 1fr); } }
+
+.finalReview { display: flex; flex-direction: column; gap: 12px; padding-top: 18px; border-top: 1px solid #e3ecec; }
+.finalTitle.finalTitle { margin: 0; color: #12302f; font-weight: 800; font-size: 16px !important; }
+.choicesRow { margin: 0; padding: 0; border: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 700px) { .choicesRow { grid-template-columns: minmax(0, 1fr); } }
+.choiceReject.choiceOn { border-color: #dc2626; background: #fef2f2; }
+.choiceReject input { accent-color: #dc2626; }
+
+.lockedNote { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #16a34a; }
+.lockedNote strong { color: #15803d; font-size: 15px !important; }
+.lockedNote span { color: #1f4d33; font-size: 13.5px !important; }
+.lockedNoteText.lockedNoteText { font-style: italic; overflow-wrap: anywhere; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* ── One video card: player on top, then details, comments and the comment box ── */
+.vItem {
+  display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid #e3ecec; border-radius: 14px; background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 48, 47, 0.04); transition: box-shadow 0.2s, border-color 0.2s;
+}
+.vItem:hover { border-color: #cfe3e3; box-shadow: 0 8px 22px rgba(16, 48, 47, 0.08); }
+.vItemLatest { border-color: #b9dcdc; }
+.vItem .videoBox { border-radius: 0; }
+.vBody { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 16px; min-width: 0; }
+.vHead { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.vTitleRow { display: flex; align-items: center; gap: 8px; }
+.vNum.vNum { color: #12302f; font-weight: 800; font-size: 15px !important; }
+.vLatest.vLatest {
+  padding: 2px 9px; border-radius: 999px; background: #e6f4f4; color: #0b6767; font-weight: 700; letter-spacing: 0.03em;
+  text-transform: uppercase; font-size: 10.5px !important;
+}
+.vDate.vDate { color: #7a8c8c; font-variant-numeric: tabular-nums; font-size: 12.5px !important; }
+.vFile { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 9px 12px; border-radius: 10px; background: #f6fafa; border: 1px solid #edf3f3; }
+.vFileIcon { flex-shrink: 0; width: 18px; height: 18px; fill: none; stroke: #0b7b7b; stroke-width: 1.8; stroke-linejoin: round; }
+.vFileName.vFileName { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #12302f; font-weight: 600; font-size: 13.5px !important; }
+.vSize.vSize { flex-shrink: 0; color: #6b7d7d; font-variant-numeric: tabular-nums; font-size: 12px !important; }
+
+.vCmts { display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid #eef3f3; }
+.vCmtsTitle.vCmtsTitle {
+  margin: 0; display: flex; align-items: center; gap: 6px; color: #4d6464; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; font-size: 11.5px !important;
+}
+.vCount.vCount { min-width: 20px; padding: 1px 6px; border-radius: 999px; background: #eef3f3; color: #4d6464; text-align: center; font-size: 11px !important; }
+
+/* Each comment: "Comment by NAME on 15-10-2026", the text below */
+.cmts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; max-height: 200px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #c5d9d9 transparent; padding-right: 4px; }
+.cmtsItem { flex-shrink: 0; display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: #f6fafa; }
+.cmtsAvatar.cmtsAvatar {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; font-weight: 700; letter-spacing: 0.02em; font-size: 11px !important;
+}
+.cmtsBody { min-width: 0; flex: 1; }
+.cmtsHead.cmtsHead { display: block; color: #12302f; font-weight: 700; font-size: 12.5px !important; }
+.cmtsHead em { font-style: italic; font-weight: 400; color: #6b7d7d; font-size: 12.5px !important; }
+.cmtsHead strong { color: #0b6767; font-weight: 700; font-size: 12.5px !important; }
+.cmtsText.cmtsText { margin: 3px 0 0; color: #2b4141; overflow-wrap: anywhere; white-space: pre-line; line-height: 1.5; font-size: 13.5px !important; }
+
+/* Comment box: textarea with its button in one bordered field */
+.vComposer {
+  display: flex; flex-direction: column; border: 1.5px solid #e2e9ec; border-radius: 11px; background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.vComposer:focus-within { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+.vComposer textarea {
+  width: 100%; box-sizing: border-box; resize: none; min-height: 56px; padding: 10px 12px 4px; border: none; background: transparent;
+  color: #12302f; outline: none; font-family: inherit; line-height: 1.45; font-size: 13.5px !important;
+}
+.vComposerBar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 8px 8px 12px; }
+.vChars.vChars { color: #9aabab; font-variant-numeric: tabular-nums; font-size: 11.5px !important; }
+.commentBtn.commentBtn {
+  height: 34px; padding: 0 16px; border-radius: 8px; cursor: pointer; border: 1px solid #047279;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; font-weight: 700; white-space: nowrap;
+  transition: box-shadow 0.15s, opacity 0.15s; font-size: 13px !important;
+}
+.commentBtn.commentBtn:hover:not(:disabled) { box-shadow: 0 6px 14px rgba(4, 114, 121, 0.25); }
+.commentBtn.commentBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.commentBtn.commentBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }

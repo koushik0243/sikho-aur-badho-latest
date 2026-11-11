@@ -1,0 +1,79 @@
+/* Aptitude Test / Quiz — read-only settings + scrollable Q&A on the course view page.
+   globals.css forces 15px text, so smaller sizes use doubled selectors + !important. */
+
+.wrap { display: flex; flex-direction: column; gap: 14px; width: 100%; min-width: 0; }
+
+.block { border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; overflow: hidden; }
+.blockTitle {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; background: #f9fafb; border-bottom: 1px solid #eef0f3;
+  font-weight: 600; color: #111827;
+}
+.blockTitle.blockTitle { font-size: 13px !important; }
+.count.count {
+  margin-left: auto; font-weight: 500; color: #6b7280;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 999px; padding: 1px 10px;
+  font-size: 12px !important;
+}
+
+/* Settings grid */
+.settings {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px 24px; margin: 0; padding: 14px;
+}
+/* Aptitude Test Settings: 4 per row */
+.settings4.settings4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .settings4.settings4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.setting { min-width: 0; }
+.setting dt {
+  color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+}
+.setting dt, .setting dt * { font-size: 11px !important; }
+.setting dd { margin: 0; color: #111827; overflow-wrap: anywhere; }
+.setting dd, .setting dd * { font-size: 13.5px !important; }
+
+/* Scrollable Q&A */
+.qList {
+  list-style: none; margin: 0; padding: 0;
+  max-height: 380px; overflow-y: auto; overscroll-behavior: contain;
+}
+.qList:focus-visible { outline: 2px solid #0b7b7b; outline-offset: -2px; }
+.qItem { padding: 12px 14px; border-bottom: 1px solid #f1f3f5; }
+.qItem:last-child { border-bottom: none; }
+.qItem:nth-child(even) { background: #fcfcfd; }
+
+.qHead { display: flex; align-items: flex-start; gap: 8px; }
+.qNo { color: #0b7b7b; font-weight: 700; flex-shrink: 0; }
+.qText { color: #111827; font-weight: 600; flex: 1; min-width: 0; line-height: 1.45; }
+.qHead .qNo, .qHead .qText { font-size: 13.5px !important; }
+
+.diff.diff {
+  flex-shrink: 0; border-radius: 999px; padding: 1px 8px; font-weight: 600;
+  background: #f3f4f6; color: #374151; font-size: 11px !important;
+}
+.diff_beginner.diff_beginner { background: #ecfdf5; color: #047857; }
+.diff_intermediate.diff_intermediate { background: #fffbeb; color: #b45309; }
+.diff_advanced.diff_advanced { background: #fef2f2; color: #b91c1c; }
+
+.options { list-style: none; margin: 8px 0 0 30px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.opt, .optCorrect { border-radius: 6px; padding: 4px 10px; border: 1px solid #eef0f3; color: #374151; }
+.optCorrect { border-color: #a7f3d0; background: #ecfdf5; color: #065f46; font-weight: 600; }
+.options li, .options li * { font-size: 13px !important; }
+
+.answer, .explain { margin: 6px 0 0 30px; line-height: 1.5; }
+.answer { color: #065f46; }
+.explain { color: #6b7280; }
+.answer.answer, .answer *, .explain.explain, .explain * { font-size: 13px !important; }
+
+.empty.empty { margin: 0; padding: 14px; color: #9ca3af; font-size: 13px !important; }
+
+.srOnly {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 600px) {
+  .settings { grid-template-columns: 1fr 1fr; }
+  .options, .answer, .explain { margin-left: 0; }
+}

@@ -1,0 +1,411 @@
+
+.page { display: flex; flex-direction: column; gap: 16px; max-width: 100%; }
+
+
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #047279; border-radius: 6px; color: #fff;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; margin-bottom: 16px;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.backBtn:hover { opacity: 0.88; }
+
+.backBtn svg { width: 16px; height: 16px; }
+
+
+
+/* ── Course selector ─────────────────────────────────────── */
+.selectorCard {
+  background: #fff; border-radius: 14px;
+  border: 1px solid #e8edf0; padding: 20px 24px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+
+
+.selectorLeft  { display: flex; flex-direction: column; gap: 2px; }
+
+
+.selectorMeta  { font-size: 11px; color: #9aa5b4; text-transform: uppercase; letter-spacing: 0.06em; margin: 0; }
+
+
+.selectorTitle { font-size: 20px; font-weight: 700; color: #1a2b2b; margin: 0; }
+
+
+.selectorRight { display: flex; flex-direction: column; gap: 6px; min-width: 280px; }
+
+
+.selectorLabel { font-size: 12px; font-weight: 600; color: #4a6060; }
+
+
+
+.selectWrap { position: relative; }
+
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 36px 10px 14px;
+  border: 1.5px solid #e8edf0;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #1a2b2b;
+  background: #f8fafa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+
+.select:focus { border-color: #0b7b7b; background: #fff; }
+
+
+.select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+
+.select:-webkit-autofill,
+.select:-webkit-autofill:hover,
+.select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #f8fafa inset !important;
+  box-shadow: 0 0 0 1000px #f8fafa inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.selectArrow {
+  position: absolute; right: 12px; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; color: #9aa5b4;
+  display: flex; align-items: center;
+}
+
+
+
+/* ── Empty / Loading ─────────────────────────────────────── */
+.emptyState {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 14px; padding: 64px 20px;
+  background: #fff; border-radius: 14px;
+  border: 1px solid #e8edf0; text-align: center;
+}
+
+
+.emptyTitle { font-size: 15px; font-weight: 600; color: #4a6060; margin: 0 0 6px; }
+
+
+.emptySub   { font-size: 13px; }
+
+
+
+.loadingWrap { display: flex; justify-content: center; padding: 80px 0; }
+
+
+
+/* ─── Loading / error ────────────────────────────────────── */
+.loadingWrap {
+  display: flex; align-items: center;
+  justify-content: center; height: 240px;
+}
+
+
+
+/* ── Loading / empty ─────────────────────────────────────── */
+.loadingWrap { display: flex; justify-content: center; padding: 80px 0; }
+
+
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #e8edf0; border-top-color: #0b7b7b;
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+
+
+
+/* ── Layout ─────────────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+
+
+/* ── Cert panel ─────────────────────────────────────────── */
+.certPanel {
+  background: #fff; border-radius: 14px;
+  border: 1px solid #e8edf0; padding: 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+
+.certPanelHeader {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.certPanelTitle { font-size: 17px; font-weight: 700; color: #1a2b2b; margin: 0; }
+
+
+.certPanelSub   { font-size: 12px; color: #9aa5b4; }
+
+
+
+.certFrame {
+  background: #f0f4f4; border-radius: 10px;
+  border: 1px solid #e4eaee;
+  /* Height is set inline (page.js) to the certificate's real content height at its
+     natural width, scaled to fit — overflow stays hidden only as a safety net for the
+     brief moment before that measurement lands. */
+  overflow: hidden; padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+
+.certIframe {
+  /* Width/height/transform are set inline (page.js): rendered at the template's natural
+     width so nothing reflows, then scaled down/up to fit certFrame's actual width. */
+  border: none; display: block;
+  border-radius: 10px;
+  transform-origin: top left;
+}
+
+
+
+.noTemplateWrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 52px 20px;
+  background: #fff; border-radius: 14px;
+  border: 1px solid #fde68a; text-align: center;
+}
+
+
+.noTemplateTitle { font-size: 15px; font-weight: 600; color: #92400e; margin: 0; }
+
+
+.noTemplateSub   { font-size: 13px; color: #9aa5b4; max-width: 400px; margin: 0; }
+
+
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.sidebar { display: flex; flex-direction: column; gap: 14px; }
+
+
+
+.card {
+  background: #fff; border-radius: 14px;
+  border: 1px solid #e8edf0; padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+
+
+/* ── Card ───────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e8edf0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.cardTitle { font-size: 16px; font-weight: 700; color: #1a2b2b; margin: 0; }
+
+
+.cardSubtitle { font-size: 12px; color: #9aa5b4; margin: -6px 0 0; }
+
+
+
+.downloadBtn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 20px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: opacity 0.15s; width: 100%; margin-top: 2px;
+}
+
+
+.downloadBtn:hover:not(:disabled) { opacity: 0.88; }
+
+
+.downloadBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+
+.summaryRow {
+  display: flex; flex-direction: column; gap: 3px;
+  border-bottom: 1px solid #f0f4f4; padding-bottom: 10px;
+}
+
+
+.summaryRow:last-child { border-bottom: none; padding-bottom: 0; }
+
+
+.summaryLabel { font-size: 11px; color: #9aa5b4; text-transform: uppercase; letter-spacing: 0.05em; }
+
+
+.summaryVal   { font-size: 14px; font-weight: 600; color: #1a2b2b; }
+
+
+
+.progressWrap  { display: flex; flex-direction: column; gap: 4px; }
+
+
+
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: rgba(255,255,255,0.4);
+  display: none;
+  visibility: hidden;
+}
+
+
+
+/* Progress + controls */
+.progressTrack {
+  height: 3px;
+  background: #1a3535;
+  cursor: pointer;
+}
+
+
+.progressFill {
+  height: 100%;
+  background: #0b7b7b;
+  border-radius: 0 3px 3px 0;
+  transition: width 0.4s ease;
+}
+
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  right: -5px; top: 50%;
+  transform: translateY(-50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #0b7b7b;
+}
+
+
+.progressPct {
+  font-size: 12px; font-weight: 700; letter-spacing: 0;
+}
+
+
+.badgePassed { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+
+
+.badgeInProgress {
+  display: inline-block; padding: 3px 12px;
+  background: #fff7ed; color: #d97706;
+  border: 1px solid #fed7aa; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+}
+
+
+
+/* ── Achievement card variants ──────────────────────────── */
+.achieveCard {
+  background: #0b7b7b; border-radius: 14px;
+  padding: 24px 20px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px; text-align: center;
+}
+
+
+.achieveModern  { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+
+
+.achievePurple  { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
+
+
+.achieveElegant { background: linear-gradient(135deg, #92400e, #b47828); }
+
+
+.achieveTitle { font-size: 17px; font-weight: 700; color: #fff; margin: 0; }
+
+
+.achieveText  { font-size: 12.5px; color: rgba(255,255,255,0.8); margin: 0; line-height: 1.5; }
+
+
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+@media (max-width: 1080px) {
+  .layout { grid-template-columns: 1fr; } }
+
+
+@media (max-width: 480px) {
+  .selectorRight { min-width: 0; width: 100%; }
+
+  .selectorCard { padding: 16px; }
+
+  .selectorTitle { font-size: 17px; }
+}
+
+/* ── Redesign: compact label · value detail rows, status pill ── */
+.summaryRow.summaryRow { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.summaryLabel.summaryLabel { color: #6b7d7d; text-transform: none; letter-spacing: 0; font-weight: 500; flex-shrink: 0; font-size: 13.5px !important; }
+.summaryVal.summaryVal { color: #12302f; font-weight: 600; text-align: right; overflow-wrap: anywhere; font-size: 14px !important; }
+.summaryRow .progressWrap { flex: 1; max-width: 60%; flex-direction: row; align-items: center; gap: 8px; }
+.summaryRow .progressTrack { flex: 1; }
+.badgePassed.badgePassed, .badgeInProgress.badgeInProgress {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: none; font-weight: 700; font-size: 12px !important;
+}
+.badgePassed.badgePassed { background: #e7f7ee; color: #15803d; }
+.badgeInProgress.badgeInProgress { background: #fff4e0; color: #b45309; }
+.badgePassed::before, .badgeInProgress::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.achieveText.achieveText { display: block; }
+.downloadBtn.downloadBtn { height: 42px; border-radius: 9px; }
+.summaryRow .progressTrack.progressTrack { position: relative; flex: 1; min-width: 80px; height: 6px; border-radius: 999px; background: #e8f0f0; cursor: default; }
+.summaryRow .progressFill.progressFill { height: 100%; border-radius: 999px; background: #0b7b7b; }
+.summaryRow .progressWrap { justify-content: flex-end; }
+.achieveText.achieveText strong { margin-right: 4px; color: #fff; }

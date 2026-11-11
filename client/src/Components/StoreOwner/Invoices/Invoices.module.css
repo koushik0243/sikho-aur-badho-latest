@@ -1,0 +1,445 @@
+
+
+
+/* ─── Stat cards ─────────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+
+
+.statCard {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8edf0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+
+.statCardTeal {
+  background: #0b7b7b;
+  border-color: #0b7b7b;
+}
+
+
+
+.statCardTeal .statIcon { background: rgba(255,255,255,0.2); color: #fff; }
+
+
+.statCardTeal .statLabel { color: rgba(255,255,255,0.8); }
+
+
+
+.statCardTeal .statValue { color: #fff; }
+
+
+.statCardTeal .statDelta { color: rgba(255,255,255,0.65); }
+
+
+.statCardTeal .statDeltaUp { color: rgba(255,255,255,0.85); }
+
+
+.statCardTeal .statDelta, .statCardTeal .statDeltaUp { color: rgba(255,255,255,0.75); }
+
+
+
+.statBody { display: flex; flex-direction: column; min-width: 0; }
+
+
+
+.statHeader { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+
+
+
+.statIcon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  background: #e8f5f5;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.statIcon svg { width: 15px; height: 15px; }
+
+
+
+.statLabel { font-size: 11.5px; color: #7a9090; font-weight: 500; }
+
+
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2b2b;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+
+
+.statDelta { font-size: 11px; color: #7a9090; }
+
+
+.statDeltaUp { color: #0b6e4f; }
+
+
+
+/* ─── Table card ──────────────────────────────────────────────── */
+.tableCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ─── Table card ─────────────────────────────────────────────── */
+.tableCard {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+/* ─── Card header ─────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* ─── Card head ──────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+.tableCardTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+
+
+.table { width: 100%; border-collapse: collapse; }
+
+
+
+.th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #188985;
+  padding: 9px 10px;
+  border-bottom: 1px solid #f0f4f4;
+  white-space: nowrap;
+}
+
+
+
+.tr { border-bottom: 1px solid #f4f6f8; transition: background 0.1s; }
+
+
+.tr:last-child { border-bottom: none; }
+
+
+.tr:hover { background: #fafcfc; }
+
+
+
+.tr:last-child .td { border-bottom: none; }
+
+
+.tr:hover .td { background: #fafcfc; }
+
+
+
+.td {
+  padding: 3px 10px;
+  font-size: 13px;
+  color: #1a2b2b;
+  vertical-align: middle;
+}
+
+
+
+.td:last-child { border-bottom: none; }
+
+
+.trChecked .td { background: #f0f9f9; }
+
+
+
+/* ─── Skeleton row ────────────────────────────────────────────── */
+.skeletonRow {
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonRow {
+  height: 14px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+.tdEmpty {
+  padding: 40px 24px;
+  text-align: center;
+  color: #9aadad;
+  font-size: 13.5px;
+}
+
+
+
+.invoiceNo {
+  font-family: monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0b7b7b;
+}
+
+
+
+.badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: #000;
+  background: transparent;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: #000;
+  background: transparent;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+
+
+/* ─── View button ────────────────────────────────────────────── */
+.btnView {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+
+.btnView svg { width: 13px; height: 13px; }
+
+.btnView:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+.btnView:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+/* Pagination */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #9aadad;
+}
+
+
+
+/* ─── Pagination ─────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4a6060;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #6b7280;
+}
+
+
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #4a6060;
+}
+
+
+
+.footerLeft { display: flex; align-items: center; gap: 10px; }
+
+
+
+.paginationBtns { display: flex; align-items: center; gap: 4px; }
+
+
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px; height: 28px;
+  padding: 0 6px;
+  border: 1px solid #e8edf0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a2b2b;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.pageBtn:hover:not(:disabled) { background: #f0f7f7; }
+
+
+.pageBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+
+
+.pageBtnActive { background: linear-gradient(180deg, #047279 0%, #299c8f 100%); border-color: #047279; color: #fff; }
+
+
+.pageBtnActive:hover:not(:disabled) { background: #0a6b6b; }
+
+
+.pageBtnActive:hover { background: #0b7b7b; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+@media (max-width: 900px) {
+  .statsRow       { grid-template-columns: repeat(2, 1fr); } }
+
+
+@media (max-width: 600px) {
+  .statsRow { grid-template-columns: 1fr 1fr; } }
+
+
+@media (max-width: 480px) {
+  .statsRow { grid-template-columns: 1fr; } }
+
+
+@media (max-width: 768px) {
+  /* .table has no scroll wrapper elsewhere — tableCard directly wraps it */
+  .tableCard { overflow-x: auto; } }
+
+
+
+.table tbody tr {
+  border-bottom: 1px solid #d7d7d7 !important;
+}
+
+
+.pagination {
+  padding: 20px !important;
+  /* border-top: none !important; */
+}
+
+/* ── Column alignment: headers line up with their values ── */
+/* Status labels have no pill background, so no side padding: the text lines up with its header. */
+.badge.badge { padding-left: 0; padding-right: 0; }

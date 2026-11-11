@@ -1,0 +1,651 @@
+
+
+
+/* ── Right sidebar panels ──────────────────────────────────────── */
+.sidePanel { display: flex; flex-direction: column; gap: 12px; }
+
+
+
+.sidePanelCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.sidePanelTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+
+
+.sidePanelBody { padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+
+
+.uploadAreaNote { font-size: 11px; color: #9ca3af; }
+
+
+
+/* ── Two-column layout ─────────────────────────────────────────── */
+.builderBody {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
+}
+
+
+
+/* ── Main column ───────────────────────────────────────────────── */
+.main { display: flex; flex-direction: column; gap: 16px; }
+
+
+
+/*  Main  */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+
+
+/* ─── Main area ────────────────────────────────────────────────── */
+.main {
+  margin-left: 64px; /* collapsed: only icon strip */
+  padding-top: 58px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left 0.22s ease;
+}
+
+
+
+/* ── Form card ─────────────────────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* Form card */
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  max-width: 680px;
+}
+
+
+
+/* Form card */
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  max-width: 680px;
+}
+
+
+
+.formCard  { background: #fff; border-radius: 10px; border: 1px solid #e5e7eb; padding: 24px; margin-bottom: 20px; }
+
+
+
+.formCardBody { padding: 16px 18px; display: flex; flex-direction: column; gap: 14px; }
+
+
+.formRow > .formGroup {
+  flex: 1;
+  min-width: 200px;
+}
+
+
+
+/* Generic form group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Form elements */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.formGroup select,
+.formGroup input[type="text"] {
+  height: 38px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+
+.formGroup select:focus,
+.formGroup input[type="text"]:focus {
+  border-color: #7c3aed;
+}
+
+
+.formGroup select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #111827;
+  background-color: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+
+.formGroup select:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+
+
+
+/* Labels */
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+
+.formCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+
+.formCardHeaderLeft { display: flex; align-items: center; gap: 8px; }
+
+
+
+/* ── Options left nav (General / Content Drip / Enrollment) ──── */
+.optionsLayout { display: grid; grid-template-columns: 150px 1fr; gap: 0; }
+
+
+
+.optionsNav {
+  border-right: 1px solid #e5e7eb;
+  padding: 8px 0;
+}
+
+
+
+.optionsNavItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.12s, color 0.12s;
+}
+
+
+.optionsNavItem:hover { background: #f9fafb; color: #374151; }
+
+
+.optionsNavItemActive {
+  color: #0b7b7b;
+  font-weight: 600;
+  border-left-color: #0b7b7b;
+  background: #f0fafa;
+}
+
+
+
+.optionsPanel { padding: 14px 18px; display: flex; flex-direction: column; gap: 12px; }
+
+
+
+/* ── Curriculum empty state & new chapter cards ────────────────── */
+.curriculumWrap { padding: 20px; }
+
+
+
+/* ── Curriculum header ─────────────────────────────────────────── */
+.curriculumHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+
+.curriculumHeading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+
+.btnCurriculumBack {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #0b7b7b;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity 0.15s;
+}
+
+
+.btnCurriculumBack:hover { opacity: 0.88; }
+
+
+
+.curriculumEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 40px;
+  gap: 10px;
+  text-align: center;
+}
+
+
+.curriculumEmptyTitle { font-size: 16px; font-weight: 600; color: #1f2937; }
+
+
+.curriculumEmptySub { font-size: 13px; color: #6b7280; }
+
+
+
+.chapterList { display: flex; flex-direction: column; gap: 14px; }
+
+
+
+.chCard {
+  background: #fff;
+  border: 1px solid #dde3f0;
+  border-left: 3px solid var(--ch-color, #3b82f6);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ── Saved chapter view ────────────────────────────────────────── */
+.chSavedTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+
+.chSavedInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+
+.chSavedChapterNo {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0d9488;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+.chSavedTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+
+.chSavedDesc {
+  font-size: 12px;
+  color: #6b7280;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+
+/* ── Lesson rows (inside saved chapter) ───────────────────────── */
+.lessonList {
+  border-top: 1px solid #e5e7eb;
+}
+
+
+
+.lessonRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+  transition: background 0.12s;
+}
+
+
+.lessonRow:hover { background: #f8faff; }
+
+
+
+.lessonName {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+.chCardBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+
+.backBtn:hover { opacity: 0.88; }
+
+
+.backBtn svg { width: 16px; height: 16px; }
+
+
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn { align-self: flex-start;
+ display: inline-flex; align-items: center; gap: 6px;
+ background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+ border: 1px solid #047279; border-radius: 6px; color: #fff;
+ font-size: 13px; font-weight: 500; cursor: pointer;
+ padding: 7px 14px; margin-bottom: 16px;
+ transition: opacity 0.15s;
+ 
+  white-space: nowrap;
+}
+
+
+
+/* ── Top bar ───────────────────────────────────────────────────── */
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 24px;
+  height: 56px;
+  gap: 16px;
+}
+
+
+
+.topBar {
+  /* height: 100%; */
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+
+.topBarLeft svg { width: 18px; height: 18px; color: #0b7b7b; }
+
+
+
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+
+
+.stepSep {
+  width: 32px;
+  height: 1px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+
+
+.step:hover { color: #374151; }
+
+
+
+.stepActive {
+  color: #0b7b7b;
+  border-bottom-color: #0b7b7b;
+  font-weight: 600;
+}
+
+
+
+.stepActive .stepNum {
+  background: #0b7b7b;
+  color: #fff;
+}
+
+
+
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e5e7eb;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .builderBody {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .optionsLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .optionsNav {
+    display: flex;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 4px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .backBtn {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .topBar {
+    padding: 8px 12px;
+    height: auto;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .steps {
+    overflow-x: auto;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .step {
+    padding: 6px 10px;
+  }
+
+  .formCard {
+    padding: 16px;
+  }
+
+  .curriculumHeader {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .chSavedTop {
+    flex-wrap: wrap;
+  }
+
+  .lessonRow {
+    flex-wrap: wrap;
+  }
+}
+
+/* Basics tab: Options + Aptitude Test span the whole content area (under the side panel too) */
+.fullRow { grid-column: 1 / -1; min-width: 0; display: flex; flex-direction: column; }
+.fullRow .formCard.formCard { max-width: none; width: 100%; box-sizing: border-box; }
+/* The title column no longer has to fill the page height — Options sits below it */
+.main:has(+ .sidePanel + .fullRow) { min-height: 0; }
+
+/* Side panel → Categories: selected categories as a tree (parents shown for context) */
+.catTreeList, .catTreeChildren { list-style: none; margin: 0; padding: 0; }
+.catTreeList > li + li { margin-top: 6px; }
+.catTreeChildren { margin: 4px 0 0 7px; padding-left: 12px; border-left: 1px dashed #d1d5db; }
+.catTreeChildren > li { position: relative; padding-top: 4px; }
+.catTreeChildren > li::before {
+  content: ''; position: absolute; left: -12px; top: 15px; width: 9px; border-top: 1px dashed #d1d5db;
+}
+.catTreeSelected, .catTreeParent { display: inline-flex; align-items: center; gap: 6px; line-height: 1.4; }
+.catTreeSelected { color: #111827; font-weight: 500; }
+.catTreeParent { color: #9ca3af; }
+.catTreeSelected.catTreeSelected, .catTreeParent.catTreeParent { font-size: 13px !important; }
+.catTreeCheck.catTreeCheck {
+  display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 4px;
+  background: #0b7b7b; color: #fff; font-size: 10px !important; font-weight: 700; flex-shrink: 0;
+}

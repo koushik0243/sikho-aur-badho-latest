@@ -1,0 +1,647 @@
+
+
+
+.breadcrumb strong { color: #1a2b2b; font-weight: 600; }
+
+
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #7a9090;
+}
+
+
+
+/* ─── Breadcrumb (add view) ───────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  margin-bottom: 14px;
+}
+
+
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1px;
+  font-size: 13px;
+}
+
+
+.breadcrumbLink {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0b7b7b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.breadcrumbLink:hover { text-decoration: underline; }
+
+
+.breadcrumbSep { color: #c4c9d4; font-size: 15px; }
+
+
+.breadcrumbCurr {
+  color: #6b7280;
+  font-weight: 500;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.sectionRows { display: flex; flex-direction: column; padding: 0 14px; }
+
+
+.sectionRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+
+.sectionRow:last-child { border-bottom: none; }
+
+
+.sectionLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+
+.sectionValue { font-size: 13.5px; color: #111827; }
+
+
+.sectionValueMono {
+  font-size: 12px;
+  color: #374151;
+  font-family: ui-monospace, monospace;
+  word-break: break-all;
+}
+
+
+
+/* ─── Toast ───────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  animation: toastIn 0.25s ease;
+  max-width: 360px;
+}
+
+
+.toastError   { background: #fff1f1; color: #b91c1c; border: 1px solid #fca5a5; }
+
+
+
+.toastSuccess { background: #e6f4f0; color: #0b5c5c; border: 1px solid #b2ddd4; }
+
+
+.toastIcon    { font-size: 13px; font-weight: 700; flex-shrink: 0; }
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonWrap { display: flex; flex-direction: column; gap: 12px; }
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonWrap { display: flex; flex-direction: column; gap: 16px; }
+
+
+
+/* ─── Loading skeleton ───────────────────────────────────────── */
+.skeletonLine {
+  height: 13px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+.skeletonLine {
+  height: 16px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonCard {
+  height: 210px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+
+
+.skeletonCard {
+  height: 160px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 12px;
+}
+
+
+
+/* ─── Not found ───────────────────────────────────────────────── */
+.notFound { padding: 48px 20px; text-align: center; }
+
+
+
+/* ─── Not found ───────────────────────────────────────────────── */
+.notFound {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+
+
+.notFoundTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #7a9090;
+  margin-bottom: 16px;
+}
+
+
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #047279; border-radius: 6px; color: #fff;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; margin-bottom: 16px;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.backBtn:hover { opacity: 0.88; }
+
+.backBtn svg { width: 16px; height: 16px; }
+
+
+
+/* ─── Delete button ───────────────────────────────────────────── */
+.btnDeleteOutline {
+  padding: 5px 14px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnDeleteOutline:hover:not(:disabled) { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnDeleteOutline:disabled { opacity: 0.5; cursor: default; }
+
+
+.detailCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ── Detail card ─────────────────────────────────────────────── */
+.detailCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 700px;
+}
+
+
+
+/* ─── Detail head ─────────────────────────────────────────────── */
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+/* ── Card header ─────────────────────────────────────────────── */
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  gap: 12px;
+}
+
+
+
+.ticketIdGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.ticketId {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2b2b;
+}
+
+
+
+.ticketDot { color: #9aadad; }
+
+
+
+.ticketCategory {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a6060;
+}
+
+
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.statusBadge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+.statusBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+
+
+/* ─── Detail body ─────────────────────────────────────────────── */
+.detailBody { padding: 18px 20px; }
+
+
+
+/* ── Body rows ───────────────────────────────────────────────── */
+.detailBody { padding: 0 20px 4px; }
+
+
+
+.viewSubject {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+
+
+/* ─── Section block ───────────────────────────────────────────── */
+.sectionBlock {
+  border-top: 1px solid #f0f4f4;
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+
+.detailSectionsGrid .sectionBlock:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+
+.sectionBlock {
+  border: 1px solid #edf0f3;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+
+.sectionText {
+  font-size: 13.5px;
+  color: #3a5050;
+  line-height: 1.65;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+
+
+/* ─── Response history card ───────────────────────────────────── */
+.logsCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+
+
+.logsHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+.logsTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+
+
+.logsList { display: flex; flex-direction: column; }
+
+
+
+.logEntry {
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0f4f4;
+}
+
+
+.logEntry:last-child { border-bottom: none; }
+
+
+
+.logEntryHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+
+
+.logDate { font-size: 12px; font-weight: 500; color: #6b8080; white-space: nowrap; }
+
+
+
+.logAdmin { font-size: 12.5px; font-weight: 700; color: #1a2b2b; }
+
+
+
+.logComment {
+  font-size: 13px;
+  color: #3a5050;
+  line-height: 1.65;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+
+
+/* ─── Confirm modal ───────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 30, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+
+
+/* ─── Delete modal ────────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+
+.modalBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  animation: toastIn 0.2s ease;
+}
+
+
+
+.modalTitle { font-size: 16px; font-weight: 700; color: #1a2b2b; margin: 0 0 8px; }
+
+
+.modalText  { font-size: 13.5px; color: #4a6060; line-height: 1.6; margin: 0 0 20px; }
+
+
+.modalActions { display: flex; gap: 10px; justify-content: flex-end; }
+
+
+
+.btnCancelModal {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnCancelModal:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnCancelModal:disabled { opacity: 0.5; cursor: default; }
+
+
+
+.btnConfirmDelete {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnConfirmDelete:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnConfirmDelete:disabled { opacity: 0.5; cursor: default; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-10px); }
+
+  to   { opacity: 1; transform: translateY(0); } }
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .breadcrumb {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .detailHead {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .backBtn { width: auto; white-space: nowrap; }
+
+  .sectionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .sectionLabel {
+    min-width: 0;
+  }
+}
+
+/* ── Shared view-page label column: same width on every view page (--view-label-width in globals.css) ── */
+@media (min-width: 481px) {
+  .sectionRow > .sectionLabel {
+    flex: 0 0 var(--view-label-width, 180px);
+    width: var(--view-label-width, 180px);
+    min-width: 0;
+  }
+}
+
+/* ── Restyle (store owner detail look) ───────────────────── */
+/* Status badges — the colour classes were never defined, so every status showed as plain text. */
+.statusBadge.statusBadge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  font-weight: 700; background: #f1f5f5; color: #4d6464; font-size: 12px !important;
+}
+.statusBadge.statusBadge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.statusOpen.statusOpen             { background: #eaf1fe; color: #1d4ed8; }
+.statusInProgress.statusInProgress { background: #fff4e0; color: #b45309; }
+.statusResolved.statusResolved     { background: #e7f7ee; color: #15803d; }
+.statusClosed.statusClosed         { background: #f1f5f5; color: #4d6464; }
+.statusNotPossible.statusNotPossible { background: #fdecec; color: #b91c1c; }
+.statusDeleted.statusDeleted       { background: #f1f5f5; color: #8a9a9a; }
+
+/* Delete — a destructive action, so outlined red rather than the primary teal */
+.btnDeleteOutline.btnDeleteOutline {
+  height: 34px; padding: 0 14px; border-radius: 9px; cursor: pointer; font-weight: 600;
+  background: #fff; color: #b91c1c; border: 1px solid #f3c4c4; font-size: 13.5px !important;
+}
+.btnDeleteOutline.btnDeleteOutline:hover:not(:disabled) { background: #fdf2f2; border-color: #dc2626; }
+.btnDeleteOutline.btnDeleteOutline:focus-visible { outline: 2px solid #dc2626; outline-offset: 2px; }
+
+/* Ticket card: full width, subject as the headline, description / notes as soft panels */
+.detailCard.detailCard.detailCard { max-width: none; width: 100%; margin-bottom: 18px; }
+.ticketId.ticketId { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 800; color: #12302f; font-size: 15px !important; }
+.ticketCategory.ticketCategory { color: #4d6464; font-weight: 600; }
+.detailBody.detailBody { padding: 18px 22px 20px; display: flex; flex-direction: column; gap: 14px; }
+.viewSubject.viewSubject { font-weight: 800; color: #12302f; margin: 0; font-size: 19px !important; }
+.sectionBlock.sectionBlock.sectionBlock { padding: 12px 16px; background: #f8fbfb; border: 1px solid #eef3f3; border-radius: 12px; }
+.sectionBlock .sectionLabel.sectionLabel { display: block; margin-bottom: 4px; color: #6b7d7d; font-weight: 700; font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em; }
+.sectionText.sectionText { margin: 0; color: #2b4141; line-height: 1.55; white-space: pre-wrap; font-size: 14px !important; }
+
+/* Response history — same card look, timeline-style entries */
+.logsCard.logsCard { background: #fff; border: 1px solid #e6eded; border-left: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15,60,60,0.04); overflow: hidden; }
+.logsHead.logsHead { padding: 14px 22px; background: #f8fbfb; border-bottom: 1px solid #eef3f3; }
+.logsTitle.logsTitle { margin: 0; color: #12302f; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: 16px !important; }
+.logEntry.logEntry { padding: 14px 22px; border-bottom: 1px solid #f1f5f5; }
+.logEntryHeader.logEntryHeader { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.logDate.logDate { color: #7a8c8c; font-size: 12.5px !important; }
+.logAdmin.logAdmin { color: #12302f; font-weight: 700; font-size: 13.5px !important; }
+.logComment.logComment { margin: 6px 0 0; color: #2b4141; line-height: 1.5; font-size: 14px !important; }

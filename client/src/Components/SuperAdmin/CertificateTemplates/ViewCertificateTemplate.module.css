@@ -1,0 +1,176 @@
+
+
+.viewRow { display: flex; flex-direction: column; gap: 4px; }
+
+
+.viewLabel { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+
+
+.viewValue { font-size: 14px; color: #111827; }
+
+
+.viewValueMuted { font-size: 14px; color: #9ca3af; }
+
+
+.backBtn:hover { opacity: 0.88; }
+
+
+.backBtn svg { width: 16px; height: 16px; }
+
+
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn { align-self: flex-start;
+ display: inline-flex; align-items: center; gap: 6px;
+ background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+ border: 1px solid #047279; border-radius: 6px; color: #fff;
+ font-size: 13px; font-weight: 500; cursor: pointer;
+ padding: 7px 14px; margin-bottom: 16px;
+ transition: opacity 0.15s;
+ 
+  white-space: nowrap;
+}
+
+
+.pageHeader {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+
+.pageHeader > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+
+
+/*  Page header  */
+.pageHeader {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+
+
+/* Page heading */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+
+
+/* Page header */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1px;
+}
+
+
+.pageSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 2px 0 0;
+}
+
+
+.btnEditView {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnEditView:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnEditView svg { width: 14px; height: 14px; }
+
+
+
+/* View page */
+.viewCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+
+
+
+/* View page */
+.viewCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+
+
+.viewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pageHeader {
+    flex-wrap: wrap !important;
+    row-gap: 10px;
+  }
+
+  .pageTitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .viewGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .backBtn {
+    width: auto;
+    white-space: nowrap;
+}
+
+  .viewCard {
+    padding: 18px 16px;
+  }
+}

@@ -1,0 +1,1095 @@
+
+
+
+.stepCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e8edf0;
+  color: #9aadad;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #e8edf0;
+}
+
+
+
+/* ─── Step done (checkmark circle) ───────────────────────────── */
+.stepCircleCheck {
+  background: #e6f7f7;
+  color: #0b7b7b;
+  border-color: #0b7b7b;
+}
+
+
+
+.stepCircleActive {
+  background: #0b7b7b;
+  color: #fff;
+  border-color: #0b7b7b;
+}
+
+
+
+/* ─── Content ─────────────────────────────────────────────────── */
+.content { padding: 24px; }
+
+
+
+.content {
+  flex: 1;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+/* ─── Page heading row ────────────────────────────────────────── */
+.pageHeadRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+
+.pageHeadLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px;
+}
+
+
+
+/* ─── Page title ─────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+.planBadge {
+  background: #e6f7f7;
+  color: #0b7b7b;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #b2dede;
+}
+
+
+
+.pageHeadMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #4a6060;
+}
+
+
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.metaItem strong { color: #1a2b2b; font-weight: 700; }
+
+
+
+.metaIcon {
+  width: 16px;
+  height: 16px;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.metaIcon svg { width: 15px; height: 15px; }
+
+
+
+.metaDivider {
+  width: 1px;
+  height: 16px;
+  background: #d8e4e4;
+}
+
+
+
+/* ─── Stepper ─────────────────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+.stepperItem {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+
+
+.stepperItem:last-child { flex: 0; }
+
+
+
+.stepLabel {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #9aadad;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+
+
+.stepLabelActive {
+  color: #0b7b7b;
+  font-weight: 700;
+}
+
+
+
+.stepLine {
+  flex: 1;
+  height: 1px;
+  background: #d8e4e4;
+  margin: 0 12px;
+}
+
+
+
+/* ─── Credits banner ──────────────────────────────────────────── */
+.creditsBanner {
+  background: #f0fafa;
+  border: 1px solid #b2dede;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  color: #1a2b2b;
+}
+
+
+
+.creditsBanner strong {
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+  color: #0b7b7b;
+}
+
+
+
+.creditsBanner p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #4a7070;
+}
+
+
+
+/* ─── Form card ───────────────────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 24px 28px 28px;
+  margin-bottom: 24px;
+}
+
+
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ─── Store Profile form card ────────────────────────────────── */
+.formCard {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.sectionTitle {
+  padding: 7px 14px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+/* ─── Form grid ───────────────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+}
+
+
+
+/* 3-column row override via nth-child grouping */
+.formGrid > :nth-child(7),
+.formGrid > :nth-child(8),
+.formGrid > :nth-child(9) {
+  /* rows of 3: remove by making it a 3-col subgrid implicitly */
+}
+
+
+
+.formGrid.threeCol {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+
+
+/* ─── Field ───────────────────────────────────────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+
+.fieldGroup { margin-bottom: 14px; }
+
+
+
+.label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #1a2b2b;
+  margin-bottom: 5px;
+}
+
+
+
+.req { color: #e04040; }
+
+
+
+.input {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+
+.input::placeholder { color: #9aadad; }
+
+
+.input:focus { border-color: #0b7b7b; }
+
+
+
+.inputWithIcon .input { padding-right: 36px; }
+
+
+
+.input,
+.select,
+.textarea {
+  border: 1px solid #d4dee0;
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff;
+  transition: border-color 0.15s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #0b7b7b;
+  box-shadow: 0 0 0 3px rgba(11,123,123,0.08);
+}
+
+
+
+.input:disabled { background: #f4f6f8; color: #7a9090; cursor: not-allowed; }
+
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.select:-webkit-autofill,
+.select:-webkit-autofill:hover,
+.select:-webkit-autofill:focus,
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+.fieldHint {
+  font-size: 11px;
+  color: #9aadad;
+  margin-top: 2px;
+}
+
+
+
+/* ─── Select ──────────────────────────────────────────────────── */
+.selectWrapper {
+  position: relative;
+}
+
+
+
+.selectWrapper { position: relative; }
+
+
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 7px 32px 7px 10px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: #9aadad;
+  background: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+.select:focus { border-color: #0b7b7b; color: #1a2b2b; }
+
+
+
+.selectChevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9aadad;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.selectChevron svg { width: 14px; height: 14px; }
+
+
+
+/* react-datepicker wrapper — fills the field column */
+.datePickerWrapper { width: 100%; }
+
+
+.datePickerWrapper :global(.react-datepicker-wrapper) { width: 100%; }
+
+
+.datePickerWrapper :global(.react-datepicker__input-container) { width: 100%; }
+
+
+
+/* ─── Assign course row ───────────────────────────────────────── */
+.assignCourseRow {
+  margin-top: 20px;
+}
+
+
+
+.btnAssignCourse {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+
+
+.btnAssignCourse:hover { opacity: 0.88; }
+
+
+.btnAssignCourse:disabled { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
+
+
+
+/* ─── Select Courses card ─────────────────────────────────────── */
+.selectCoursesCard {
+  background: #f0fafa;
+  border: 1px solid #b2dede;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+
+
+
+.selectCoursesCard strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b7b7b;
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+
+.selectCoursesCard p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #4a7070;
+}
+
+
+
+/* ─── Course list ─────────────────────────────────────────────── */
+.courseListCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 20px 22px 10px;
+  margin-bottom: 24px;
+}
+
+
+
+.courseListTitle {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0 0 14px;
+}
+
+
+
+.courseItem {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f4f4;
+  transition: background 0.12s;
+}
+
+
+
+.courseItem:last-child { border-bottom: none; }
+
+
+
+.courseItemSelected { background: #f4fafa; margin: 0 -22px; padding: 14px 22px; }
+
+
+
+.courseItemTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+
+
+.courseItemTop:hover .courseName { color: #0b7b7b; }
+
+
+
+.courseCircleBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 2px solid #b0c8c8;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+
+.courseCircleBtn:hover { border-color: #0b7b7b; }
+
+
+
+.courseCircleBtnSelected {
+  border-color: #0b7b7b;
+  background: #0b7b7b;
+}
+
+
+
+.courseCircleCheck {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.courseInfo { flex: 1; min-width: 0; }
+
+
+
+.courseStatusPublished {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0a7a4a;
+  background: #e6f7ee;
+  border: 1px solid #b8e6cc;
+  border-radius: 5px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+
+.courseStatusDraft {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a6d00;
+  background: #fff8e1;
+  border: 1px solid #f0dfa0;
+  border-radius: 5px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+
+.courseName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2b2b;
+  margin-bottom: 3px;
+}
+
+
+
+.courseMeta {
+  font-size: 12px;
+  color: #7a9a9a;
+}
+
+
+
+/* ─── Notification preferences ────────────────────────────────── */
+.notifSubtitle {
+  font-size: 12.5px;
+  color: #9aadad;
+  margin: -12px 0 16px;
+}
+
+
+.notifSubtitle { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+
+
+
+.notifRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f4f4;
+}
+
+
+
+.notifRow:last-child { border-bottom: none; }
+
+
+
+.notifInfo { flex: 1; min-width: 0; padding-right: 20px; }
+
+
+
+.notifLabel { font-size: 12.5px; font-weight: 600; color: #1a2b2b; margin-bottom: 1px; }
+
+
+
+.notifDesc { font-size: 11px; color: #8a9a9a; line-height: 1.4; }
+
+
+
+/* iOS-style toggle switch */
+.toggleSwitch {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #d8e4e4;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+
+
+.toggleSwitchOn { background: #0b7b7b; }
+
+
+
+.toggleSwitchOn .toggleThumb { left: 23px; }
+
+
+
+.toggleThumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+  pointer-events: none;
+  display: block;
+}
+
+
+
+.toggleOn .toggleThumb { left: 19px; }
+
+
+
+/* ─── Confirm two-column layout ───────────────────────────────── */
+.confirmCols {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+
+
+/* ─── Learner preview card ────────────────────────────────────── */
+.learnerPreviewCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.learnerAvatarCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #0b7b7b;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+
+
+.learnerPreviewName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin-bottom: 4px;
+}
+
+
+
+.learnerPreviewHint {
+  font-size: 12px;
+  color: #9aadad;
+  margin-bottom: 20px;
+}
+
+
+
+.learnerPreviewFields {
+  width: 100%;
+  border-top: 1px solid #f0f4f4;
+  padding-top: 16px;
+}
+
+
+
+.learnerPreviewRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f4f4;
+  font-size: 13px;
+}
+
+
+
+.learnerPreviewRow:last-child { border-bottom: none; }
+
+
+
+.lpLabel { color: #9aadad; font-weight: 500; }
+
+
+
+.lpValue { color: #1a2b2b; font-weight: 600; }
+
+
+
+.statusActive    { background: #edf7f3; color: #0b6e4f; border: 1px solid #b5e0cc; }
+
+
+
+.learnerPreviewFootnote {
+  margin-top: 16px;
+  width: 100%;
+  background: #f0fafa;
+  border: 1px solid #b2dede;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #4a7070;
+  text-align: center;
+}
+
+
+
+/* ─── Snapshot column ─────────────────────────────────────────── */
+.snapshotCol { display: flex; flex-direction: column; }
+
+
+
+.snapshotCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 18px 20px;
+}
+
+
+
+.snapshotTitle {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0 0 14px;
+}
+
+
+
+.snapshotRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f4f6f8;
+}
+
+
+
+.snapshotRow:last-child { border-bottom: none; }
+
+
+
+.snapshotKey { color: #7a9a9a; }
+
+
+
+.snapshotVal { font-weight: 600; color: #1a2b2b; }
+
+
+
+.snapshotValAccent { font-weight: 700; color: #0b7b7b; }
+
+
+
+/* ─── Selected courses in snapshot ───────────────────────────── */
+.selectedCourseRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f4f4;
+  font-size: 13px;
+}
+
+
+
+.selectedCourseName { color: #1a2b2b; font-weight: 500; }
+
+
+
+.noCoursesHint { font-size: 13px; color: #b0c8c8; padding: 8px 0; }
+
+
+
+.totalSelectedRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  margin-top: 4px;
+  font-size: 13.5px;
+}
+
+
+
+.totalSelectedLabel { font-weight: 700; color: #1a2b2b; }
+
+
+
+.totalSelectedVal { font-weight: 700; color: #1a2b2b; }
+
+
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px 28px;
+  border-top: 1px solid #e8edf0;
+  background: #f4f6f8;
+}
+
+
+
+.btnCancel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnCancel:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+.footerArrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e6f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b7b7b;
+  flex-shrink: 0;
+}
+
+
+
+.btnNext:hover .footerArrow { background: rgba(255,255,255,0.2); color: #fff; }
+
+
+
+.footerArrow svg { width: 14px; height: 14px; }
+
+
+
+.btnNext {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+
+
+.btnNext:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); color: #fff; }
+
+
+.btnNext:disabled { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
+
+
+
+/* ─── Footer right group (Discard + Save) ─────────────────────── */
+.footerRightGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+.btnDiscard {
+  background: none;
+  border: none;
+  color: #0b7b7b;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+
+.btnDiscard:hover { color: #0a6060; }
+
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pageHeadMeta {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .pageTitle {
+    font-size: 18px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .confirmCols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepCircle {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .stepLabel {
+    font-size: 10.5px;
+    margin-left: 5px;
+    max-width: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .stepLine {
+    margin: 0 4px;
+  }
+}
+
+
+/* Phones: the shell already pads the page — don't double it */
+@media (max-width: 640px) {
+  .content { padding: 0; }
+}

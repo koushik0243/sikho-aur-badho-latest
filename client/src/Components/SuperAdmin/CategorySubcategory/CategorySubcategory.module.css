@@ -1,0 +1,351 @@
+/* ─── Page header ──────────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.pageSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 1px 0 0;
+}
+.btnAdd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0b7b7b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btnAdd:hover { background: #085f5f; }
+
+/* ─── Card ─────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* ─── Search ───────────────────────────────────────────────────── */
+.searchWrap {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.searchWrap svg {
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  color: #374151;
+  background: transparent;
+}
+.searchInput::placeholder { color: #9ca3af; }
+
+/* ─── Table ────────────────────────────────────────────────────── */
+.tableWrap { overflow-x: auto; }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.table thead th {
+  padding: 11px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.12s;
+}
+.table tbody tr:nth-child(odd)  { background: #ffffff; }
+.table tbody tr:nth-child(even) { background: #f7f8fa; }
+.table tbody tr:last-child { border-bottom: none; }
+.table tbody tr:hover { background: #e8edf2; }
+.table td {
+  padding: 11px 14px;
+  color: #374151;
+  vertical-align: middle;
+}
+.emptyRow td {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 28px 14px;
+}
+.descCell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Name cell / tree ────────────────────────────────────────── */
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.treeArrow {
+  font-size: 12px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  margin-right: 2px;
+}
+.catIcon {
+  width: 26px;
+  height: 26px;
+  background: #e0f2f1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.catIcon svg {
+  width: 14px;
+  height: 14px;
+  color: #0b7b7b;
+}
+.catName {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* ─── Type badges ─────────────────────────────────────────────── */
+.badgeCategory {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #e0f2f1;
+  color: #0b7b7b;
+  white-space: nowrap;
+}
+.badgeSubCat {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #ede9fe;
+  color: #6d28d9;
+  white-space: nowrap;
+}
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+.badgeInactive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ─── Action buttons ──────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.btnEdit {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: #d97706; color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.btnEdit:hover { background: #b45309; }
+.btnEdit svg { width: 13px; height: 13px; }
+.btnDelete {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: #dc2626; color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.btnDelete:hover { background: #b91c1c; }
+.btnDelete svg { width: 13px; height: 13px; }
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+.paginationWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: none;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.paginInfo {
+  font-size: 12.5px;
+  color: #6b7280;
+}
+.paginBtns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.paginBtn {
+  min-width: 32px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  color: #374151;
+  font-size: 12.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paginBtn:hover:not(:disabled) { background: #f3f4f6; }
+.paginBtn:disabled { opacity: 0.45; cursor: default; }
+.paginBtnActive {
+  background: #0b7b7b !important;
+  color: #fff !important;
+  border-color: #0b7b7b !important;
+  font-weight: 600;
+}
+
+/* ─── View button ───────────────────────────────────────── */
+.btnView {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: #0b7b7b; color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.btnView:hover { background: #096060; }
+.btnView svg { width: 13px; height: 13px; }
+
+/* ─── View page ─────────────────────────────────────────── */
+.viewCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.viewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+.viewRow { display: flex; flex-direction: column; gap: 4px; }
+.viewLabel { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+.viewValue { font-size: 14px; color: #111827; }
+.viewValueMuted { font-size: 14px; color: #9ca3af; }
+.viewFull { grid-column: 1 / -1; }
+.viewPre {
+  font-size: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  color: #374151;
+  line-height: 1.6;
+  font-family: monospace;
+  margin-top: 4px;
+}
+.btnEditView {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d97706;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btnEditView:hover { background: #b45309; }
+.btnEditView svg { width: 14px; height: 14px; }
+
+/* ─── Back button ───────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.backBtn:hover { background: #f9fafb; }
+.backBtn svg { width: 14px; height: 14px; }
+.checkTh { width: 38px; text-align: center; padding: 0 4px; }
+.checkTd { width: 38px; text-align: center; padding: 0 4px; }
+.footerLeft { display: flex; align-items: center; gap: 10px; }
+.btnBulkDelete {
+  display: inline-flex;
+  align-items: center;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnBulkDelete:hover { background: #b91c1c; }

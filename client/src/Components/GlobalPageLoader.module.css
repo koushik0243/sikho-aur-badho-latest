@@ -1,0 +1,52 @@
+/* Full-page loading overlay (GlobalPageLoader.js) */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998; /* above page content and modals; toasts stay on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: progress;
+  animation: overlayIn 0.15s ease-out;
+}
+
+.spinner {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #2ec4b6;
+  border-right-color: #2ec4b6;
+  animation: spin 0.8s linear infinite;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Less motion: a slow pulse instead of a spinning ring. */
+@keyframes pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .spinner { animation: pulse 1.6s ease-in-out infinite; }
+}

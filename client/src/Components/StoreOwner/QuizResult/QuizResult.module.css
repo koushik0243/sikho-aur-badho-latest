@@ -1,0 +1,122 @@
+.page { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Back button ─────────────────────────────────────────── */
+.backBtn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #047279; border-radius: 6px; color: #fff;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; margin-bottom: 16px;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.backBtn:hover { opacity: 0.88; }
+
+.backBtn svg { width: 16px; height: 16px; }
+
+/* ── Filter card ─────────────────────────────────────────── */
+.filterCard {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e8edf0;
+  padding: 24px;
+}
+
+.filterMeta  { font-size: 11px; color: #9aa5b4; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 4px; }
+
+.filterTitle { font-size: 18px; font-weight: 700; color: #1a2b2b; margin: 0 0 20px; }
+
+.filterRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.filterGroup { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+.filterLabel { font-size: 12px; font-weight: 600; color: #4a6060; }
+
+.selectWrap { position: relative; }
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 36px 10px 14px;
+  border: 1.5px solid #e8edf0;
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: #1a2b2b;
+  background: #f8fafa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.select:focus { border-color: #0b7b7b; background: #fff; }
+
+.select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.selectArrow {
+  position: absolute; right: 12px; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; color: #9aa5b4;
+  display: flex; align-items: center;
+}
+
+/* ── Empty / loading ─────────────────────────────────────── */
+.emptyWrap { text-align: center; padding: 80px 20px; color: #9aa5b4; }
+
+.emptyTitle { font-size: 15px; font-weight: 600; color: #4a6060; margin: 0 0 6px; }
+
+.emptySub   { font-size: 13px; }
+
+.loadingWrap { display: flex; justify-content: center; padding: 80px 0; }
+
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #e8edf0; border-top-color: #0b7b7b;
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .filterRow { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 540px) {
+  .filterRow { grid-template-columns: 1fr; }
+
+}
+
+@media (max-width: 480px) {
+  .backBtn { width: auto; white-space: nowrap; }
+
+  .filterCard {
+    padding: 16px;
+  }
+
+  .filterTitle { font-size: 16px; margin-bottom: 16px; }
+
+}
+
+@media (max-width: 360px) {
+  .filterCard {
+    padding: 14px;
+  }
+
+}
+
+/* ── Task 5: listing filters use 10px text (all accounts) ── */
+.filterLabel.filterLabel.filterLabel,
+.filterRow.filterRow.filterRow :is(label, select, option, input, textarea, button, span:not(:has(*))),
+.filterGroup.filterGroup.filterGroup :is(label, select, option, input, textarea, button, span:not(:has(*))) {
+  font-size: 10px !important;
+}

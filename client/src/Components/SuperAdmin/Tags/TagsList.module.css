@@ -1,0 +1,171 @@
+/* Tags list (super admin).
+   The shared look — title, primary button, card, table, status pills, action icons,
+   page buttons — comes from AdminKit (see withAdminKit). This file only adds what the
+   page has on top: toolbar, selection bar, sortable headers, loading and empty states.
+   globals.css forces 15px text on everything, so every size here needs !important. */
+
+/* ── Page header ──────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+.titleRow { display: flex; align-items: center; gap: 10px; }
+.btnAdd svg { width: 16px; height: 16px; }
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card { overflow: hidden; }
+
+/* ── Toolbar: search + status tabs ────────────────────────── */
+.toolbar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  min-height: 68px; padding: 14px 16px; border-bottom: 1px solid #eef3f3;
+}
+.toolbarSpacer { flex: 1; }
+
+.searchField { position: relative; display: flex; align-items: center; flex: 1 1 280px; max-width: 420px; margin: 0; }
+.searchField > svg { position: absolute; left: 12px; width: 16px; height: 16px; color: #8aa0a0; pointer-events: none; }
+.searchBox {
+  width: 100%; height: 40px; padding: 0 36px; border: 1.5px solid #e2e9ec; border-radius: 10px;
+  background: #fff; color: #12302f; outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+  font-size: 12px !important;
+}
+.searchBox::placeholder { color: #9aa9a9; font-size: 12px !important; }
+.searchBox:hover { border-color: #c5dcdc; }
+.searchBox:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+.searchBox::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.searchClear {
+  position: absolute; right: 8px; display: grid; place-items: center; width: 24px; height: 24px;
+  border: none; border-radius: 6px; background: transparent; color: #8aa0a0; cursor: pointer;
+}
+.searchClear:hover { background: #f1f5f5; color: #2b4141; }
+.searchClear:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 1px; }
+.searchClear svg { width: 12px; height: 12px; }
+
+.statusTabs { display: inline-flex; padding: 3px; border-radius: 10px; background: #f1f5f5; }
+.statusTab {
+  height: 34px; padding: 0 14px; border: none; border-radius: 8px; background: transparent;
+  color: #4d6464; font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s;
+  font-size: 12px !important;
+}
+.statusTab:hover { color: #12302f; }
+.statusTab:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 1px; }
+.statusTabActive, .statusTabActive:hover {
+  background: #fff; color: #0b6767; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.14);
+}
+
+/* ── Selection bar (replaces the toolbar while rows are ticked) ── */
+.selectionBar { background: #f0f9f8; border-bottom-color: #cfe9e7; }
+.selectionCount { color: #0b6767; font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px !important; }
+.linkBtn {
+  border: none; background: none; padding: 4px 2px; color: #4d6464; font-weight: 600; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; font-size: 13px !important;
+}
+.linkBtn:hover { color: #12302f; }
+.linkBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; border-radius: 4px; }
+
+/* ── Table ────────────────────────────────────────────────── */
+.table.table th { height: 42px; }
+.table.table td { height: 56px; }
+.table.table tbody tr { cursor: pointer; }
+.table.table.table tbody tr:hover { background: #f6fafa; }
+.table.table.table tbody tr.rowSelected,
+.table.table.table tbody tr.rowSelected:hover { background: #eef8f7; }
+.table.table tbody tr.rowSelected td:first-child { box-shadow: inset 3px 0 0 #0b7b7b; }
+
+/* Sortable column header */
+.sortBtn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 0; border: none; background: none;
+  font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer;
+}
+.sortBtn:hover, .sortBtnActive { color: #12302f; }
+.sortBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 3px; border-radius: 4px; }
+.sortIcon { width: 8px !important; height: 12px !important; flex-shrink: 0; fill: #c3cfcf; }
+.sortOn { fill: #0b7b7b; }
+
+/* Cells */
+.nameCell { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.tagIcon {
+  display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 30px;
+  border-radius: 8px; background: #e6f4f3; color: #0b7b7b;
+}
+.tagIcon svg { width: 14px; height: 14px; }
+.tagName { color: #12302f; font-weight: 600; font-size: 14px !important; }
+.descText {
+  display: block; max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  color: #5b7070; font-size: 14px !important;
+}
+.dateCell { white-space: nowrap; color: #5b7070; font-variant-numeric: tabular-nums; }
+.actions { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ── Loading skeleton ─────────────────────────────────────── */
+.table.table tbody tr.skeletonRow { cursor: default; }
+.table.table.table tbody tr.skeletonRow:hover { background: transparent; }
+.skeleton {
+  display: inline-block; height: 12px; border-radius: 6px; vertical-align: middle;
+  background: linear-gradient(90deg, #eef3f3 25%, #f7fafa 50%, #eef3f3 75%);
+  background-size: 200% 100%; animation: shimmer 1.3s linear infinite;
+}
+.skeletonBox { width: 16px; height: 16px; border-radius: 4px; }
+.skeletonSm { width: 80px; }
+.skeletonMd { width: 130px; }
+.skeletonLg { width: 70%; min-width: 160px; }
+.skeletonPill { width: 64px; height: 20px; border-radius: 999px; }
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.table.table tbody tr.emptyRow { cursor: default; }
+.table.table.table tbody tr.emptyRow:hover { background: transparent; }
+.emptyState { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 16px; }
+.emptyIcon {
+  display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 6px;
+  border-radius: 14px; background: #e6f4f3; color: #0b7b7b;
+}
+.emptyIcon svg { width: 24px; height: 24px; }
+.emptyState .emptyTitle.emptyTitle { margin: 0; color: #12302f; font-weight: 700; font-size: 16px !important; }
+.emptyText { margin: 0 0 10px; max-width: 360px; color: #6b7d7d; font-size: 14px !important; }
+.btnGhost {
+  display: inline-flex; align-items: center; height: 38px; padding: 0 16px; border-radius: 10px;
+  border: 1px solid #d7e2e2; background: #fff; color: #2b4141; font-weight: 600; cursor: pointer;
+  font-size: 14px !important;
+}
+.btnGhost:hover { background: #f6f9f9; border-color: #b9cccc; }
+.btnGhost:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* ── Footer: result count + pagination ────────────────────── */
+.tableFooter {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 14px 16px; background: #fbfdfd;
+}
+.footerInfo { color: #6b7d7d; font-variant-numeric: tabular-nums; font-size: 13px !important; }
+.footerInfo strong { color: #12302f; font-weight: 700; font-size: 13px !important; }
+.pagination { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.pageGap { min-width: 24px; text-align: center; color: #8aa0a0; font-size: 13px !important; }
+.pageBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* ── Small screens ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pageHeader { align-items: flex-start; flex-wrap: wrap; }
+  .searchField { flex-basis: 100%; max-width: none; }
+  .toolbarSpacer { display: none; }
+  .statusTabs { width: 100%; }
+  .statusTab { flex: 1; }
+  .descText { max-width: 220px; }
+  .tableFooter { justify-content: center; }
+}
+
+/* Footer left side: "Delete Selected (N)" before the "Showing …" text */
+.footerLeft { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* Status tabs: the tabs are the standard 40px button height, so the grey track adds no
+   padding of its own (keeps the group the same height as the search box) */
+.statusTabs.statusTabs { padding: 0; gap: 2px; height: 40px; align-items: stretch; }
+.statusTabs .statusTab { border-radius: 10px; }

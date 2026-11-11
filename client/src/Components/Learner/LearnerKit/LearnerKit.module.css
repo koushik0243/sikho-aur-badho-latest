@@ -1,0 +1,64 @@
+/* Shared learner page look (Quiz results, Aptitude results, Certificate).
+   Layered on each page's stylesheet by withLearnerKit() — doubled selectors win.
+   globals.css forces 15px text, so sizes use !important. */
+
+.page.page { width: 100%; max-width: none; gap: 16px; padding: 0; }
+
+/* ── Back link ── */
+.backBtn.backBtn {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 12px; margin: 0;
+  background: #fff; color: #0b6767; border: 1px solid #cfe5e5; border-radius: 9px;
+  font-weight: 600; font-size: 13.5px !important; box-shadow: none; opacity: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+.backBtn.backBtn:hover { background: #eef8f8; border-color: #0b7b7b; opacity: 1; }
+.backBtn.backBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.backBtn.backBtn svg { width: 15px; height: 15px; }
+
+/* ── Header card (title + course picker) ── */
+.filterCard.filterCard, .selectorCard.selectorCard {
+  background: linear-gradient(135deg, #f3faf9 0%, #ffffff 60%);
+  border: 1px solid #e6eded; border-radius: 14px; padding: 18px 22px;
+  box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.filterMeta.filterMeta, .selectorMeta.selectorMeta {
+  margin: 0 0 2px; color: #0b6767; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px !important;
+}
+.filterTitle.filterTitle, .selectorTitle.selectorTitle {
+  margin: 0; color: #12302f; font-weight: 800; letter-spacing: -0.01em; font-size: 24px !important;
+}
+.filterLabel.filterLabel, .selectorLabel.selectorLabel { color: #2b4141; font-weight: 600; font-size: 13px !important; margin-bottom: 6px; }
+.select.select {
+  min-height: 40px; border: 1.5px solid #e2e9ec; border-radius: 9px; background: #fff; color: #12302f;
+  font-size: 14px !important; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.select.select:hover { border-color: #c5dcdc; }
+.select.select:focus { outline: none; border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+
+/* ── Cards ── */
+.resultCard.resultCard, .breakdownCard.breakdownCard, .card.card, .certPanel.certPanel {
+  border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.breakdownMeta.breakdownMeta { color: #0b6767; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px !important; }
+.breakdownTitle.breakdownTitle { color: #12302f; font-weight: 800; font-size: 18px !important; }
+
+.attemptsBanner.attemptsBanner { border-radius: 12px; }
+
+/* ── Empty states ── */
+.emptyWrap.emptyWrap, .emptyState.emptyState {
+  background: #fff; border: 1px dashed #cfe0e0; border-radius: 14px; padding: 48px 20px;
+}
+.emptyTitle.emptyTitle { color: #12302f; font-weight: 700; font-size: 15px !important; }
+.emptySub.emptySub { color: #6b7d7d; font-size: 13.5px !important; }
+/* Title sits directly above the filter row on Quiz results */
+.filterTitle.filterTitle + .filterRow { margin-top: 14px; }
+
+/* ── Task 5: listing filters use 10px text (all accounts) ── */
+.filterLabel.filterLabel.filterLabel,
+.selectorLabel.selectorLabel.selectorLabel,
+.filterRow.filterRow.filterRow :is(label, select, option, input, textarea, button, span:not(:has(*))),
+.select.select.select,
+.select.select.select option {
+  font-size: 10px !important;
+}

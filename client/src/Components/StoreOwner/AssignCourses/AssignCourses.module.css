@@ -1,0 +1,927 @@
+
+
+
+/* ─── Form card ───────────────────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 24px 28px 28px;
+  margin-bottom: 24px;
+}
+
+
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  /* visible (not hidden) — the course multi-select dropdown is an
+     absolutely-positioned child that must be able to escape this card
+     instead of being clipped at its bottom edge. .cardHead below carries
+     its own top radius so the rounded-corner look is preserved. */
+  overflow: visible;
+}
+
+
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  border-radius: 8px 8px 0 0;
+}
+
+
+
+/* ─── Card header ─────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* ─── Card head ──────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+.cardTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 8px 14px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+/* ─── Table header search (Current Assignments) ──────────────── */
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 280px;
+  max-width: 100%;
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+
+.searchWrap svg { width: 14px; height: 14px; color: #9ca3af; flex-shrink: 0; }
+
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 12.5px;
+  color: #374151;
+  background: transparent;
+}
+
+
+.searchInput::placeholder { color: #9ca3af; }
+
+
+
+.cardBody { padding: 14px; }
+
+
+
+/* ─── Card body ───────────────────────────────────────────────── */
+.cardBody {
+  padding: 16px 20px;
+}
+
+
+
+/* ─── Form row ────────────────────────────────────────────────── */
+.formRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+
+/* Wider, equal-width Assignee / Select Course(s) groups */
+.formGroupWide {
+  flex: 1 1 320px;
+  min-width: 280px;
+  max-width: 360px;
+}
+
+
+
+.formLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6a8080;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+
+/* ─── Select ──────────────────────────────────────────────────── */
+.selectWrapper {
+  position: relative;
+}
+
+
+
+.selectWrapper { position: relative; }
+
+
+
+/* ─── Native select ───────────────────────────────────────────── */
+.formSelect {
+  width: 100%;
+  padding: 8px 32px 8px 10px;
+  border: 1px solid #d8e4e4;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='%239aadad' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+
+
+.formSelect:focus { border-color: #0b7b7b; }
+
+
+.formSelect:disabled { background-color: #f4f6f8; color: #9aadad; cursor: not-allowed; }
+
+
+
+.formSelect:-webkit-autofill,
+.formSelect:-webkit-autofill:hover,
+.formSelect:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+/* ─── Multi-select course dropdown ─────────────────────────────── */
+.multiSelectWrapper {
+  position: relative;
+}
+
+
+.multiSelectButton {
+  width: 100%;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #d8e4e4;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+
+.multiSelectButton:hover:not(:disabled) { border-color: #0b7b7b; }
+
+
+.multiSelectButton:disabled { background-color: #f4f6f8; color: #9aadad; cursor: not-allowed; }
+
+
+.multiSelectButtonText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+
+.multiSelectChevron { color: #6b7280; width: 14px; height: 14px; flex-shrink: 0; }
+
+
+.multiSelectPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  min-width: 240px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  z-index: 100;
+  padding: 6px;
+}
+
+
+.multiSelectSearchWrap {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  margin: -6px -6px 6px;
+  background: #fff;
+  border-bottom: 1px solid #eef1f1;
+}
+
+
+.multiSelectSearchWrap svg { width: 13px; height: 13px; color: #9ca3af; flex-shrink: 0; }
+
+
+.multiSelectSearchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 12.5px;
+  color: #374151;
+  background: transparent;
+}
+
+
+.multiSelectSearchInput::placeholder { color: #9ca3af; }
+
+
+.multiSelectEmpty {
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #9aadad;
+}
+
+
+
+.multiSelectOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+
+.multiSelectOption:hover { background: #f0f7f7; }
+
+
+.multiSelectOptionDisabled { cursor: not-allowed; opacity: 0.6; }
+
+
+.multiSelectOptionDisabled:hover { background: none; }
+
+
+.multiSelectOptionText {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.multiSelectBadge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0b7b7b;
+  background: #e6f5f4;
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+
+
+/* ─── Notify toggle (shared with assign-courses) ──────────────── */
+.notifyToggle {
+  display: flex;
+  border: 1.5px solid #d8e4e4;
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+
+
+/* Notify toggle */
+.notifyToggle {
+  display: flex;
+  border: 1px solid #d8e4e4;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+
+
+.notifyOption {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border: none;
+  background: #fff;
+  color: #6a8080;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  flex: 1;
+  justify-content: center;
+}
+
+
+.notifyOption:hover { background: #f0f7f7; color: #0b7b7b; }
+
+
+
+.notifyOption + .notifyOption { border-left: 1px solid #d8e4e4; }
+
+
+
+.notifyOptionActive { background: #0b7b7b; color: #fff; }
+
+
+.notifyOptionActive:hover { background: #0a6b6b; }
+
+
+
+.notifyIcon { width: 14px; height: 14px; display: flex; align-items: center; }
+
+
+.notifyIcon svg { width: 14px; height: 14px; }
+
+
+
+/* Assign button row */
+.assignBtnWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+
+
+.btnAssign {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+
+
+.btnAssign:hover { opacity: 0.88; }
+
+
+.btnAssign:disabled { background: #9aadad; cursor: not-allowed; }
+
+
+
+/* ─── Table card ──────────────────────────────────────────────── */
+.tableCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ─── Table card ─────────────────────────────────────────────── */
+.tableCard {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.table { width: 100%; border-collapse: collapse; }
+
+
+
+/* ─── Checkbox column ─────────────────────────────────────────── */
+.thCheck {
+  width: 40px;
+  padding: 8px 0 8px 16px;
+  text-align: center;
+  border-bottom: 1px solid #f0f4f4;
+}
+
+
+
+/* ─── Custom checkbox ────────────────────────────────────────── */
+.checkInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #111827;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.checkInput:checked { background: #0b7b7b; border-color: #0b7b7b; }
+
+
+.checkInput:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 7px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+
+
+/* ─── Custom checkbox (for filter dropdowns) ──────────────────── */
+.checkInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #111827;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+.th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #188985;
+  padding: 3px 10px;
+  border-bottom: 1px solid #f0f4f4;
+  white-space: nowrap;
+}
+
+
+
+.tr { border-bottom: 1px solid #f4f6f8; transition: background 0.1s; }
+
+
+.tr:last-child { border-bottom: none; }
+
+
+.tr:hover { background: #fafcfc; }
+
+
+
+.tr:last-child .td { border-bottom: none; }
+
+
+.tr:hover .td { background: #fafcfc; }
+
+
+
+.td {
+  padding: 3px 10px;
+  font-size: 13px;
+  color: #1a2b2b;
+  vertical-align: middle;
+}
+
+
+
+.td:last-child { border-bottom: none; }
+
+
+.trChecked .td { background: #f0f9f9; }
+
+
+
+/* ─── Table scroll wrapper ──────────────────────────────────────── */
+.tableWrap { overflow-x: auto; }
+
+
+
+/* ─── Learner row grouping (rowSpan-based, one row per course) ──── */
+.cellMain {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+.subRow td { border-top: 1px solid #f0f4f4; }
+
+
+
+/* ─── Skeleton row ────────────────────────────────────────────── */
+.skeletonRow {
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonRow {
+  height: 14px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+.trAlt { background: #f9fbfb; }
+
+
+
+/* ─── Checked row ─────────────────────────────────────────────── */
+.trChecked { background: #f0f9f9 !important; }
+
+
+
+.tdCheck {
+  width: 40px;
+  padding: 11px 0 11px 16px;
+  text-align: center;
+  border-bottom: 1px solid #f4f6f8;
+  vertical-align: middle;
+}
+
+
+
+.tdAction {
+  padding: 12px 0;
+  font-size: 13px;
+  color: #1a2b2b;
+  font-weight: 500;
+}
+
+
+
+/* ─── Delete button (matches superadmin listing style) ────────── */
+.trashBtn {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: #dc2626;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+
+.trashBtn:hover { background: #b91c1c; }
+
+
+.trashBtn svg { width: 13px; height: 13px; }
+
+
+
+/* Pagination */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #9aadad;
+}
+
+
+
+/* ─── Pagination ─────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #4a6060;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #6b7280;
+}
+
+
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #4a6060;
+}
+
+
+
+/* ─── Bulk delete ─────────────────────────────────────────────── */
+.paginationLeft { display: flex; align-items: center; gap: 10px; }
+
+
+
+.btnBulkDelete {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnBulkDelete:hover:not(:disabled) { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnBulkDelete:disabled { opacity: 0.5; cursor: not-allowed; }
+
+
+.btnBulkDelete:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.paginationInfo { white-space: nowrap; }
+
+
+
+.paginationBtns { display: flex; align-items: center; gap: 4px; }
+
+
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px; height: 28px;
+  padding: 0 6px;
+  border: 1px solid #e8edf0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a2b2b;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.pageBtn:hover:not(:disabled) { background: #f0f7f7; }
+
+
+.pageBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+
+
+.pageBtnActive { background: linear-gradient(180deg, #047279 0%, #299c8f 100%); border-color: #047279; color: #fff; }
+
+
+.pageBtnActive:hover:not(:disabled) { background: #0a6b6b; }
+
+
+.pageBtnActive:hover { background: #0b7b7b; }
+
+
+
+/* ─── Confirm modal ───────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 30, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+
+
+/* ─── Delete modal ────────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+
+.modalBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  animation: toastIn 0.2s ease;
+}
+
+
+
+.modalTitle { font-size: 16px; font-weight: 700; color: #1a2b2b; margin: 0 0 8px; }
+
+
+
+.modalBody {
+  font-size: 13px;
+  color: #4a6060;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+
+.modalActions { display: flex; gap: 10px; justify-content: flex-end; }
+
+
+
+.modalBtnCancel {
+  padding: 8px 16px;
+  border-radius: 7px;
+  border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.modalBtnCancel:hover:not(:disabled) { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+.modalBtnCancel:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+
+.modalBtnDelete {
+  padding: 8px 16px;
+  border-radius: 7px;
+  border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.modalBtnDelete:hover:not(:disabled) { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+.modalBtnDelete:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-10px); }
+
+  to   { opacity: 1; transform: translateY(0); } }
+
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cardHead {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .searchWrap {
+    width: 100%;
+  }
+
+  .formGroupWide {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+.table tbody tr {
+  border-bottom: 1px solid #d7d7d7 !important;
+}
+
+
+.pagination {
+  padding: 20px !important;
+  /* border-top: none !important; */
+}
+
+/* ── Column alignment: headers line up with their values ── */
+/* Action cells use the same side padding as the header, so the button sits under "Action". */
+.tdAction.tdAction { padding-left: 10px; padding-right: 10px; }

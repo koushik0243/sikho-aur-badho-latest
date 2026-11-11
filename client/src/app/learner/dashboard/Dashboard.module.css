@@ -1,0 +1,592 @@
+
+.page { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+
+
+.sectionHeading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+/* ─── Stats row ────────────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+
+.statCard {
+  background: #f8fbfb;
+  border: 1px solid #e8edf0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+
+
+.statCardAccent {
+  background: linear-gradient(135deg, #0b7b7b 0%, #0a9090 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(11,123,123,0.25);
+}
+
+
+.statCardAccent .statLabel { color: rgba(255,255,255,0.75); }
+
+
+.statCardAccent .statValue { color: #fff; }
+
+
+.statCardAccent .statSub { color: rgba(255,255,255,0.6); }
+
+
+.statCardAccent .statCaption { color: rgba(255,255,255,0.6); }
+
+
+
+.statTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+.statIconWrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #e8f5f5;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.statIconWrap svg { width: 14px; height: 14px; }
+
+
+
+.statIconAccent {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+
+
+.statLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+
+.statBottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+
+.statValue {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a2b2b;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+
+.statSub { font-size: 11.5px; color: #9aa5b4; margin: 0; }
+
+
+
+.statCaption {
+  font-size: 11px;
+  color: #9aadad;
+  margin-top: 2px;
+}
+
+
+
+/* ─── Mid row ──────────────────────────────────────────────────── */
+/* Recent Activity Log = 8 of 12 columns, Upcoming Live Sessions = 4 of 12 */
+.midRow {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 14px;
+  align-items: start;
+}
+
+
+
+/* ─── Courses panel ────────────────────────────────────────────── */
+.coursesPanel {
+  background: #fff;
+  border: 1px solid #e8edf0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+
+
+/* ─── Panel head ───────────────────────────────────────────────── */
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+
+
+.panelTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+.viewAllBtn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0b7b7b;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+
+.viewAllBtn:hover { color: #096060; }
+
+
+.chevIcon { display: flex; align-items: center; }
+
+
+.chevIcon svg { width: 14px; height: 14px; }
+
+
+
+/* All courses in a single row — scroll sideways (arrows, trackpad, swipe). */
+.courseRowWrap { position: relative; }
+.courseRow {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 2px;
+  padding: 4px 2px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #b9dcdc transparent;
+}
+.courseRow::-webkit-scrollbar { height: 6px; }
+.courseRow::-webkit-scrollbar-thumb { background: #b9dcdc; border-radius: 999px; }
+.courseRow > * { flex: 0 0 272px; scroll-snap-align: start; }
+.rowArrow {
+  position: absolute;
+  top: 56px;
+  z-index: 2;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid #d7e4e4;
+  background: rgba(255,255,255,0.96);
+  color: #0b7b7b;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15,60,60,0.16);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, transform 0.15s;
+}
+.rowArrow.rowArrow { font-size: 24px !important; line-height: 1; }
+.rowArrow:hover { background: #0b7b7b; color: #fff; transform: scale(1.06); }
+.rowArrow:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.rowArrowPrev { left: -10px; }
+.rowArrowNext { right: -10px; }
+
+/* ─── Skeleton loaders ───────────────────────────────────────── */
+.skelCard {
+  height: 290px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+/* ─── Empty state ────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+  gap: 8px;
+  color: #9aadad;
+  font-size: 13px;
+}
+.empty svg  { width: 32px; height: 32px; color: #c0d8d8; }
+.empty span { display: flex; }
+.empty p    { margin: 0; }
+
+
+
+
+
+/* ─── Sessions panel ───────────────────────────────────────────── */
+.sessionsPanel {
+  background: #fff;
+  border: 1px solid #e8edf0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+
+
+.sessionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+.skelSession {
+  height: 64px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+
+
+.sessionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #edf2f2;
+  background: #fff;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+
+.sessionItem:hover { background: #f4fafa; }
+
+
+
+.sessionItemActive {
+  background: #0b7b7b;
+  border-color: #0b7b7b;
+}
+
+
+.sessionItemActive:hover { background: #0a6b6b; }
+
+
+.sessionItemActive .sessionThumbPlaceholder { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.15); }
+
+
+.sessionItemActive .sessionTitle { color: #fff; }
+
+
+.sessionItemActive .sessionInstructor { color: rgba(255,255,255,0.75); }
+
+
+.sessionItemActive .sessionTime { color: rgba(255,255,255,0.65); }
+
+
+
+.sessionThumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #e8f5f5;
+}
+
+
+.sessionThumbImg { width: 100%; height: 100%; object-fit: cover; }
+
+
+.sessionThumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b7b7b;
+}
+
+
+.sessionThumbPlaceholder svg { width: 20px; height: 20px; }
+
+
+
+.sessionBody { flex: 1; min-width: 0; }
+
+
+
+.sessionTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+.sessionInstructor {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0 0 2px;
+}
+
+
+
+.sessionTime {
+  font-size: 10.5px;
+  color: #9aadad;
+  margin: 0;
+}
+
+
+
+/* ─── Activity section ─────────────────────────────────────────── */
+.activitySection {
+  background: #fff;
+  border: 1px solid #e8edf0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+
+
+.activityList { display: flex; flex-direction: column; }
+
+
+
+.skelActivity {
+  height: 48px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f4f4;
+}
+
+
+.activityItem:last-child { border-bottom: none; padding-bottom: 0; }
+
+
+
+.activityNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f0f9f9;
+  color: #0b7b7b;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+
+.activityBody { flex: 1; min-width: 0; }
+
+
+
+.activityTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a2b2b;
+  margin: 0 0 2px;
+}
+
+
+
+.activityDesc {
+  font-size: 11.5px;
+  color: #6b7280;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+.activityMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+
+
+.activityBadge {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #0b7b7b;
+  background: #e8f5f5;
+  border: 1px solid #c0dedd;
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+
+
+.activityTime {
+  font-size: 11px;
+  color: #9aadad;
+  white-space: nowrap;
+}
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .midRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 480px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading {
+    font-size: 18px;
+  }
+
+  .coursesPanel,
+  .sessionsPanel,
+  .activitySection {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rowArrow { transition: none; }
+}
+
+/* ── Redesign: page header, stat tiles with a slim bar, status-coloured badges ── */
+.pageHead { display: flex; flex-direction: column; gap: 2px; }
+.sectionHeading.sectionHeading { margin: 0; font-size: 24px !important; font-weight: 800; color: #12302f; letter-spacing: -0.01em; }
+.pageSub.pageSub { margin: 0; color: #6b7d7d; font-size: 13.5px !important; }
+
+.statCard.statCard {
+  background: #fff; border: 1px solid #e6eded; border-radius: 14px; padding: 16px 18px; gap: 8px;
+  box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.statCardAccent.statCardAccent { background: linear-gradient(135deg, #0b7b7b 0%, #0a9090 100%); border-color: transparent; box-shadow: 0 8px 20px rgba(11, 123, 123, 0.22); }
+.statLabel.statLabel { text-transform: none; letter-spacing: 0; font-weight: 600; color: #4d6464; font-size: 13px !important; }
+.statValue.statValue { font-weight: 800; color: #12302f; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; font-size: 28px !important; line-height: 1.1; }
+.statSub.statSub { color: #9aa9a9; font-weight: 700; font-size: 16px !important; }
+.statCaption.statCaption { color: #6b7d7d; font-size: 12.5px !important; }
+.statCardAccent .statLabel.statLabel { color: rgba(255, 255, 255, 0.85); }
+.statCardAccent .statValue.statValue { color: #fff; }
+
+.statBar { height: 6px; border-radius: 999px; background: #e8f0f0; overflow: hidden; }
+.statBar span { display: block; height: 100%; border-radius: 999px; background: #0b7b7b; }
+.statBarAccent { background: rgba(255, 255, 255, 0.22); }
+.statBarAccent span { background: #fff; }
+
+.activityBadge.activityBadge { border-radius: 999px; padding: 2px 8px; font-weight: 700; letter-spacing: 0.02em; font-size: 11px !important; }
+.badgeBad.badgeBad   { color: #b91c1c; background: #fdecec; border-color: #f6caca; }
+.badgeGood.badgeGood { color: #15803d; background: #e7f7ee; border-color: #bfe8cf; }
+
+/* Recent activity: cap the list so a long history scrolls inside the card */
+.activityList.activityList { max-height: 420px; overflow-y: auto; padding-right: 4px; }
+
+@media (max-width: 1100px) { .statsRow.statsRow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { .statsRow.statsRow { grid-template-columns: minmax(0, 1fr); gap: 10px; } .statValue.statValue { font-size: 24px !important; } }
+.statCardAccent .statCaption.statCaption { color: rgba(255, 255, 255, 0.85); }
+
+/* ── My Courses: a paged grid instead of a sideways-scrolling row ── */
+.courseGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1200px) { .courseGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .courseGrid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Pager (same look as the Courses page) ── */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  margin-top: 14px; padding-top: 12px; border-top: none;
+}
+.paginationInfo.paginationInfo { color: #4a6060; font-variant-numeric: tabular-nums; font-size: 12.5px !important; }
+.paginationBtns { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.pageBtn.pageBtn {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 30px; padding: 0 10px;
+  border-radius: 7px; border: 1px solid #e2e9ec; background: #fff; color: #1a2b2b; font-weight: 600; cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s; font-size: 12.5px !important;
+}
+.pageBtn.pageBtn:hover:not(:disabled) { background: #f0f7f7; color: #0b7b7b; border-color: #c5dcdc; }
+.pageBtn.pageBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.pageBtn.pageBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.pageBtnActive.pageBtnActive, .pageBtnActive.pageBtnActive:hover:not(:disabled) {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; border-color: #047279;
+}
+/* Activity list is paged now — no inner scroll needed */
+.activityList.activityList { max-height: none; overflow: visible; }
+.badgeWarn.badgeWarn { color: #b45309; background: #fff4e0; border-color: #fcd9a8; }

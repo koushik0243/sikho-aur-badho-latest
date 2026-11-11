@@ -1,0 +1,273 @@
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.breadcrumbLink {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0b7b7b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.breadcrumbLink:hover { text-decoration: underline; }
+
+.breadcrumbSep { color: #c4c9d4; font-size: 15px; }
+
+.breadcrumbCurr {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+
+
+/* ─── Card ────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+.cardBody { padding: 20px; }
+
+
+
+/* ─── Form grid ──────────────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+@media (max-width: 640px) {
+  .formGrid { grid-template-columns: 1fr; }
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #1a2b2b;
+}
+
+.req { color: #dc2626; }
+
+.input {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus { border-color: #0b7b7b; }
+
+.selectWrapper { position: relative; }
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 7px 32px 7px 10px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.select:focus { border-color: #0b7b7b; }
+
+.selectChevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px;
+  color: #9aadad;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* ─── Skeleton loader ────────────────────────────────────────── */
+.skeletonLine {
+  height: 13px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.skeletonInput {
+  height: 36px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 7px;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+
+/* ─── Notification Preferences ──────────────────────────────────── */
+.notifSection {
+  padding: 4px 20px 16px;
+  border-top: 1px solid #edf0f3;
+}
+
+.notifSectionTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 16px 0 4px;
+}
+
+.notifRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f4f4;
+}
+
+.notifRow:last-child { border-bottom: none; }
+
+.notifInfo { flex: 1; min-width: 0; padding-right: 20px; }
+
+.notifLabel { font-size: 12.5px; font-weight: 600; color: #1a2b2b; margin-bottom: 1px; }
+
+.notifDesc { font-size: 11px; color: #8a9a9a; line-height: 1.4; }
+
+/* iOS-style toggle switch — same pattern as AddLearner.js */
+.toggleSwitch {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #d8e4e4;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.toggleSwitchOn { background: #0b7b7b; }
+
+.toggleSwitchOn .toggleThumb { left: 23px; }
+
+.toggleThumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+  pointer-events: none;
+  display: block;
+}
+
+
+
+/* ─── Form actions ───────────────────────────────────────────── */
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid #edf0f3;
+}
+
+.btnSave {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btnSave:hover:not(:disabled) { opacity: 0.88; }
+
+.btnSave:disabled { background: #7ab8b8; cursor: not-allowed; }
+
+.btnCancel {
+  background: #fff;
+  color: #4a6060;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnCancel:hover:not(:disabled) { background: #f4f6f8; }
+
+.btnCancel:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+
+/* ─── Not found ──────────────────────────────────────────────── */
+.notFound {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.notFoundTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a6060;
+  margin-bottom: 14px;
+}

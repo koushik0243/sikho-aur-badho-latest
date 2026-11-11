@@ -1,0 +1,30 @@
+/* Store owner course card extras (on top of the learner CourseCard styles).
+   globals.css forces 15px text, so small sizes use doubled selectors + !important. */
+
+.meta {
+  list-style: none; margin: 4px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 4px 10px;
+  color: #5b6b6b;
+}
+.meta li { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.meta li, .meta li * { font-size: 12px !important; }
+.meta svg { width: 12px; height: 12px; color: #0b7b7b; flex-shrink: 0; }
+.cap { text-transform: capitalize; }
+
+/* Pushes the footer + button to the bottom so buttons line up across a row. */
+.push { flex: 1; }
+
+.footer {
+  padding-top: 10px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+}
+
+/* "✓ Added" — same size as the button, but a quiet, non-clickable state. */
+.btnDone.btnDone {
+  display: block; text-align: center; cursor: default;
+  background: #ecfdf5; color: #047857; box-shadow: none;
+}
+.btnDone.btnDone:hover { background: #ecfdf5; box-shadow: none; }
+
+/* While adding */
+.btnBusy:disabled { opacity: 0.6; cursor: wait; }

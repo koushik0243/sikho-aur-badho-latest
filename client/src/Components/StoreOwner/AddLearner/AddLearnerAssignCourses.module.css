@@ -1,0 +1,429 @@
+
+
+
+/* ─── Content ─────────────────────────────────────────────────── */
+.content { padding: 24px; }
+
+
+
+.content {
+  flex: 1;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+/* ─── Page heading row ────────────────────────────────────────── */
+.pageHeadRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+
+.pageHeadLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px;
+}
+
+
+
+/* ─── Page title ─────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+.planBadge {
+  background: #e6f7f7;
+  color: #0b7b7b;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #b2dede;
+}
+
+
+
+.pageHeadMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #4a6060;
+}
+
+
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.metaItem strong { color: #1a2b2b; font-weight: 700; }
+
+
+
+.metaIcon {
+  width: 16px;
+  height: 16px;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.metaIcon svg { width: 15px; height: 15px; }
+
+
+
+.metaDivider {
+  width: 1px;
+  height: 16px;
+  background: #d8e4e4;
+}
+
+
+
+/* ─── Stepper ─────────────────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+.stepperItem {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+
+
+.stepperItem:last-child { flex: 0; }
+
+
+
+.stepCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e8edf0;
+  color: #9aadad;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #e8edf0;
+}
+
+
+
+/* ─── Step done (checkmark circle) ───────────────────────────── */
+.stepCircleCheck {
+  background: #e6f7f7;
+  color: #0b7b7b;
+  border-color: #0b7b7b;
+}
+
+
+
+.stepCircleActive {
+  background: #0b7b7b;
+  color: #fff;
+  border-color: #0b7b7b;
+}
+
+
+
+.stepLabel {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #9aadad;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+
+
+.stepLabelActive {
+  color: #0b7b7b;
+  font-weight: 700;
+}
+
+
+
+.stepLine {
+  flex: 1;
+  height: 1px;
+  background: #d8e4e4;
+  margin: 0 12px;
+}
+
+
+
+/* ─── Select Courses card ─────────────────────────────────────── */
+.selectCoursesCard {
+  background: #f0fafa;
+  border: 1px solid #b2dede;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+
+
+
+.selectCoursesCard strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b7b7b;
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+
+.selectCoursesCard p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #4a7070;
+}
+
+
+
+/* ─── Course list ─────────────────────────────────────────────── */
+.courseListCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  padding: 20px 22px 10px;
+  margin-bottom: 24px;
+}
+
+
+
+.courseListTitle {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0 0 14px;
+}
+
+
+
+.courseItem {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f4f4;
+  transition: background 0.12s;
+}
+
+
+
+.courseItem:last-child { border-bottom: none; }
+
+
+
+.courseCircleBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #b0c8c8;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+
+.courseCircleBtn:hover { border-color: #0b7b7b; }
+
+
+
+.courseCircleBtnSelected {
+  border-color: #0b7b7b;
+  background: #0b7b7b;
+}
+
+
+
+.courseCircleCheck {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+
+
+.courseInfo { flex: 1; min-width: 0; }
+
+
+
+.courseItemTop:hover .courseName { color: #0b7b7b; }
+
+
+
+.courseName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2b2b;
+  margin-bottom: 3px;
+}
+
+
+
+.courseMeta {
+  font-size: 12px;
+  color: #7a9a9a;
+}
+
+
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px 28px;
+  border-top: 1px solid #e8edf0;
+  background: #f4f6f8;
+}
+
+
+
+.btnCancel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnCancel:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+.footerArrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e6f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b7b7b;
+  flex-shrink: 0;
+}
+
+
+
+.btnNext:hover .footerArrow { background: rgba(255,255,255,0.2); color: #fff; }
+
+
+
+.footerArrow svg { width: 14px; height: 14px; }
+
+
+
+.btnNext {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+
+
+.btnNext:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); color: #fff; }
+
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pageHeadMeta {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .pageTitle {
+    font-size: 18px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepCircle {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .stepLabel {
+    font-size: 10.5px;
+    margin-left: 5px;
+    max-width: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .stepLine {
+    margin: 0 4px;
+  }
+}

@@ -1,0 +1,350 @@
+
+
+/* Detail view redesign */
+.loadingText { padding: 40px; color: #6b7280; font-size: 14px; }
+
+.loadingText { padding: 40px; color: #6b7280; font-size: 14px; }
+
+.backBtn:hover { opacity: 0.88; }
+
+.backBtn svg { width: 16px; height: 16px; }
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn { align-self: flex-start;
+ display: inline-flex; align-items: center; gap: 6px;
+ background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+ border: 1px solid #047279; border-radius: 6px; color: #fff;
+ font-size: 13px; font-weight: 500; cursor: pointer;
+ padding: 7px 14px; margin-bottom: 16px;
+ transition: opacity 0.15s;
+
+  white-space: nowrap;
+}
+
+.breadcrumb {
+  font-size: 13.5px;
+  color: #9aa5b4;
+}
+
+.breadcrumb strong {
+  color: #1a2b2b;
+  font-weight: 600;
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+
+.breadcrumbLink {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0b7b7b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.breadcrumbLink:hover { text-decoration: underline; }
+
+.breadcrumbSep { color: #c4c9d4; font-size: 15px; }
+
+.breadcrumbCurr {
+  color: #6b7280;
+  font-weight: 500;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detailCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 680px;
+}
+
+/* ── Detail card ─────────────────────────────────────────────── */
+.detailCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 700px;
+}
+
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  gap: 12px;
+}
+
+/* ── Card header ─────────────────────────────────────────────── */
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  gap: 12px;
+}
+
+.detailHeadLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.detailAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0b7b7b 0%, #0d9488 100%);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+  letter-spacing: -0.5px;
+}
+
+.detailTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badgeNeutral {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 600;
+  background: #f3f4f6; color: #374151; white-space: nowrap;
+}
+
+/* Status badges */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Status badge */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Badges */
+.badgeActive {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Badges */
+.badgeActive {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Status badges */
+.badgeActive   { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; background: #dcfce7; color: #16a34a; }
+
+.badgeActive {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+.badgeInactive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+.btnEdit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto; height: auto;
+  border-radius: 7px; border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btnEdit:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+.btnEdit svg { width: 13px; height: 13px; }
+
+.btnView svg, .btnEdit svg, .btnDelete svg { width: 12px; height: 12px; }
+
+.btnView svg, .btnEdit svg, .btnAssign svg, .btnAdmins svg, .btnDelete svg, .btnCourses svg {
+  width: 13px;
+  height: 13px;
+}
+
+.btnView, .btnDelete {
+  width: 26px; height: 26px; border-radius: 5px; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+
+.detailBody { padding: 0 20px 4px; }
+
+/* ── Body rows ───────────────────────────────────────────────── */
+.detailBody { padding: 0 20px 4px; }
+
+.detailRows { display: flex; flex-direction: column; }
+
+.detailRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.detailRow:last-child { border-bottom: none; }
+
+.detailLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 100px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.detailValue { font-size: 13.5px; color: #111827; line-height: 1.4; }
+
+.detailValueDesc { color: #374151; line-height: 1.55; font-size: 13.5px; }
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .backBtn {
+    width: auto;
+    white-space: nowrap;
+}
+
+  .detailHead {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .detailRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .detailLabel {
+    min-width: 0;
+  }
+
+  .breadcrumbCurr {
+    max-width: 160px;
+  }
+}
+
+/* ── Shared view-page label column: same width on every view page (--view-label-width in globals.css) ── */
+@media (min-width: 481px) {
+  .detailRow > .detailLabel {
+    flex: 0 0 var(--view-label-width, 180px);
+    width: var(--view-label-width, 180px);
+    min-width: 0;
+  }
+}
+
+/* Breadcrumb + Edit button on one line, right edge lined up with the card */
+.viewToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  max-width: 700px;
+}
+.viewToolbar .breadcrumb { margin: 0; }

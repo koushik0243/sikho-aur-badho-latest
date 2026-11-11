@@ -1,0 +1,82 @@
+/* Store owner form pages (Edit learner, Add learner, Store profile, Assign courses).
+   Layered on each page's own stylesheet by withFormKit() — doubled selectors win over
+   the page's originals. globals.css forces 15px text, so sizes use !important. */
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card.card, .formCard.formCard, .tableCard.tableCard, .notifCard.notifCard {
+  background: #fff; border: 1px solid #e6eded; border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+.cardHead.cardHead { padding: 16px 20px; border-bottom: 1px solid #eef3f3; background: #fff; }
+.cardTitle.cardTitle, .sectionTitle.sectionTitle, .notifSectionTitle.notifSectionTitle {
+  margin: 0; padding: 0; background: none; border: none;
+  color: #12302f; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: 16px !important;
+}
+.sectionTitle.sectionTitle { padding-bottom: 12px; margin-bottom: 4px; border-bottom: 1px solid #eef3f3; }
+.cardBody.cardBody { padding: 20px; }
+
+/* ── Fields ──────────────────────────────────────────────── */
+.label.label, .formLabel.formLabel {
+  display: block; margin-bottom: 6px; color: #2b4141; font-weight: 600;
+  text-transform: none; letter-spacing: 0; font-size: 13.5px !important;
+}
+.req.req, .required.required { color: #dc2626; }
+.input.input, .select.select, .textarea.textarea {
+  width: 100%; box-sizing: border-box; min-height: 40px;
+  border: 1.5px solid #e2e9ec; border-radius: 9px; padding: 8px 12px;
+  background: #fff; color: #12302f; outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+  font-size: 14px !important;
+}
+.input.input::placeholder, .textarea.textarea::placeholder { color: #9aa9a9; }
+.input.input:hover:not(:disabled), .select.select:hover:not(:disabled) { border-color: #c5dcdc; }
+.input.input:focus, .select.select:focus, .textarea.textarea:focus { border-color: #0b7b7b; box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+.input.input:disabled, .select.select:disabled { background: #f6f9f9; color: #8a9a9a; }
+.fieldHint.fieldHint { margin-top: 5px; color: #7a8c8c; font-size: 12.5px !important; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.formActions.formActions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; padding-top: 18px; margin-top: 8px; border-top: 1px solid #eef3f3; }
+.btnSave.btnSave, .btnNext.btnNext {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 20px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%); color: #fff; border: 1px solid #047279; border-radius: 9px;
+  font-weight: 600; cursor: pointer; box-shadow: none; opacity: 1; font-size: 14px !important;
+  transition: box-shadow 0.15s;
+}
+.btnSave.btnSave:hover:not(:disabled), .btnNext.btnNext:hover:not(:disabled) { box-shadow: 0 6px 14px rgba(4, 114, 121, 0.25); opacity: 1; }
+.btnCancel.btnCancel {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px;
+  background: #fff; color: #2b4141; border: 1px solid #d7e2e2; border-radius: 9px; font-weight: 600; cursor: pointer; font-size: 14px !important;
+}
+.btnCancel.btnCancel:hover:not(:disabled) { background: #f6f9f9; border-color: #b9cccc; }
+.btnSave.btnSave:disabled, .btnNext.btnNext:disabled, .btnCancel.btnCancel:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+.btnSave.btnSave:focus-visible, .btnNext.btnNext:focus-visible, .btnCancel.btnCancel:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+/* ── Tables (Assign courses) ─────────────────────────────── */
+.th.th {
+  text-align: left; padding: 10px 16px; background: #f8fbfb; border-bottom: 1px solid #eef3f3;
+  color: #6b7d7d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; font-size: 11px !important;
+}
+.td.td { padding: 12px 16px; border-bottom: 1px solid #f1f5f5; color: #2b4141; font-size: 14px !important; }
+.pageBtn.pageBtn { min-width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2e9ec; background: #fff; color: #2b4141; font-weight: 600; font-size: 13px !important; }
+.pageBtnActive.pageBtnActive { background: #0b7b7b; border-color: #0b7b7b; color: #fff; }
+.trashBtn.trashBtn {
+  width: 32px; height: 32px; border-radius: 8px; display: inline-grid; place-items: center; cursor: pointer;
+  background: #fff; color: #b91c1c; border: 1px solid #f3d0d0;
+}
+.trashBtn.trashBtn:hover { background: #fdf2f2; border-color: #dc2626; }
+.trashBtn.trashBtn svg { width: 15px; height: 15px; }
+
+/* ── Breadcrumb (Edit learner) ───────────────────────────── */
+.breadcrumbLink.breadcrumbLink { background: none; border: none; padding: 0; color: #0b6767; font-weight: 600; cursor: pointer; font-size: 13px !important; }
+.breadcrumbSep.breadcrumbSep { color: #b8c4c4; }
+
+/* ── Profile notifications column — wide enough that toggle labels don't wrap word by word ── */
+.notifCard.notifCard { width: 300px; border-left: 1px solid #e6eded; }
+@media (max-width: 900px) { .notifCard.notifCard { width: 100%; } }
+
+/* ── Add learner step footer — a card that lines up with the form, not a grey band ── */
+.footer.footer {
+  margin: 16px 28px 28px; padding: 14px 20px;
+  background: #fff; border: 1px solid #e6eded; border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04);
+}
+@media (max-width: 600px) { .footer.footer { margin: 12px 0 16px; } }

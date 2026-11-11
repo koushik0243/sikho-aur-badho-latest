@@ -1,0 +1,313 @@
+:root {
+  /* Label column width on every view (details) page — change it here to resize them all. */
+  --view-label-width: 180px;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 15px !important;
+}
+
+/* Page title (the heading at the top of every page, all accounts): one size everywhere. */
+h1 {
+  font-size: 24px !important;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 20px !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── react-datepicker wrapper ────────────────────────────── */
+.app-datepicker-wrapper {
+  width: 100%;
+  display: block;
+}
+
+/* ── react-datepicker calendar theme ────────────────────── */
+.react-datepicker {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+.react-datepicker__triangle { display: none; }
+.react-datepicker__header {
+  background: #0b7b7b;
+  border-bottom: none;
+  padding: 10px 0 6px;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #fff;
+}
+.react-datepicker__navigation-icon::before {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  border-color: #fff;
+}
+.react-datepicker__month-select,
+.react-datepicker__year-select {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+.react-datepicker__month-select option,
+.react-datepicker__year-select option {
+  background: #0b7b7b;
+  color: #fff;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--keyboard-selected {
+  background: #0b7b7b !important;
+  border-radius: 50%;
+  color: #fff;
+}
+.react-datepicker__day:hover {
+  background: #e6f5f4;
+  border-radius: 50%;
+  color: #0b7b7b;
+}
+.react-datepicker__day--today {
+  font-weight: 700;
+  color: #0b7b7b;
+}
+.react-datepicker__day--today.react-datepicker__day--selected {
+  color: #fff;
+}
+.react-datepicker__day {
+  border-radius: 50%;
+  line-height: 1.8rem;
+  width: 1.8rem;
+}
+.react-datepicker__input-container input {
+  width: 100%;
+}
+
+/* ── Superadmin table checkboxes ─────────────────────────── */
+[data-superadmin] input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid #111827 !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  cursor: pointer !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  vertical-align: middle !important;
+  transition: background 0.12s, border-color 0.12s !important;
+  display: inline-block !important;
+  box-shadow: none !important;
+}
+
+[data-superadmin] input[type="checkbox"]:checked {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+[data-superadmin] input[type="checkbox"]:checked::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 45% !important;
+  width: 4px !important;
+  height: 8px !important;
+  border: 2px solid #fff !important;
+  border-top: none !important;
+  border-left: none !important;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg) !important;
+}
+
+[data-superadmin] input[type="checkbox"]:focus-visible {
+  outline: 2px solid #dc2626 !important;
+  outline-offset: 2px !important;
+}
+
+/* ── Content protection (see Components/PlatformSecurity.js) ───────────────
+   Applies only inside the learner / store owner / super admin areas. */
+html.protected-area img,
+html.protected-area video {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Print Screen pressed → blank the page for a moment */
+html.capture-blocked body {
+  visibility: hidden !important;
+}
+
+/* Printing an account page prints nothing (certificates print from their own window) */
+@media print {
+  html.protected-area body {
+    display: none !important;
+  }
+}
+
+/* ── Action-column icons (every list page, all portals) ─────────────────────
+   Buttons carry data-action="view | edit | delete | login | video". One look everywhere;
+   !important because each page's own module styles these buttons too. */
+button[data-action] {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  flex-shrink: 0; width: 32px !important; height: 32px !important; min-width: 32px; padding: 0 !important; margin: 0;
+  border: none !important; border-radius: 8px !important; box-shadow: none;
+  color: #FFFFFF !important; opacity: 1 !important; cursor: pointer; line-height: 1;
+  transition: filter 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+button[data-action] svg { width: 15px !important; height: 15px !important; color: #FFFFFF !important; }
+/* icons drawn with a fixed colour still show white */
+button[data-action] svg [fill]:not([fill="none"]), button[data-action] svg[fill]:not([fill="none"]) { fill: #FFFFFF !important; }
+button[data-action] svg [stroke]:not([stroke="none"]), button[data-action] svg[stroke]:not([stroke="none"]) { stroke: #FFFFFF !important; }
+
+button[data-action="view"]   { background: #0B5ED7 !important; }
+button[data-action="edit"]   { background: #FFCA2C !important; }
+button[data-action="delete"] { background: #B91C1C !important; }
+button[data-action="login"]  { background: #31D2F2 !important; }
+button[data-action="video"]  { background: #157347 !important; } /* video / results links */
+
+button[data-action]:hover:not(:disabled) { filter: brightness(0.9); box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18); transform: translateY(-1px); }
+button[data-action]:active:not(:disabled) { filter: brightness(0.82); transform: none; box-shadow: none; }
+button[data-action]:focus-visible { outline: 2px solid #12302f !important; outline-offset: 2px; }
+button[data-action]:disabled { opacity: 0.45 !important; cursor: not-allowed; }
+
+/* Every table, in all accounts: a cell with no value shows "—".
+   Values rendered in code use orDash() (lib/displayValue.js); this catches any cell
+   that still renders nothing (null, undefined, false or ""). */
+td:empty::before {
+  content: "—";
+  color: #9ca3af;
+}
+
+/* ── Table column alignment (every list page, all portals) ──────────────────
+   A column's header and its values always line up: same side padding and the same
+   (left) alignment for every <th> and <td>, the first column included. Page modules
+   used to pad headers differently from cells; :not(#_) lifts these rules above them. */
+table th:not(#_), table td:not(#_) {
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  vertical-align: middle;
+}
+table th:not(#_), table td:not(#_):not([colspan]) { text-align: left !important; }
+
+/* Checkbox column (select one / select all): a fixed column, centred in header and rows. */
+table th:not(#_):has(> input[type="checkbox"], > label > input[type="checkbox"]),
+table td:not(#_):has(> input[type="checkbox"], > label > input[type="checkbox"]) {
+  width: 44px !important; min-width: 44px; max-width: 44px;
+  padding-left: 10px !important; padding-right: 10px !important;
+  text-align: center !important;
+}
+
+/* Action column: the buttons start where the "Action" header starts. */
+table td:not(#_) > :is(div, span):has(> button[data-action]) { justify-content: flex-start !important; }
+
+/* Bulk delete ("Delete Selected (N)", shown once rows are ticked): one look everywhere. */
+button[data-bulk-action="delete"]:not(#_) {
+  display: inline-flex !important; align-items: center !important; gap: 6px; flex-shrink: 0;
+  height: 34px !important; padding: 0 14px !important; margin: 0 !important;
+  border: 1px solid #dc2626 !important; border-radius: 9px !important;
+  background: #fff !important; color: #b91c1c !important; box-shadow: none !important;
+  font-weight: 700 !important; font-size: 13px !important; white-space: nowrap; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+button[data-bulk-action="delete"]:not(#_) * { font-size: 13px !important; }
+button[data-bulk-action="delete"]:not(#_) svg { width: 14px !important; height: 14px !important; }
+button[data-bulk-action="delete"]:not(#_):hover:not(:disabled) { background: #dc2626 !important; color: #fff !important; }
+button[data-bulk-action="delete"]:not(#_):disabled { opacity: 0.55; cursor: not-allowed; }
+button[data-bulk-action="delete"]:not(#_):focus-visible { outline: 2px solid #dc2626 !important; outline-offset: 2px; }
+
+/* ── Table header size (every list page, all portals): 12px ─────────────────
+   Header cells and anything inside them (sort arrows, labels). :not(#_) lifts this
+   above the kits' and pages' own header sizes. */
+table th:not(#_), table th:not(#_) * { font-size: 12px !important; }
+
+/* ── Dropdowns (every native <select>, all portals): one look with the same down arrow ──
+   The chevron is the one most pages already drew themselves. Font size is left to each page
+   (listing filters are 10px — see the page stylesheets). Not applied to multi-row list boxes
+   or the date picker's month / year selects (white on teal). */
+select:not([multiple]):not([size]):not(.react-datepicker__month-select):not(.react-datepicker__year-select):not(#_) {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 14px 14px !important;
+  padding-right: 36px !important;
+  border: 1.5px solid #e2e9ec !important;
+  border-radius: 9px !important;
+  color: #12302f;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+select:not([multiple]):not([size]):not(.react-datepicker__month-select):not(.react-datepicker__year-select):not(#_):hover:not(:disabled) {
+  border-color: #c5dcdc !important;
+}
+select:not([multiple]):not([size]):not(.react-datepicker__month-select):not(.react-datepicker__year-select):not(#_):focus {
+  outline: none;
+  border-color: #0b7b7b !important;
+  box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12) !important;
+}
+select:not([multiple]):not([size]):not(.react-datepicker__month-select):not(.react-datepicker__year-select):not(#_):disabled {
+  background-color: #f6f9f9 !important;
+  color: #8a9a9a;
+  cursor: not-allowed;
+}
+select:not(#_)::-ms-expand { display: none; }
+
+/* ── Button height (every page of the super admin, store owner and learner accounts): 40px ──
+   One height for every text button: page actions (Add, Save, Cancel, Back, Export), filter
+   buttons (Clear, tabs, segmented choices), bulk delete, pagination, modal buttons.
+   Left alone: icon-only buttons (row actions, eye / toggle / expand icons — they carry
+   data-action, aria-label, or a title with only an icon), buttons inside tables (sort headers, tree rows), the sidebar
+   and top bar, switches, and the date picker. */
+html.protected-area :is(button, a[role="button"], input[type="submit"], input[type="button"], input[type="reset"]):not(:where(
+  table *, header *, aside *, .react-datepicker *, [data-action], [aria-label]:not([aria-label$=" page"]), [title]:has(> svg:only-child), [role="switch"], [role="menuitem"], [role="option"], :empty
+)):not(#_) {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  white-space: nowrap;
+  box-sizing: border-box;
+}

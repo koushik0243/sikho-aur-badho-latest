@@ -1,0 +1,442 @@
+
+
+
+/* ─── Field ───────────────────────────────────────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+
+.fieldGroup { margin-bottom: 14px; }
+
+
+
+/* ─── Loading skeleton ───────────────────────────────────────── */
+.skeletonLine {
+  height: 13px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+.skeletonLine {
+  height: 16px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+
+
+.skeletonInput {
+  height: 36px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 7px;
+}
+
+
+
+/* ─── Status bar ─────────────────────────────────────────────── */
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 9px 14px;
+  border-radius: 7px;
+  font-size: 12.5px;
+}
+
+
+
+.statusSuccess { background: #edf7f3; color: #0b6e4f; border: 1px solid #b5e0cc; }
+
+
+.statusError   { background: #fff1f1; color: #b91c1c; border: 1px solid #fbc5c5; }
+
+
+.contentRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+
+
+/* ─── Form card ───────────────────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border-radius: 12px;
+  /* border: 1px solid #e8edf0; */
+  padding: 0px;
+  margin-bottom: 24px;
+}
+
+
+.formCard {
+  background: #fff;
+  /* border: 1px solid #e5e7eb; */
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+/* ─── Store Profile form card ────────────────────────────────── */
+.formCard {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+/* ─── Card header ─────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* ─── Card head ──────────────────────────────────────────────── */
+.cardHead {
+  padding: 8px 20px;
+  background: #f8fafa;
+  /* border-bottom: 1px solid #edf0f3; */
+}
+
+
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 8px 0px;
+  background: #f8fafa;
+  /* border-bottom: 1px solid #edf0f3; */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+.cardBody { padding: 14px; }
+
+
+
+/* ─── Card body ───────────────────────────────────────────────── */
+.cardBody {
+  padding: 16px 20px;
+}
+
+
+
+/* ─── Form grid ──────────────────────────────────────────────── */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+
+
+
+.label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #1a2b2b;
+  margin-bottom: 5px;
+}
+
+.required { color: #dc2626; margin-left: 2px; }
+
+
+
+.input {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+
+.input::placeholder { color: #9aadad; }
+
+
+.input:focus { border-color: #0b7b7b; }
+
+
+
+.inputWithIcon .input { padding-right: 36px; }
+
+
+
+.input,
+.select,
+.textarea {
+  border: 1px solid #d4dee0;
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #1a2b2b;
+  background: #fff;
+  transition: border-color 0.15s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #0b7b7b;
+  box-shadow: 0 0 0 3px rgba(11,123,123,0.08);
+}
+
+
+
+.input:disabled { background: #f4f6f8; color: #7a9090; cursor: not-allowed; }
+
+
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 7px 32px 7px 10px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: #9aadad;
+  background: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+.select:focus { border-color: #0b7b7b; color: #1a2b2b; }
+
+
+
+.select:-webkit-autofill,
+.select:-webkit-autofill:hover,
+.select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #9aadad !important;
+  caret-color: #9aadad;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+/* ─── Form actions ───────────────────────────────────────────── */
+.formActions { margin-top: 18px; }
+
+
+
+.btnSave {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+
+
+.btnSave:hover { opacity: 0.88; }
+
+
+.btnSave:disabled { background: #7ab8b8; cursor: not-allowed; }
+
+
+
+/* ─── Notification preferences card ─────────────────────────── */
+.notifCard {
+  width: 230px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.notifItem:last-child { border-bottom: none; }
+
+
+.notifItem:hover { background: #f9fafb; }
+
+
+
+/* ─── Notification preferences content ──────────────────────── */
+.notifItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f4f6f8;
+}
+
+
+
+.notifItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #f9fafb;
+  transition: background 0.12s;
+}
+
+
+
+.notifText { flex: 1; min-width: 0; }
+
+
+
+.notifLabel { font-size: 12.5px; font-weight: 600; color: #1a2b2b; margin-bottom: 1px; }
+
+
+
+.notifDesc { font-size: 11px; color: #8a9a9a; line-height: 1.4; }
+
+
+
+/* ─── Toggle switch ──────────────────────────────────────────── */
+.toggle {
+  position: relative;
+  width: 38px; height: 22px;
+  border-radius: 11px;
+  background: #d0d7db;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+
+
+.toggleOn { background: #0b7b7b; }
+
+
+
+.toggleOn .toggleThumb { left: 19px; }
+
+
+
+.toggleThumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+  pointer-events: none;
+  display: block;
+}
+
+
+
+.toggleSwitchOn .toggleThumb { left: 23px; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contentRow {
+    flex-direction: column;
+  }
+
+  .formCard,
+  .notifCard {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Dropdown arrow: always shown (a later `background:` shorthand can't remove it) ── */
+select.select.select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px 14px;
+}

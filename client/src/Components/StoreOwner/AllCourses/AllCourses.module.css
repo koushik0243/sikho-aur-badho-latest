@@ -1,0 +1,947 @@
+
+
+/* ─── Card ────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8edf0;
+  /* Not overflow:hidden — the category dropdown (.catDropMenu) is an absolutely
+     positioned overlay inside this card, and clipping here would cut it off
+     whenever the card is short (e.g. an empty/filtered results state). */
+  overflow: visible;
+}
+
+
+
+/* ─── Card header ─────────────────────────────────────────────── */
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  border-radius: 8px 8px 0 0;
+}
+
+
+
+/* ─── Page title ─────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+.countPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #e8f5f5;
+  color: #0b7b7b;
+  border-radius: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+
+
+/* ─── Stats bar ───────────────────────────────────────────────── */
+.statsBar {
+  display: flex;
+  border-bottom: 1px solid #edf0f3;
+}
+
+
+
+.statItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-right: 1px solid #edf0f3;
+}
+
+
+.statItem:last-child { border-right: none; }
+
+
+
+.statIconWrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: #f0f7f7;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.statIconWrap svg { width: 15px; height: 15px; }
+
+
+
+.statBody { display: flex; flex-direction: column; min-width: 0; }
+
+
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2b2b;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+
+
+.statLabel { font-size: 11.5px; color: #7a9090; font-weight: 500; }
+
+
+
+/* ─── Filter bar ─────────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #edf0f3;
+  background: #fafcfc;
+  flex-wrap: wrap;
+}
+
+
+
+.filterSearch {
+  position: relative;
+}
+
+
+
+.filterSearchIcon {
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  color: #8a9ba8;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+
+
+.filterInput {
+  width: 160px;
+  height: 32px;
+  padding: 0 10px 0 30px;
+  border: 1px solid #d1dce5;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+
+.filterInput::placeholder { color: #a0adb5; }
+
+
+.filterInput:focus { border-color: #0b7b7b; }
+
+
+
+.filterInput:-webkit-autofill,
+.filterInput:-webkit-autofill:hover,
+.filterInput:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+.filterClearBtn {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9aadad;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+}
+
+
+.filterClearBtn:hover { color: #374151; }
+
+
+
+.levelBtnGroup {
+  display: flex;
+  border: 1px solid #d8e4e4;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+
+
+.levelBtn {
+  padding: 5px 12px;
+  border: none;
+  border-right: 1px solid #d8e4e4;
+  background: #fff;
+  color: #4a6060;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+
+.levelBtn:last-child { border-right: none; }
+
+
+.levelBtn:hover { background: #f0f9f9; color: #0b7b7b; }
+
+
+
+.levelBtnActive {
+  background: #0b7b7b;
+  color: #fff;
+}
+
+
+.levelBtnActive:hover { background: #096060; color: #fff; }
+
+
+
+/* ─── Category dropdown ───────────────────────────────────────── */
+.catDropWrap {
+  position: relative;
+}
+
+
+
+.catDropTrigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid #d8e4e4;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 12.5px;
+  color: #1a2b2b;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 160px;
+  justify-content: space-between;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+
+.catDropTrigger:hover { border-color: #0b7b7b; }
+
+
+.catDropTriggerOpen {
+  border-color: #0b7b7b;
+  box-shadow: 0 0 0 3px rgba(11,123,123,0.10);
+}
+
+
+.catDropTriggerOpen .catDropArrow { transform: rotate(180deg); }
+
+
+
+.catDropArrow {
+  width: 12px;
+  height: 12px;
+  color: #9aadad;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+
+
+/* ── Menu shell ── */
+.catDropMenu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 260px;
+  background: #fff;
+  border: 1px solid #d0e4e4;
+  border-radius: 9px;
+  box-shadow: 0 8px 28px rgba(11,123,123,0.13), 0 2px 6px rgba(0,0,0,0.06);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* ── Search bar ── */
+.catDropSearch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #edf2f2;
+  background: #f8fbfb;
+  position: relative;
+  flex-shrink: 0;
+}
+
+
+
+.catDropSearchIcon {
+  width: 13px;
+  height: 13px;
+  color: #9aadad;
+  flex-shrink: 0;
+}
+
+
+
+.catDropSearchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: #1a2b2b;
+  min-width: 0;
+}
+
+
+.catDropSearchInput::placeholder { color: #b0c4c4; }
+
+
+.catDropSearchInput:-webkit-autofill,
+.catDropSearchInput:-webkit-autofill:hover,
+.catDropSearchInput:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #1a2b2b !important;
+  caret-color: #1a2b2b;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+.catDropSearchClear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9aadad;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 1px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+.catDropSearchClear:hover { color: #374151; }
+
+
+
+/* ── Scrollable list ── */
+.catDropList {
+  overflow-y: auto;
+  max-height: 240px;
+  padding: 4px 0 6px;
+}
+
+
+.catDropList::-webkit-scrollbar { width: 4px; }
+
+
+.catDropList::-webkit-scrollbar-track { background: transparent; }
+
+
+.catDropList::-webkit-scrollbar-thumb { background: #d0e4e4; border-radius: 4px; }
+
+
+
+/* ── Empty state ── */
+.catDropEmpty {
+  padding: 14px 14px;
+  font-size: 12px;
+  color: #9aadad;
+  text-align: center;
+}
+
+
+
+/* ── Category group ── */
+.catGroup {
+  padding: 0;
+  border-bottom: 1px solid #f0f6f6;
+}
+
+
+.catGroup:last-child { border-bottom: none; }
+
+
+
+/* ── Category row ── */
+.catLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a2b2b;
+  letter-spacing: 0.01em;
+  transition: background 0.12s;
+  user-select: none;
+}
+
+
+.catLabel:hover { background: #f0f9f9; }
+
+
+.catLabel span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+
+.catLabelChecked { background: #e8f5f5; }
+
+
+.catLabelChecked:hover { background: #ddf0f0; }
+
+
+
+/* ─── Custom checkbox ────────────────────────────────────────── */
+.checkInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #111827;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.checkInput:checked { background: #0b7b7b; border-color: #0b7b7b; }
+
+
+.checkInput:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 7px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+
+
+/* ── Subcategory row ── */
+.subCatLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 30px;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #4a6a6a;
+  border-left: 2px solid transparent;
+  margin-left: 12px;
+  transition: background 0.12s, border-color 0.12s;
+  user-select: none;
+}
+
+
+.subCatLabel:hover { background: #f4fafa; border-left-color: #c0dedd; }
+
+
+.subCatLabel span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+
+.subCatLabelChecked {
+  background: #edfaf9;
+  border-left-color: #0b7b7b;
+  color: #0b6060;
+}
+
+
+.subCatLabelChecked:hover { background: #e0f5f3; }
+
+
+
+/* ─── Clear all filter button ─────────────────────────────────── */
+.filterClearAll {
+  padding: 6px 12px;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  background: #fff1f1;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+
+.filterClearAll:hover { background: #ffe4e4; }
+
+
+
+/* ─── Course grid ─────────────────────────────────────────────── */
+.courseGridWrap { padding: 16px; }
+
+
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+
+
+/* ─── Skeleton ────────────────────────────────────────────────── */
+.skeletonCard {
+  height: 160px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e8edf0 25%, #f4f6f8 50%, #e8edf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+
+
+/* ─── Empty state ─────────────────────────────────────────────── */
+.empty {
+  color: #9aadad;
+  font-size: 13.5px;
+  text-align: center;
+  padding: 40px 0;
+}
+
+
+
+/* ─── Course card ─────────────────────────────────────────────── */
+.courseCard {
+  border: 2px solid #e4e6e7;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+
+
+.courseCard:hover {
+  border-color: #b0d8d4;
+  box-shadow: 0 3px 12px rgba(11,123,123,0.08);
+}
+
+
+
+/* ─── Thumbnail ───────────────────────────────────────────────── */
+.courseThumb {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: #f8fafa;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+
+
+.courseThumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+.courseThumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 88px;
+  background: #e8f5f5;
+  color: #0b7b7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.courseThumbPlaceholder svg { width: 28px; height: 28px; }
+
+
+
+/* ─── Status badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+
+
+.badgePublished {
+  background: #edf7f3;
+  color: #0b6e4f;
+  border: 1px solid #b5e0cc;
+}
+
+
+
+.badgeDraft {
+  background: #fff8e6;
+  color: #9a6800;
+  border: 1px solid #f0d890;
+}
+
+
+.badgeInactive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+
+
+.thumbBadge {
+  position: absolute;
+  bottom: 5px;
+  left: 6px;
+}
+
+
+
+/* ─── Card body ───────────────────────────────────────────────── */
+.courseCardBody {
+  padding: 7px 9px 8px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 3px;
+}
+
+
+
+.courseCardTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a2b2b;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+.courseCardDesc {
+  font-size: 10.5px;
+  color: #5a7070;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+/* ─── Meta chips row ──────────────────────────────────────────── */
+.courseMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+
+
+.metaChipCat {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #0b7b7b;
+  background: #e8f5f5;
+  border: 1px solid #c0dedd;
+  border-radius: 3px;
+  padding: 1px 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.metaChipCat svg { width: 9px; height: 9px; flex-shrink: 0; }
+
+
+
+.metaChipLevel {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4f46e5;
+  background: #f0f0ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 3px;
+  padding: 1px 4px;
+  text-transform: capitalize;
+}
+
+
+
+.metaChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #4a6060;
+  background: #f4f6f8;
+  border: 1px solid #e5eaec;
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+
+
+.metaChip svg { width: 9px; height: 9px; color: #9aadad; }
+
+
+
+/* ─── Add / Added button ──────────────────────────────────────── */
+.btnDetails {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-top: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s;
+}
+
+
+.btnDetails:hover:not(:disabled) {
+  background: linear-gradient(180deg, #036067 0%, #23897d 100%);
+}
+
+
+.btnDetails:disabled { opacity: 0.7; cursor: not-allowed; }
+
+
+
+.btnAdded {
+  background: #f0f7f7;
+  color: #0b7b7b;
+  cursor: default;
+}
+
+
+.btnDetails.btnAdded:hover { background: #f0f7f7; color: #0b7b7b; }
+
+
+
+/* ─── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  font-size: 12.5px;
+  color: #4a6060;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+.paginationInfo { white-space: nowrap; }
+
+
+
+.paginationBtns { display: flex; align-items: center; gap: 4px; }
+
+
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px; height: 28px;
+  padding: 0 6px;
+  border: 1px solid #e8edf0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a2b2b;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+
+.pageBtn:hover:not(:disabled) { background: #f0f7f7; }
+
+
+.pageBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+
+
+.pageBtnActive { background: linear-gradient(180deg, #047279 0%, #299c8f 100%); border-color: #047279; color: #fff; }
+
+
+.pageBtnActive:hover:not(:disabled) { background: #0a6b6b; }
+
+
+.pageBtnActive:hover { background: #0b7b7b; }
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pageTitle {
+    font-size: 18px;
+  }
+
+  .statsBar {
+    flex-wrap: wrap;
+  }
+
+  .statItem {
+    flex: 1 1 50%;
+    border-right: none;
+  }
+
+  .statItem:nth-child(odd) {
+    border-right: 1px solid #edf0f3;
+  }
+
+  .statItem:nth-child(-n+2) {
+    border-bottom: 1px solid #edf0f3;
+  }
+}
+
+@media (max-width: 1100px) {
+  .courseGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .courseGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .courseGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .courseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Task 5: listing filters use 10px text (all accounts) ── */
+.filterInput.filterInput.filterInput,
+.filterSearch.filterSearch.filterSearch,
+.filterClearBtn.filterClearBtn.filterClearBtn,
+.filterClearAll.filterClearAll.filterClearAll,
+.filterBar.filterBar.filterBar :is(label, select, option, input, textarea, button, span:not(:has(*))) {
+  font-size: 10px !important;
+}

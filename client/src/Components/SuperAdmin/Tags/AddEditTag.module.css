@@ -1,0 +1,144 @@
+/* ─── Back button ─────────────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+}
+.backBtn:hover { background: #f9fafb; }
+.backBtn svg { width: 14px; height: 14px; }
+
+/* ─── Page heading ────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.pageSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 1px 0 0;
+}
+
+/* ─── Card ────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+.cardHeader svg {
+  width: 18px;
+  height: 18px;
+  color: #0b7b7b;
+}
+.cardBody {
+  padding: 24px 20px;
+}
+
+/* ─── Form grid ───────────────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 640px) {
+  .formGrid { grid-template-columns: 1fr; }
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+.required {
+  color: #dc2626;
+  margin-left: 2px;
+}
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+.input::placeholder { color: #9ca3af; }
+.textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+.textarea:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+.textarea::placeholder { color: #9ca3af; }
+.errorMsg {
+  font-size: 11.5px;
+  color: #dc2626;
+}
+
+/* ─── Actions ─────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.btnSubmit {
+  background: #0b7b7b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btnSubmit:hover:not(:disabled) { background: #085f5f; }
+.btnSubmit:disabled { opacity: 0.6; cursor: default; }
+.btnCancel {
+  background: #fff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btnCancel:hover { background: #f9fafb; }

@@ -1,0 +1,533 @@
+/* Revenue report. The app forces `* { font-size: 15px !important }`, so sizes
+   that must differ use a doubled class + !important to win. */
+
+.page {
+  --rev-ink: #111827;
+  --rev-ink-2: #4b5563;
+  --rev-muted: #6b7280;
+  --rev-line: #e5e7eb;
+  --rev-line-soft: #f1f3f5;
+  --rev-surface: #ffffff;
+  --rev-accent: #0b7b7b;       /* headers, buttons — the app's teal */
+  --rev-mark: #0d9488;         /* chart columns (validated: lightness, chroma, contrast) */
+  --rev-mark-active: #0f766e;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--rev-ink);
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.title.title { font-size: 24px !important; font-weight: 700; margin: 0; }
+.subtitle.subtitle { font-size: 13px !important; color: var(--rev-muted); margin: 2px 0 0; }
+
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid #047279;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, box-shadow 0.15s;
+}
+.exportBtn svg { width: 16px; height: 16px; }
+.exportBtn:hover:not(:disabled) { opacity: 0.92; box-shadow: 0 4px 12px rgba(4, 114, 121, 0.25); }
+.exportBtn:focus-visible { outline: 2px solid var(--rev-accent); outline-offset: 2px; }
+.exportBtn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Filters ──────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 14px 16px;
+  background: var(--rev-surface);
+  border: 1px solid var(--rev-line);
+  border-radius: 10px;
+}
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 180px; }
+.field > span { font-size: 12px !important; font-weight: 600; color: var(--rev-ink-2); }
+.field select,
+.field input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  color: var(--rev-ink);
+  outline: none;
+}
+.field select {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px 14px;
+}
+.field select:focus,
+.field input:focus { border-color: var(--rev-accent); box-shadow: 0 0 0 3px rgba(11, 123, 123, 0.12); }
+
+.errorText.errorText { font-size: 13px !important; color: #b91c1c; margin: 0; }
+.empty.empty { font-size: 13px !important; color: var(--rev-muted); margin: 0; padding: 20px 0; text-align: center; }
+.refreshing { opacity: 0.6; transition: opacity 0.15s; }
+
+/* ── Headline tiles ───────────────────────────────────── */
+.tiles {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  background: var(--rev-surface);
+  border: 1px solid var(--rev-line);
+  border-radius: 10px;
+}
+.tileHero {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 70%);
+  border-color: #99f6e4;
+}
+.tileLabel.tileLabel { font-size: 12px !important; font-weight: 600; color: var(--rev-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.heroValue.heroValue { font-size: 30px !important; font-weight: 700; color: var(--rev-ink); font-variant-numeric: tabular-nums; line-height: 1.15; }
+.tileValue.tileValue { font-size: 22px !important; font-weight: 700; color: var(--rev-ink); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.statusLine.statusLine { font-size: 12px !important; color: var(--rev-muted); margin: 8px 0 16px; }
+.statusLine span { font-size: 12px !important; }
+
+/* ── Cards / tables ───────────────────────────────────── */
+.card {
+  background: var(--rev-surface);
+  border: 1px solid var(--rev-line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  min-width: 0;
+}
+.cardHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cardTitle.cardTitle { font-size: 15px !important; font-weight: 700; margin: 0 0 10px; color: var(--rev-ink); }
+.cardHead .cardTitle { margin-bottom: 10px; }
+.linkBtn {
+  border: none;
+  background: none;
+  color: var(--rev-accent);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  margin-bottom: 10px;
+}
+.linkBtn:hover { text-decoration: underline; }
+.linkBtn:focus-visible { outline: 2px solid var(--rev-accent); outline-offset: 2px; border-radius: 4px; }
+
+.twoCol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+/* Listing tables scroll inside the card past 500px; the header (and any total row) stays in view. */
+.tableWrap { max-height: 500px; overflow: auto; overscroll-behavior: contain; }
+.tableWrap thead th { position: sticky; top: 0; z-index: 1; background: var(--rev-surface); box-shadow: inset 0 -1px 0 var(--rev-line); }
+.tableWrap tfoot td, .tableWrap tfoot th { position: sticky; bottom: 0; z-index: 1; background: var(--rev-surface); box-shadow: inset 0 1px 0 var(--rev-line); }
+.table { width: 100%; border-collapse: collapse; }
+.table th {
+  text-align: left;
+  font-size: 12px !important;
+  font-weight: 700;
+  color: var(--rev-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rev-line);
+  white-space: nowrap;
+}
+.table td { padding: 9px 10px; border-bottom: 1px solid var(--rev-line-soft); color: var(--rev-ink-2); vertical-align: middle; }
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover td { background: #f8fafb; }
+.table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.nameCell { color: var(--rev-ink) !important; font-weight: 600; }
+.nowrap { white-space: nowrap; }
+
+.shareCol { width: 140px; }
+.shareBar {
+  display: inline-block;
+  width: 70px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--rev-line-soft);
+  vertical-align: middle;
+  margin-right: 8px;
+  overflow: hidden;
+}
+.shareBar span { display: block; height: 100%; background: var(--rev-mark); border-radius: 999px; }
+.shareText.shareText { font-size: 13px !important; font-variant-numeric: tabular-nums; color: var(--rev-ink-2); }
+
+.status.status { font-size: 12px !important; font-weight: 600; }
+.status_success { color: #15803d; }
+.status_pending { color: #b45309; }
+.status_failed,
+.status_canceled { color: #b91c1c; }
+.status_refunded { color: var(--rev-ink-2); }
+.note.note { font-size: 12px !important; color: var(--rev-muted); margin: 10px 0 0; }
+
+/* ── Chart ────────────────────────────────────────────── */
+.chartBox { width: 100%; min-height: 240px; }
+.chartWrap { position: relative; }
+.chart { display: block; overflow: visible; }
+.chartGrid { stroke: var(--rev-line-soft); stroke-width: 1; }
+.chartBaseline { stroke: #d1d5db; stroke-width: 1; }
+.chartAxisText.chartAxisText { font-size: 11px !important; fill: var(--rev-muted); }
+.chartValueText.chartValueText { font-size: 11px !important; fill: var(--rev-ink-2); font-weight: 600; }
+.chartBar { fill: var(--rev-mark); transition: fill 0.12s; }
+.chartBarActive { fill: var(--rev-mark-active); }
+.chart rect:focus { outline: none; }
+.chart rect:focus-visible { outline: 2px solid var(--rev-accent); }
+.chartTip {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  background: #111827;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.18);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+.chartTip strong, .chartTip span { font-size: 12px !important; }
+.chartTipMuted { color: #d1d5db; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .twoCol { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .field { min-width: 0; flex: 1 1 140px; }
+  .exportBtn { width: 100%; justify-content: center; }
+}
+
+/* Sections stack with even spacing */
+.sections { display: flex; flex-direction: column; gap: 16px; }
+.sections .statusLine.statusLine { margin: 10px 0 0; }
+
+/* Organization status + a second line under a name (owner e-mail) */
+.status_active { color: #15803d; }
+.status_inactive { color: var(--rev-muted); }
+.status_suspended,
+.status_deleted { color: #b91c1c; }
+.subText.subText { display: block; font-size: 12px !important; color: var(--rev-muted); font-weight: 400; }
+/* A compact select in a card header (e.g. "Rank by") */
+.inlineField { flex-direction: row; align-items: center; gap: 8px; min-width: 0; margin-bottom: 10px; }
+.inlineField select { height: 32px; }
+
+/* Monthly / Daily switch */
+.segmented {
+  display: inline-flex;
+  height: 38px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.segmented button {
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  font-weight: 600;
+  color: var(--rev-ink-2);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.segmented button + button { border-left: 1px solid #d1d5db; }
+.segmented button:hover:not(:disabled):not(.segmentedOn) { background: #f0fdfa; color: var(--rev-accent); }
+.segmented button:focus-visible { outline: 2px solid var(--rev-accent); outline-offset: -2px; }
+.segmented button:disabled { color: #c4c9d0; cursor: not-allowed; }
+.segmented .segmentedOn { background: var(--rev-accent); color: #fff; }
+
+/* Headline number at the top of a card */
+.cardFigure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 12px; }
+.figureNote.figureNote { font-size: 13px !important; color: var(--rev-muted); }
+
+/* Course-wise table: unallocated row + total */
+.mutedRow td { color: var(--rev-muted) !important; font-style: italic; }
+.table tfoot td {
+  padding: 9px 10px;
+  border-top: 1px solid var(--rev-line);
+  font-weight: 700;
+  color: var(--rev-ink);
+}
+.table tfoot .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── Trainees: split bars + status colours (always with a text label) ── */
+.tileSub.tileSub { font-size: 13px !important; font-weight: 600; color: var(--rev-muted); margin-left: 4px; }
+.cardHint.cardHint { font-size: 12px !important; color: var(--rev-muted); margin: -4px 0 10px; }
+.miniTitle.miniTitle { font-size: 12px !important; font-weight: 700; color: var(--rev-ink-2); text-transform: uppercase; letter-spacing: 0.04em; margin: 12px 0 6px; }
+.splitBlock { display: flex; flex-direction: column; gap: 8px; }
+.splitBar { display: flex; gap: 2px; height: 14px; border-radius: 999px; overflow: hidden; background: var(--rev-line-soft); }
+.splitBar > span { min-width: 4px; }
+.splitEmpty { flex: 1; }
+.splitLegend { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 0; padding: 0; }
+.splitLegend li { display: inline-flex; align-items: center; gap: 6px; font-size: 13px !important; color: var(--rev-ink-2); }
+.splitLegend li strong, .legendPct { font-size: 13px !important; }
+.splitLegend li strong { color: var(--rev-ink); }
+.legendPct { color: var(--rev-muted); }
+.legendDot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+.st_completed { background: #15803d; }
+.st_in_progress { background: #0d9488; }
+.st_not_started { background: #9ca3af; }
+.st_dropout { background: #b91c1c; }
+.tstatus_completed { color: #15803d; }
+.tstatus_in_progress { color: #0f766e; }
+.tstatus_not_started { color: var(--rev-muted); }
+.tstatus_dropout { color: #b91c1c; }
+
+/* A bold name column keeps the normal header styling */
+.table th.nameCell { color: var(--rev-accent) !important; font-weight: 700; }
+
+/* ── Test performance ─────────────────────────────────── */
+.st_pass { background: #15803d; }
+.st_fail { background: #b91c1c; }
+.st_pending { background: #9ca3af; }
+.lv_beginner { background: #2dd4bf; }
+.lv_intermediate { background: #0d9488; }
+.lv_expert { background: #134e4a; }
+.statRow { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 12px; padding: 0; list-style: none; }
+.statRow li { display: flex; flex-direction: column; gap: 2px; }
+.statRow .statLabel.statLabel { font-size: 12px !important; color: var(--rev-muted); }
+.statRow .statValue.statValue { font-size: 18px !important; font-weight: 700; color: var(--rev-ink); font-variant-numeric: tabular-nums; }
+.clip { max-width: 360px; white-space: normal; }
+
+/* ── Chapter quality alerts ───────────────────────────── */
+.tileAlert { background: linear-gradient(135deg, #fef2f2 0%, #ffffff 70%); border-color: #fecaca; }
+.sev { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; font-weight: 700; white-space: nowrap; border: 1px solid transparent; }
+.sev.sev, .sev * { font-size: 12px !important; }
+.sev svg { width: 12px; height: 12px; flex-shrink: 0; }
+.sev_critical { color: #b91c1c; background: #fef2f2; border-color: #fecaca; }
+.sev_warning { color: #b45309; background: #fffbeb; border-color: #fde68a; }
+.sev_info { color: #4b5563; background: #f3f4f6; border-color: #e5e7eb; }
+.sev_ok { color: #15803d; background: #f0fdf4; border-color: #bbf7d0; }
+.flags { display: flex; flex-wrap: wrap; gap: 4px; min-width: 200px; }
+.flag { display: inline-flex; gap: 4px; padding: 1px 7px; border-radius: 6px; background: var(--rev-line-soft); color: var(--rev-ink-2); white-space: nowrap; }
+.flag.flag, .flag * { font-size: 12px !important; }
+.flagKind { font-weight: 700; color: var(--rev-ink); }
+.tag { display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 4px; background: #f3f4f6; color: var(--rev-muted); font-weight: 600; vertical-align: 1px; }
+.tag.tag { font-size: 11px !important; }
+.fixText.fixText { font-size: 12px !important; color: var(--rev-muted); display: block; margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chipBtn { border: 1px solid var(--rev-line); background: var(--rev-surface); color: var(--rev-ink-2); border-radius: 999px; padding: 4px 12px; font-weight: 600; cursor: pointer; }
+.chipBtn.chipBtn { font-size: 13px !important; }
+.chipBtn:hover { border-color: var(--rev-accent); color: var(--rev-accent); }
+.chipBtn[aria-pressed="true"] { background: var(--rev-accent); border-color: var(--rev-accent); color: #fff; }
+.chipBtn:focus-visible { outline: 2px solid var(--rev-accent); outline-offset: 2px; }
+.rulesList { margin: 0; padding-left: 18px; color: var(--rev-ink-2); }
+.rulesList li, .rulesList li * { font-size: 13px !important; line-height: 1.6; }
+.minName { min-width: 150px; }
+
+/* ── Platform health ──────────────────────────────────── */
+.delta { display: inline-flex; align-items: center; gap: 3px; font-weight: 700; }
+.delta.delta, .delta * { font-size: 12px !important; }
+.deltaUp { color: #15803d; }
+.deltaDown { color: #b91c1c; }
+.deltaFlat { color: var(--rev-muted); }
+.compareTable td:first-child { font-weight: 600; color: var(--rev-ink); }
+
+/* ── Pagination (under a table, right-aligned) ─────────── */
+.pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-top: 12px; border-top: none; margin-top: 4px; }
+.pagerInfo.pagerInfo { font-size: 13px !important; color: var(--rev-muted); font-variant-numeric: tabular-nums; }
+.pagerButtons { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-left: auto; }
+.pageBtn { min-width: 34px; height: 32px; padding: 0 10px; border: 1px solid var(--rev-line); border-radius: 8px; background: var(--rev-surface); color: var(--rev-ink-2); font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
+.pageBtn.pageBtn { font-size: 13px !important; }
+.pageBtn:hover:not(:disabled) { border-color: var(--rev-accent); color: var(--rev-accent); }
+.pageBtn[aria-current="page"] { background: var(--rev-accent); border-color: var(--rev-accent); color: #fff; }
+.pageBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.pageBtn:focus-visible { outline: 2px solid var(--rev-accent); outline-offset: 2px; }
+.pageGap { padding: 0 4px; color: var(--rev-muted); }
+
+/* ── Employee progress: phase cells ───────────────────── */
+.phase { position: relative; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.phase.phase, .phase * { font-size: 13px !important; }
+.phaseSym { font-weight: 700; width: 12px; text-align: center; }
+.ph_done { color: #15803d; }
+.ph_in_progress { color: #0f766e; }
+.ph_not_started { color: var(--rev-muted); }
+.ph_none { color: #9ca3af; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ── Test results: grades ─────────────────────────────── */
+.gradePill { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 22px; padding: 0 6px; border-radius: 6px; font-weight: 800; color: #fff; }
+.gradePill.gradePill { font-size: 12px !important; }
+.gr_A { background: #15803d; }
+.gr_B { background: #0d9488; }
+.gr_C { background: #6b7280; }
+.gr_D { background: #b45309; }
+.gr_F { background: #b91c1c; }
+
+/* ── Summary: best / weak performers ──────────────────── */
+.performerList { list-style: none; margin: 0; padding: 0; }
+.performerList li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding: 9px 0; border-bottom: 1px solid var(--rev-line-soft); }
+.performerList li:last-child { border-bottom: none; }
+.performerList .subText { flex-basis: 100%; }
+
+/* ── Learner achievements: badges ─────────────────────── */
+.badgeGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.badgeItem { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 10px; border: 1px solid var(--rev-line); background: var(--rev-surface); }
+.badgeItem svg { width: 26px; height: 26px; flex-shrink: 0; }
+.badgeEarned { border-color: #bbf7d0; background: #f0fdf4; }
+.badgeEarned svg { color: #15803d; }
+.badgeLocked svg { color: #9ca3af; }
+.badgeName.badgeName { font-size: 13px !important; font-weight: 700; color: var(--rev-ink); display: block; }
+.badgeLocked .badgeName { color: var(--rev-muted); }
+
+/* ── Learner weak areas: revision plan ────────────────── */
+.planList { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.planItem { border: 1px solid var(--rev-line); border-radius: 10px; padding: 14px 16px; background: var(--rev-surface); }
+.planHead { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; justify-content: space-between; margin-bottom: 6px; }
+.planTitle.planTitle { font-size: 15px !important; font-weight: 700; color: var(--rev-ink); }
+.planSteps { margin: 8px 0 0; padding-left: 20px; }
+.planSteps li, .planSteps li * { font-size: 13px !important; line-height: 1.6; color: var(--rev-ink-2); }
+.planSteps strong { color: var(--rev-ink); }
+.tipList { margin: 0; padding-left: 18px; }
+.tipList li, .tipList li * { font-size: 13px !important; line-height: 1.7; color: var(--rev-ink-2); }
+
+/* ── Every report card is at most 500px tall; its content scrolls inside ──
+   Only the long parts — tables and lists — shrink and scroll. Everything else
+   (title, headline figure, chart, split bar, pager, footnote…) keeps its full
+   height, so small rows never get a stray scrollbar. Used by all super admin,
+   store owner and learner report pages. */
+.card {
+  --card-max: 500px;
+  max-height: var(--card-max);
+  display: flex;
+  flex-direction: column;
+}
+.card > * { flex-shrink: 0; }
+.card > .tableWrap,
+.card > .performerList,
+.card > .rulesList,
+.card > .tipList,
+.card > .planList,
+.card > .badgeGrid,
+.card > ul:not(.statRow):not(.splitLegend),
+.card > ol {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+/* The table wrapper already scrolls; let the card set its height instead */
+.card > .tableWrap { max-height: none; }
+
+/* A chart that fills the rest of its card (Revenue: chart card beside a table card).
+   flex-basis 0 + a 240px floor: the box takes the card's spare height but never makes the card taller. */
+.card > .chartFill { flex: 1 1 0; min-height: 240px; overflow: hidden; }
+
+/* Revenue: the month/day table takes exactly the chart's height (ColumnChart's 240px default)
+   and scrolls inside, so toggling "Show as table" / "Show chart" keeps the card the same size. */
+.card > .chartSized { flex: 0 0 240px; height: 240px; max-height: 240px; min-height: 0; overflow: auto; }
+.card > p.chartSized { display: grid; place-items: center; margin: 0; }
+
+/* 4 / 8 column row (12-column split): narrow card left, wide card right; stacks like .twoCol */
+.row4x8 { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 16px; align-items: stretch; }
+@media (max-width: 900px) { .row4x8 { grid-template-columns: minmax(0, 1fr); } }
+
+/* In a 4 / 8 row the right-hand card (a table) takes the left card's height — the chart sets
+   the row height — and its table scrolls inside. `contain: size` stops the table rows from
+   making the row taller; the grid then stretches the card to the row. Off when stacked. */
+.row4x8 > .card:last-child { contain: size; min-height: 0; }
+@media (max-width: 900px) { .row4x8 > .card:last-child { contain: none; } }
+
+/* Three equal cards in a row (4 of 12 columns each). Medium screens: two up, the third spans
+   the full width below; small screens: stacked. */
+.threeCol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+@media (max-width: 1100px) {
+  .threeCol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .threeCol > :nth-child(3) { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) { .threeCol { grid-template-columns: minmax(0, 1fr); } }
+
+/* Trainees · Enrollment status card: headline rate, stacked bar, then one row per status
+   that spreads out to fill the card's height (it shares a row with taller cards). */
+.card.statusCard > .splitBar { flex-shrink: 0; margin-top: 4px; }
+.card.statusCard > ul.statusRows.statusRows {
+  flex: 1 1 auto; min-height: 0; overflow: visible;
+  display: flex; flex-direction: column; justify-content: space-evenly; gap: 8px;
+  list-style: none; margin: 14px 0 0; padding: 0;
+}
+.statusRow {
+  display: grid; grid-template-columns: 10px minmax(0, 1fr) auto 44px minmax(60px, 34%);
+  align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--rev-line-soft);
+}
+.statusRow:last-child { border-bottom: none; }
+.statusName.statusName { color: var(--rev-ink-2); font-weight: 600; font-size: 13.5px !important; }
+.statusNum.statusNum { color: var(--rev-ink); font-weight: 800; font-variant-numeric: tabular-nums; text-align: right; font-size: 15px !important; }
+.statusPct.statusPct { color: var(--rev-muted); font-variant-numeric: tabular-nums; text-align: right; font-size: 12.5px !important; }
+.statusTrack { display: block; height: 6px; border-radius: 999px; background: var(--rev-line-soft); overflow: hidden; }
+.statusTrack > span { display: block; height: 100%; border-radius: 999px; }
+
+/* ── Test performance · Course completion time ── */
+.ctCard.ctCard { max-height: none; }
+.ctCount.ctCount {
+  flex-shrink: 0; align-self: flex-start; padding: 4px 12px; border-radius: 999px;
+  background: #e3f3f1; color: #0b6767; font-weight: 700; font-size: 12.5px !important;
+}
+.ctBody { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr); gap: 16px 24px; align-items: stretch; margin-top: 6px; }
+.ctHero {
+  grid-row: span 2; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 18px 20px;
+  border-radius: 12px; background: linear-gradient(135deg, #eef8f7 0%, #ffffff 80%); border: 1px solid #d8ecea;
+}
+.ctHeroLabel.ctHeroLabel { color: #0b6767; font-weight: 700; font-size: 12.5px !important; }
+.ctHeroValue.ctHeroValue { color: var(--rev-ink); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; font-size: 34px !important; }
+.ctHeroNote.ctHeroNote { color: var(--rev-muted); font-size: 12.5px !important; }
+.ctStats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.ctStats li { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--rev-line); border-radius: 10px; background: #fff; }
+.ctStatLabel.ctStatLabel { color: var(--rev-muted); font-weight: 600; font-size: 12px !important; }
+.ctStatValue.ctStatValue { color: var(--rev-ink); font-weight: 800; font-variant-numeric: tabular-nums; font-size: 18px !important; }
+
+/* Range strip: fastest → slowest, median + average marked */
+.ctRange { padding: 26px 8px 0; }
+.ctTrack { position: relative; height: 10px; margin: 0 4px; }
+.ctSpan { position: absolute; inset: 0; border-radius: 999px; background: linear-gradient(90deg, #cfe9e6 0%, #0b7b7b 100%); }
+.ctMark { position: absolute; top: 50%; width: 14px; height: 14px; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 3px #fff; }
+.ctMarkAvg { background: #12302f; }
+.ctMarkMedian { background: #fff; border: 3px solid #0b7b7b; }
+.ctMarkLabel.ctMarkLabel {
+  position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  color: var(--rev-ink-2); font-weight: 700; font-variant-numeric: tabular-nums; font-size: 11.5px !important;
+}
+.ctAbove { bottom: calc(100% + 6px); }
+.ctBelow { top: calc(100% + 6px); }
+.ctEnds { display: flex; justify-content: space-between; margin-top: 30px; color: var(--rev-muted); font-variant-numeric: tabular-nums; }
+.ctEnds span { font-size: 12px !important; }
+
+@media (max-width: 760px) {
+  .ctBody { grid-template-columns: minmax(0, 1fr); }
+  .ctHero { grid-row: auto; }
+}
+@media (max-width: 420px) { .ctStats { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Task 5: listing filters use 10px text (all accounts) ── */
+.filters.filters.filters :is(label, select, option, input, textarea, button, span:not(:has(*))) {
+  font-size: 10px !important;
+}
+
+/* ── Filter row text = table header size (12px) — super admin only; other accounts keep 10px ── */
+[data-superadmin] .filters.filters.filters :is(label, select, option, input, textarea, button, span:not(:has(*))),
+[data-superadmin] .filters.filters.filters :is(input, textarea)::placeholder {
+  font-size: 12px !important;
+}

@@ -1,0 +1,371 @@
+/* ─── Page header ─────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pageTitle  { font-size: 22px; font-weight: 700; color: #111827; margin: 0 0 1px; }
+.pageSubtitle { font-size: 13px; color: #6b7280; margin: 0; }
+
+/* ─── Add button ──────────────────────────────────────────── */
+.btnAdd {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btnAdd:hover { background: #6d28d9; }
+
+/* ─── Back button ─────────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.backBtn:hover { background: #f9fafb; }
+.backBtn svg { width: 14px; height: 14px; }
+
+/* ─── Main card ───────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ─── Filter bar ────────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+.searchWrap svg { width: 16px; height: 16px; color: #9ca3af; flex-shrink: 0; }
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: #374151;
+  background: transparent;
+}
+.orgFilterSelect {
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: #374151;
+  background: #f9fafb;
+  min-width: 190px;
+  cursor: pointer;
+  outline: none;
+}
+.orgFilterSelect:focus { border-color: #7c3aed; }
+
+/* ─── Table ───────────────────────────────────────────────── */
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table th {
+  text-align: left;
+  padding: 11px 16px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #6b7280;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  vertical-align: middle;
+}
+.table tbody tr:nth-child(odd)  { background: #ffffff; }
+.table tbody tr:nth-child(even) { background: #f7f8fa; }
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: #e8edf2; }
+.emptyRow td { text-align: center; color: #9ca3af; padding: 40px; }
+
+/* ─── Footer / pagination ─────────────────────────────────── */
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: none;
+  font-size: 13px;
+  color: #6b7280;
+}
+.footerInfo { font-size: 13px; color: #6b7280; }
+.pagination { display: flex; align-items: center; gap: 4px; }
+.pgBtn {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  background: #fff;
+  color: #374151;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pgBtn:disabled { opacity: .4; cursor: default; }
+.pgBtn:hover:not(:disabled) { background: #f3f4f6; }
+.pgBtnActive { background: #0b7b7b !important; color: #fff !important; border-color: #0b7b7b !important; }
+
+/* ─── Badges ──────────────────────────────────────────────── */
+.badgeActive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 600;
+  background: #dcfce7; color: #16a34a;
+}
+.badgeInactive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 600;
+  background: #fee2e2; color: #dc2626;
+}
+
+/* ─── Action buttons ──────────────────────────────────────── */
+.actions { display: flex; align-items: center; gap: 5px; }.btnEdit {
+  width: 28px; height: 28px; border-radius: 5px;
+  border: none; background: #d97706; color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.btnEdit:hover { background: #b45309; }
+.btnEdit svg { width: 13px; height: 13px; }.btnRemove {
+  width: 28px; height: 28px; border-radius: 5px;
+  border: none; background: #dc2626; color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.btnRemove:hover { background: #b91c1c; }
+.btnRemove svg { width: 13px; height: 13px; }
+
+/* ─── Form card ───────────────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 800px;
+}
+.formGroup { margin-bottom: 22px; }
+.formGroup label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+.formGroup select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+.formGroup select:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+.errorMsg { font-size: 12px; color: #dc2626; margin-top: 4px; }
+
+/* ─── Section headings ────────────────────────────────────── */
+.sectionHeading { font-size: 13.5px; font-weight: 700; color: #374151; margin: 0 0 6px; }
+.sectionHint    { font-size: 12px; color: #9ca3af; margin: 0 0 10px; }
+
+/* ─── User list box (checkboxes & assigned) ───────────────── */
+.userListBox {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+.userListItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 13px;
+  cursor: pointer;
+}
+.userListItem:last-child { border-bottom: none; }
+.userListItem:hover { background: #f9fafb; }
+.userListItem.assigned { background: #f0fdf4; cursor: default; }
+.userInfo { flex: 1; }
+.userName  { font-weight: 500; color: #111827; line-height: 1.3; }
+.userEmail { font-size: 12px; color: #6b7280; }
+.assignedTag {
+  font-size: 11px; font-weight: 600; color: #16a34a;
+  background: #dcfce7; padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
+}
+
+/* ─── Select all row ──────────────────────────────────────── */
+.selectAllRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ─── Search field inside form ────────────────────────────── */
+.userSearch {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+.userSearch:focus { border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,0.1); }
+
+/* ─── Save button ─────────────────────────────────────────── */
+.btnSave {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #7c3aed; color: #fff; border: none; border-radius: 7px;
+  padding: 10px 24px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s;
+}
+.btnSave:hover:not(:disabled) { background: #6d28d9; }
+.btnSave:disabled { opacity: .6; cursor: default; }
+
+/* ─── Empty hint ──────────────────────────────────────────── */
+.emptyHint { font-size: 13px; color: #9ca3af; padding: 24px; text-align: center; }
+
+/* ─── View button ───────────────────────────────────────── */
+.btnView {
+  width: 28px; height: 28px;
+  border-radius: 5px; border: none;
+  background: #0b7b7b; color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.btnView:hover { background: #096060; }
+.btnView svg { width: 13px; height: 13px; }
+
+/* ─── View page ─────────────────────────────────────────── */
+.viewCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.viewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+.viewRow { display: flex; flex-direction: column; gap: 4px; }
+.viewLabel { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.04em; }
+.viewValue { font-size: 14px; color: #111827; }
+.viewValueMuted { font-size: 14px; color: #9ca3af; }
+.viewFull { grid-column: 1 / -1; }
+.viewPre {
+  font-size: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  color: #374151;
+  line-height: 1.6;
+  font-family: monospace;
+  margin-top: 4px;
+}
+.btnEditView {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d97706;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btnEditView:hover { background: #b45309; }
+.btnEditView svg { width: 14px; height: 14px; }
+.checkTh { width: 38px; text-align: center; padding: 0 4px; }
+.checkTd { width: 38px; text-align: center; padding: 0 4px; }
+.footerLeft { display: flex; align-items: center; gap: 10px; }
+.btnBulkDelete {
+  display: inline-flex;
+  align-items: center;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnBulkDelete:hover { background: #b91c1c; }
+
+/* ── Filter row text = table header size (12px), super admin listings ── */
+.orgFilterSelect.orgFilterSelect.orgFilterSelect,
+.filterBar.filterBar.filterBar :is(label, select, option, input, textarea, button, span:not(:has(*))),
+.orgFilterSelect.orgFilterSelect.orgFilterSelect::placeholder,
+.filterBar.filterBar.filterBar :is(input, textarea)::placeholder {
+  font-size: 12px !important;
+}

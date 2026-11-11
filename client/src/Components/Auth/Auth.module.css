@@ -1,0 +1,716 @@
+/* ─── Brand Variables ───────────────────────────────────────── */
+:root {
+  --brand-teal: #0b7b7b;
+  --brand-teal-dark: #086565;
+  --brand-teal-light: #e6f4f4;
+  --error-red: #d32f2f;
+  --error-bg: #ffeaea;
+  --error-border: #f5c6c6;
+  --text-primary: #1a1a1a;
+  --text-muted: #6b7280;
+  --border-color: #d1d5db;
+  --input-focus: #0b7b7b;
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.authWrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ─── Left Slider Panel ─────────────────────────────────────── */
+.sliderPanel {
+  flex: 0 0 57%;
+  position: relative;
+  overflow: hidden;
+  background: #0f766e;
+  display: flex;
+  flex-direction: column;
+}
+
+.sliderBg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.2) 100%),
+    url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Image area — photo shows above/around the large slide image.
+   z-index sits above .captionBand so the image can visually dip
+   into the band below without being clipped by it. */
+.imageWrap {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 0;
+  padding: 24px 24px 0;
+}
+
+/* Solid caption band anchored to the bottom.
+   Tall enough to cover ~1/3 of the page (top edge ~ Sign In button level),
+   with the laptop overlapping its upper portion and the caption text in the
+   lower-middle — matching the reference. */
+.captionBand {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  min-height: 33vh;
+  background: #0f766e;
+  padding: 48px 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+/* Animated slide unit — image fades/slides in on every transition */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slideUnit {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeSlide 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ─── Slide image ──────────────────────────────────────────── */
+/* Sized by HEIGHT (not width) so every slide's laptop renders at the same
+   scale and vertical position — the source PNGs all place the laptop at the
+   same rows but slide 3 has a wider canvas, so a width constraint would make
+   it overlap differently. Extra width on the wide slide is transparent padding
+   that .imageWrap clips. The negative margin overlaps the base into the band. */
+.slideImage {
+  height: 76vh;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  margin-bottom: -270px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+}
+
+/* Caption text — swaps on every slide transition */
+.captionAnim {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlide 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.sliderCaption {
+  text-align: center;
+  color: #fff;
+}
+
+.sliderCaption h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.sliderCaption p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.sliderDots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+}
+
+.dot:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.dotActive {
+  background: #fff;
+  border-color: #fff;
+  width: 10px;
+  border-radius: 50%;
+}
+
+/* ─── Right Form Panel ──────────────────────────────────────── */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  background: #fff;
+}
+
+.formBox {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── Brand Logo ────────────────────────────────────────────── */
+.logoImg {
+  height: 80px;
+  width: 266px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 4px;
+  user-select: none;
+}
+
+.tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  /* margin-bottom: 24px; */
+  margin-top: -28px;
+}
+
+/* ─── Form Headings ─────────────────────────────────────────── */
+.formTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  align-self: flex-start;
+  margin-bottom: 2px;
+}
+
+.formSubtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  align-self: flex-start;
+  margin-bottom: 16px;
+}
+
+/* ─── Input Fields ──────────────────────────────────────────── */
+.fieldGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--input-focus);
+}
+
+.input::placeholder {
+  color: #adb5bd;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.inputError {
+  border-color: var(--error-red) !important;
+  background: var(--error-bg);
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  font-size: 16px;
+}
+
+.inputWithEye {
+  padding-right: 42px;
+}
+
+/* ─── Error Banner ──────────────────────────────────────────── */
+.errorBanner {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 8px;
+  color: var(--error-red);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* ─── Info Box ──────────────────────────────────────────────── */
+.infoBox {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--brand-teal-light);
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #0b4f4f;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.infoBox span {
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.infoBox span:last-child {
+  flex-shrink: 1;
+  flex: 1;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btnPrimary {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(180deg, #036067 0%, #23897d 100%);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btnError {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+}
+
+.btnError:hover {
+  background: linear-gradient(180deg, #036067 0%, #23897d 100%);
+}
+
+/* ─── Links ─────────────────────────────────────────────────── */
+.linkRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  margin-bottom: 10px;
+}
+
+.link {
+  font-size: 13px;
+  color: var(--brand-teal);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.backLink {
+  font-size: 13px;
+  color: var(--brand-teal);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+/* ─── Google Link ───────────────────────────────────────────── */
+.googleLink {
+  font-size: 13px;
+  color: var(--brand-teal);
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 14px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.googleLink:hover {
+  text-decoration: underline;
+}
+
+/* ─── Strength Indicator ────────────────────────────────────── */
+.strengthRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
+
+.strengthLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-teal);
+}
+
+/* ─── OTP Inputs ────────────────────────────────────────────── */
+.otpHeader {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.otpSubtext {
+  font-size: 13px;
+  color: var(--text-muted);
+  align-self: flex-start;
+  margin-bottom: 14px;
+}
+
+.otpBoxRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.otpBox {
+  width: 48px;
+  height: 52px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.otpBox:focus {
+  border-color: var(--brand-teal);
+}
+
+.otpBoxFilled {
+  border-color: var(--brand-teal);
+  background: var(--brand-teal-light);
+}
+
+.otpResendRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.resendTimer {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ─── Success Circle ────────────────────────────────────────── */
+.successCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--brand-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.checkIcon {
+  color: var(--brand-teal);
+  font-size: 30px;
+  font-weight: 300;
+}
+
+/* ─── Welcome Info Card ──────────────────────────────────────── */
+.welcomeCard {
+  width: 100%;
+  background: var(--brand-teal-light);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #0b4f4f;
+}
+
+.welcomeCard strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+/* Below 768px the two columns stack: the slider panel becomes a
+   compact banner on top (kept visible, not hidden) and the form
+   panel flows below it. The page scrolls instead of forcing both
+   sections into 100vh. */
+@media (max-width: 768px) {
+  .authWrapper {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .sliderPanel {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .imageWrap {
+    padding: 18px 18px 0;
+  }
+
+  .slideImage {
+    height: 32vh;
+    margin-bottom: -70px;
+  }
+
+  .captionBand {
+    min-height: 0;
+    padding: 22px 20px 22px;
+    gap: 10px;
+  }
+
+  .sliderCaption h2 {
+    font-size: 18px;
+  }
+
+  .sliderCaption p {
+    font-size: 12px;
+    max-width: 320px;
+  }
+
+  .formPanel {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderPanel {
+    min-height: 250px;
+  }
+
+  .imageWrap {
+    padding: 14px 14px 0;
+  }
+
+  .slideImage {
+    height: 26vh;
+    margin-bottom: -48px;
+  }
+
+  .captionBand {
+    padding: 16px 16px 18px;
+    gap: 8px;
+  }
+
+  .sliderCaption h2 {
+    font-size: 16px;
+  }
+
+  .sliderCaption p {
+    font-size: 11.5px;
+    max-width: 280px;
+  }
+
+  .sliderDots {
+    gap: 6px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .formPanel {
+    padding: 24px 16px;
+  }
+
+  .formBox {
+    gap: 6px;
+    padding: 26px 18px;
+    border-radius: 14px;
+  }
+
+  .logoImg {
+    height: 80px;
+  }
+
+  .formTitle {
+    font-size: 19px;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .otpBoxRow {
+    gap: 6px;
+  }
+
+  .otpBox {
+    width: 42px;
+    height: 46px;
+    font-size: 18px;
+  }
+
+  .otpResendRow {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .successCircle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .infoBox,
+  .welcomeCard,
+  .errorBanner {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sliderPanel {
+    min-height: 220px;
+  }
+
+  .slideImage {
+    height: 22vh;
+    margin-bottom: -36px;
+  }
+
+  .captionBand {
+    padding: 14px 12px 16px;
+  }
+
+  .sliderCaption h2 {
+    font-size: 15px;
+  }
+
+  .sliderCaption p {
+    font-size: 11px;
+    max-width: 250px;
+  }
+}
+
+
+/* New + Confirm Password side by side (stacked on small phones) */
+.passwordPair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.passwordPair .fieldGroup { min-width: 0; }
+
+@media (max-width: 480px) {
+  .passwordPair { grid-template-columns: 1fr; gap: 0; }
+}

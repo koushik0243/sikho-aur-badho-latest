@@ -1,0 +1,595 @@
+
+
+.loadingText { padding: 40px; color: #6b7280; font-size: 14px; }
+
+/* ── Back button ─────────────────────────────────────────────── */
+.backBtn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #047279; border-radius: 6px; color: #fff;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; margin-bottom: 16px;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.backBtn:hover { opacity: 0.88; }
+
+.backBtn svg { width: 16px; height: 16px; }
+
+.breadcrumb strong { color: #1a2b2b; font-weight: 600; }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #7a9090;
+}
+
+/* ─── Breadcrumb (add view) ───────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  margin-bottom: 14px;
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1px;
+  font-size: 13px;
+}
+
+.breadcrumbLink {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0b7b7b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.breadcrumbLink:hover { text-decoration: underline; }
+
+.breadcrumbSep { color: #c4c9d4; font-size: 15px; }
+
+.breadcrumbCurr {
+  color: #6b7280;
+  font-weight: 500;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detailCardWide {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #0b7b7b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ─── Detail head ─────────────────────────────────────────────── */
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+/* ── Card header ─────────────────────────────────────────────── */
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  gap: 12px;
+}
+
+.detailHeadLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.detailAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0b7b7b 0%, #0d9488 100%);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+  letter-spacing: -0.5px;
+}
+
+.detailTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badgeInactive {
+  display: inline-flex; align-items: center;
+  padding: 2px 10px; border-radius: 12px;
+  font-size: 11.5px; font-weight: 400;
+  background: transparent; color: #000; white-space: nowrap;
+}
+
+.detailSectionsGrid {
+  padding: 16px 20px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.detailSectionsGrid .sectionBlock:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* ─── Section block ───────────────────────────────────────────── */
+.sectionBlock {
+  border-top: 1px solid #f0f4f4;
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.sectionBlock {
+  border: 1px solid #edf0f3;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  padding: 7px 14px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionRows { display: flex; flex-direction: column; padding: 0 14px; }
+
+.sectionRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.sectionRow:last-child { border-bottom: none; }
+
+.sectionLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.sectionValue { font-size: 13.5px; color: #111827; }
+
+.sectionValueEmph { font-size: 15px; font-weight: 700; color: #111827; }
+
+.detailValueDesc { color: #374151; line-height: 1.55; font-size: 13.5px; }
+
+.curriculum {
+  border-top: 1px solid #edf0f3;
+  margin-top: 0;
+}
+
+.curriculumHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #f8fafa;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.curriculumTitle {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6b7280;
+}
+
+.curriculumMeta {
+  font-size: 12px;
+  color: #9aadad;
+  font-weight: 500;
+}
+
+/* ── Chapter list ────────────────────────────────────────────────── */
+.chapterList {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapterBlock {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.chapterBlock:last-child {
+  border-bottom: none;
+}
+
+/* ── Chapter row (toggle button) ─────────────────────────────────── */
+.chapterRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.chapterRow:hover {
+  background: #f8fafa;
+}
+
+.chapterLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.chapterNum {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: #0b7b7b;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.chapterTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a2b2b;
+  line-height: 1.35;
+}
+
+.chapterTopicCount {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #9aadad;
+  font-weight: 500;
+}
+
+.chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: #9aadad;
+  pointer-events: none;
+}
+
+.chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Chapter description ─────────────────────────────────────────── */
+.chapterDesc {
+  padding: 0 20px 10px 48px;
+  font-size: 12.5px;
+  color: #5a7070;
+  line-height: 1.55;
+}
+
+/* ── Topic list ──────────────────────────────────────────────────── */
+.topicList {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 6px;
+}
+
+/* ── Topic block (header + content) ─────────────────────────────── */
+.topicBlock {
+  border-top: 1px solid #f3f4f6;
+}
+
+.topicBlock:hover > .topicRow {
+  background: #fafcfc;
+}
+
+/* ── Topic header row ────────────────────────────────────────────── */
+.topicRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px 9px 44px;
+  transition: background 0.1s;
+}
+
+.topicNum {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f0f7f7;
+  color: #0b7b7b;
+  font-size: 10.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topicTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: #1a2b2b;
+  font-weight: 500;
+}
+
+.topicRowRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.topicDur {
+  font-size: 11px;
+  color: #9aadad;
+}
+
+.topicTypeBadge {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.previewTag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0b7b7b;
+  background: #e8f5f5;
+  border: 1px solid #c0dedd;
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* ── Topic content area ──────────────────────────────────────────── */
+.topicContent {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 20px 10px 74px;
+  gap: 5px;
+  background: #fafcfc;
+  border-top: 1px solid #f3f4f6;
+}
+
+.contentRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contentLabel {
+  flex-shrink: 0;
+  min-width: 80px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9aadad;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-top: 1px;
+}
+
+.contentValue {
+  font-size: 12.5px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.contentLink {
+  font-size: 12.5px;
+  color: #0b7b7b;
+  text-decoration: underline;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.contentLink:hover {
+  color: #096060;
+}
+
+.contentEmpty {
+  font-size: 12.5px;
+  color: #c4cece;
+  font-style: italic;
+}
+
+.contentLinkZoom {
+  color: #0891b2;
+}
+
+.contentLinkZoom:hover {
+  color: #0e7490;
+}
+
+/* ── Quiz question list ──────────────────────────────────────────── */
+.quizQCount {
+  font-size: 11px;
+  color: #9aadad;
+  margin-bottom: 6px;
+}
+
+.quizQList {
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 3px;
+}
+
+.quizQList::-webkit-scrollbar       { width: 4px; }
+
+.quizQList::-webkit-scrollbar-track { background: #f0f0ff; border-radius: 2px; }
+
+.quizQList::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 2px; }
+
+.quizQItem {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: #f5f3ff;
+  border: 1px solid #e0e7ff;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.quizQNum {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ede9fe;
+  color: #4f46e5;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizQBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quizQText {
+  font-size: 12.5px;
+  color: #1e1b4b;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.quizQMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.quizQDiff {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: #e0e7ff;
+  color: #4f46e5;
+  border: 1px solid #c7d2fe;
+  white-space: nowrap;
+}
+
+.quizQAnswer {
+  font-size: 11.5px;
+  color: #5a6a6a;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ── No topics placeholder ───────────────────────────────────────── */
+.noTopics {
+  padding: 10px 20px 10px 44px;
+  font-size: 12.5px;
+  color: #c4cece;
+}
+
+/* ─── Mobile responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .detailHead {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 700px) {
+  .detailSectionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .backBtn { width: auto; white-space: nowrap; }
+
+  .sectionRow {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sectionLabel {
+    min-width: 0;
+  }
+}

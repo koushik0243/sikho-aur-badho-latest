@@ -1,0 +1,28 @@
+/* Store owner → Credits Usage (page-specific pieces; shared layout is in PageKit).
+   globals.css forces 15px text, so other sizes use doubled selectors + !important. */
+
+.topGrid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.topGrid > section { display: flex; flex-direction: column; }
+
+/* Used vs remaining */
+.usageHead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.usageBig { font-weight: 800; color: #12302f; font-variant-numeric: tabular-nums; }
+.usageBig.usageBig { font-size: 34px !important; }
+.usageOf { color: #6b7d7d; font-weight: 600; }
+.usageOf.usageOf { font-size: 14px !important; }
+.usagePct { font-weight: 800; color: #0b6767; font-variant-numeric: tabular-nums; }
+.usagePct.usagePct { font-size: 18px !important; }
+
+.usageBar { height: 14px; border-radius: 999px; background: #dff3ef; overflow: hidden; }
+.usageUsed { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #047279, #14b8a6); transition: width 0.5s ease; }
+
+.legend { list-style: none; margin: 14px 0 0; padding: 0; display: flex; gap: 22px; flex-wrap: wrap; color: #4d6464; }
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.legend li, .legend li * { font-size: 13.5px !important; }
+.legend strong { color: #12302f; font-variant-numeric: tabular-nums; }
+.dot { width: 10px; height: 10px; border-radius: 3px; }
+.dotUsed { background: #0b7b7b; }
+.dotLeft { background: #dff3ef; border: 1px solid #b9e1db; }
+
+@media (max-width: 960px) { .topGrid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .usageUsed { transition: none; } }

@@ -1,0 +1,289 @@
+/* ─── Back button ─────────────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+}
+.backBtn:hover { background: #f9fafb; }
+.backBtn svg { width: 14px; height: 14px; }
+
+/* ─── Page heading ────────────────────────────────────────────── */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.pageSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 1px 0 0;
+}
+
+/* ─── Card ────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+.cardHeader svg {
+  width: 18px;
+  height: 18px;
+  color: #0b7b7b;
+}
+.cardBody {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Form grid (2-col) ──────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 640px) {
+  .formGrid { grid-template-columns: 1fr; }
+}
+
+/* ─── Form col (stacks children vertically inside a grid cell) ── */
+.formCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Form row (flex, for toggle + conditional dropdown) ─────── */
+.formRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.formRow > .formGroup {
+  flex: 1;
+  min-width: 200px;
+}
+.formGroupAuto {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+}
+
+/* ─── Half-width group (status) ──────────────────────────────── */
+.formGroupHalf {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 240px;
+}
+
+/* ─── Generic form group ─────────────────────────────────────── */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ─── Labels ─────────────────────────────────────────────────── */
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+.required {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+/* ─── Inputs ─────────────────────────────────────────────────── */
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+.input::placeholder { color: #9ca3af; }
+
+.textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 90px;
+  font-family: inherit;
+}
+.textarea:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+.textarea::placeholder { color: #9ca3af; }
+
+.select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.select:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+
+/* ─── Type toggle (pill segmented control) ───────────────────── */
+.typeToggle {
+  display: inline-flex;
+  background: #0b7b7b;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 0;
+}
+.toggleOpt {
+  padding: 7px 22px;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.toggleOpt:hover:not(.toggleActive) { color: #fff; }
+.toggleActive {
+  background: #fff;
+  color: #0b7b7b;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  font-weight: 700;
+}
+
+/* ─── Image upload ───────────────────────────────────────────── */
+.imageUploadArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 28px 20px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.imageUploadArea:hover { border-color: #0b7b7b; background: #f0fafa; }
+.imageFileInput { display: none; }
+.imageUploadIcon { color: #9ca3af; }
+.imageUploadArea:hover .imageUploadIcon { color: #0b7b7b; }
+.imageUploadText {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #374151;
+}
+.imageUploadHint {
+  font-size: 11.5px;
+  color: #9ca3af;
+}
+.imagePreviewWrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.imagePreview {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+.imageRemoveBtn {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #dc2626;
+  cursor: pointer;
+  font-weight: 500;
+}
+.imageRemoveBtn:hover { background: #fef2f2; border-color: #fca5a5; }
+
+/* ─── Error message ──────────────────────────────────────────── */
+.errorMsg {
+  font-size: 11.5px;
+  color: #dc2626;
+}
+
+/* ─── Actions ────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.btnSubmit {
+  background: #0b7b7b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btnSubmit:hover:not(:disabled) { background: #085f5f; }
+.btnSubmit:disabled { opacity: 0.6; cursor: default; }
+.btnCancel {
+  background: #fff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 22px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btnCancel:hover { background: #f3f4f6; }

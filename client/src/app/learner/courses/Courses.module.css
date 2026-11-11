@@ -1,0 +1,523 @@
+
+
+
+.stars {
+  display: flex;
+  gap: 1px;
+}
+
+
+
+.stars svg {
+  width: 13px;
+  height: 13px;
+}
+
+
+
+.starFilled { color: #f59e0b; }
+
+
+.starEmpty  { color: #d1d5db; }
+
+
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+
+
+/* ─── Thumbnail ──────────────────────────────────────────────── */
+.thumbWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #e8edf0;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  flex-shrink: 0;
+}
+
+
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  padding: 12px 0;
+  box-sizing: border-box;
+}
+
+
+
+.thumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0b7b7b22, #0b7b7b44);
+}
+
+
+
+.thumbPlaceholder svg {
+  width: 40px;
+  height: 40px;
+  color: #0b7b7b;
+  opacity: 0.5;
+}
+
+
+
+/* progress overlay at top of thumb */
+.progressOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 0 0;
+}
+
+
+
+.progressTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: rgba(255,255,255,0.4);
+}
+
+
+.progressFill {
+  height: 100%;
+  background: #0b7b7b;
+  border-radius: 0 3px 3px 0;
+  transition: width 0.4s ease;
+}
+
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  right: -5px; top: 50%;
+  transform: translateY(-50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #0b7b7b;
+}
+
+
+.progressLabel {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(11,123,123,0.85);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+
+
+/* ─── Card body ──────────────────────────────────────────────── */
+.cardBody {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+
+.metaLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+
+.cardMenuBtn {
+  background: none;
+  border: none;
+  color: #9aa5b4;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cardMenuBtn:hover { color: #6b7a7a; }
+
+
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #6b7a7a;
+}
+
+
+
+.metaItem svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.ratingLink {
+  font-size: 11px;
+  color: #0b7b7b;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+
+.ratingLink:hover { color: #0a6b6b; }
+
+
+.cardTitle { font-size: 16px; font-weight: 700; color: #1a2b2b; margin: 0; }
+
+
+
+.cardDesc {
+  font-size: 12.5px;
+  color: #5a6a6a;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+
+
+/* ─── Card footer ────────────────────────────────────────────── */
+.cardFooter {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+
+.resumeBtn {
+  padding: 8px 18px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: center;
+}
+
+
+.resumeBtn:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+
+/* ─── Skeleton loaders ───────────────────────────────────────── */
+.skelCard {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e8edf0;
+  overflow: hidden;
+}
+
+
+
+.skelCard {
+  height: 210px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e8f0f0 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+
+.skelThumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e4ecec 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+.skelBody {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.skelLine {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f4f4 25%, #e4ecec 50%, #f0f4f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+
+/* ─── Pagination ─────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 2px 4px;
+  border-top: none;
+  font-size: 12.5px;
+  color: #4a6060;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+
+.paginationInfo { white-space: nowrap; }
+
+
+
+.paginationBtns { display: flex; align-items: center; gap: 4px; }
+
+
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid #e8edf0;
+  background: #fff;
+  color: #1a2b2b;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+
+.pageBtn:hover:not(:disabled) { background: #f0f7f7; color: #0b7b7b; }
+
+
+.pageBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+
+
+.pageBtnActive {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border-color: #047279;
+  font-weight: 700;
+}
+
+
+.pageBtnActive:hover:not(:disabled) { background: #0a6b6b; color: #fff; }
+
+.page { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+
+
+/* ─── Header row ─────────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+}
+
+
+
+.courseCount {
+  font-size: 13px;
+  color: #6b7a7a;
+  font-weight: 400;
+}
+
+
+
+/* ─── Grid ───────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+
+
+/* ─── Empty state ────────────────────────────────────────────── */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #9aa5b4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.empty svg  { width: 32px; height: 32px; color: #c0d8d8; }
+
+
+
+/* ─── Empty / skeleton states ──────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+  gap: 8px;
+  color: #9aadad;
+  font-size: 13px;
+}
+
+
+.empty span { display: flex; }
+
+
+.empty p    { margin: 0; }
+
+
+.emptyTitle { font-size: 15px; font-weight: 600; color: #4a6060; margin: 0 0 6px; }
+
+
+.emptyDesc  { font-size: 13px; margin: 0; }
+
+
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(4, 1fr); } }
+
+
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(3, 1fr); } }
+
+
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); } }
+
+
+
+@media (max-width: 420px) {
+  .grid { grid-template-columns: 1fr; } }
+
+
+
+@media (max-width: 480px) {
+  .pageTitle { font-size: 18px; }
+}
+
+
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+
+  100% { background-position: -200% 0; } }
+
+
+
+/* ─── Courses panel (same frame as the dashboard's My Courses) ── */
+.panel {
+  background: #fff;
+  border: 1px solid #e8edf0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.panel .grid { gap: 14px; }
+.panel .metaRow { margin: 2px 0 0; min-width: 0; }
+.panel .metaLeft { gap: 8px; min-width: 0; }
+.panel .metaItem { white-space: nowrap; }
+.panel .ratingRow { margin: 2px 0 4px; flex-wrap: wrap; }
+@media (max-width: 640px) { .panel { padding: 14px; } }
+/* globals.css forces 15px on everything — keep the meta lines compact inside the narrow cards */
+.panel .metaItem.metaItem, .panel .metaItem * { font-size: 12px !important; }
+.panel .ratingLink.ratingLink { font-size: 12px !important; }
+.panel .metaLeft { flex-wrap: wrap; row-gap: 2px; }
+.panel .cardMenuBtn { align-self: flex-start; width: 24px; height: 20px; }

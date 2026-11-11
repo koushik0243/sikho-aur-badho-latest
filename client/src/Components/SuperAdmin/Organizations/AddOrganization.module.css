@@ -1,0 +1,612 @@
+/* ================================================================
+   SuperAdmin — global shared stylesheet.
+   Every SuperAdmin component imports this ONE file. Edit a class
+   here and the change applies everywhere that class is used.
+   ================================================================ */
+
+
+.backBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: 1px solid #047279;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 16px;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+
+.backBtn:hover { opacity: 0.88; }
+
+
+.backBtn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+
+
+/* Page heading */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+
+
+/* Page header */
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1px;
+}
+
+
+.pageSubtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 2px 0 0;
+}
+
+
+
+/* Section card (collapsible) */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+
+
+/* Sections */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+.sectionHeader:hover { background: #f3f4f6; }
+
+
+.sectionHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+.sectionHeaderLeft svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+
+.sectionBody { padding: 20px; }
+
+
+
+/* Form row (flex, for toggle + conditional dropdown) */
+.formRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+
+.formRow > .formGroup {
+  flex: 1;
+  min-width: 200px;
+}
+
+
+
+/* Form layout */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+
+/* ── Form elements ─────────────────────────────────────────────── */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+
+
+/* Two-column left stack helper */
+.formGroupStack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+
+/* Generic form group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Form elements */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.formGroup select,
+.formGroup input[type="text"] {
+  height: 38px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+
+.formGroup select:focus,
+.formGroup input[type="text"]:focus {
+  border-color: #7c3aed;
+}
+
+
+.formGroup select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #111827;
+  background-color: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+
+.formGroup select:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+
+
+
+/* Labels */
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.required { color: #dc2626; margin-left: 2px; }
+
+
+
+/* Inputs */
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.input:focus { border-color: #0b7b7b; box-shadow: 0 0 0 2px rgba(11,123,123,.15); }
+
+
+.input::placeholder { color: #9ca3af; }
+
+
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.input, .select, .textarea {
+  border: 1px solid #d1d5db; border-radius: 7px; padding: 8px 12px;
+  font-size: 13px; color: #111827; outline: none; transition: border-color 0.15s;
+  background: #fff; width: 100%; box-sizing: border-box;
+}
+
+
+.input:focus, .select:focus, .textarea:focus { border-color: #7c3aed; }
+
+
+.limitRow .input { flex: 1; }
+
+
+
+.input,
+.select,
+.textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+
+.input,
+.select { height: 38px; }
+
+
+.input:focus,
+.select:focus,
+.textarea:focus { border-color: #7c3aed; }
+
+
+.input,
+.select { height: 38px; }
+
+
+.input:focus, .select:focus { border-color: #7c3aed; box-shadow: 0 0 0 2px rgba(124,58,237,.12); }
+
+
+
+.input,
+.select,
+.textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #374151 !important;
+  caret-color: #374151;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+/* Error message */
+.errorMsg { font-size: 12px; color: #dc2626; margin: 0; }
+
+
+.errorMsg {
+  font-size: 11.5px;
+  color: #dc2626;
+}
+
+
+
+/* Error message */
+.errorMsg { font-size: 12px; color: #dc2626; margin: 0; }
+
+
+.imagePreviewWrap { display: flex; align-items: flex-start; gap: 14px; }
+
+
+.imagePreview {
+  width: 100px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+
+.imageRemoveBtn {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.imageRemoveBtn:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); border-color: #fca5a5; }
+
+
+
+/* Image upload */
+.imageUploadArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  background: #f9fafb;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.imageUploadArea:hover { border-color: #0b7b7b; background: #f0fafa; }
+
+
+.imageUploadArea:hover .imageUploadIcon { color: #0b7b7b; }
+
+
+.imageFileInput { display: none; }
+
+
+.imageUploadIcon { color: #9ca3af; }
+
+
+.imageUploadText { font-size: 13px; font-weight: 600; color: #374151; }
+
+
+.imageUploadHint { font-size: 11.5px; color: #9ca3af; }
+
+
+
+/* Courses section */
+.coursesBadge {
+  display: inline-flex;
+  align-items: center;
+  background: #ede9fe;
+  color: #6d28d9;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+
+.coursesEmpty {
+  font-size: 13px;
+  color: #9ca3af;
+  padding: 12px 0;
+}
+
+
+.coursesContainer {
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+
+
+.courseSelectAllRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+
+
+.courseSelectAllRow:hover { background: #f3f4f6; }
+
+
+
+.coursesList {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.courseRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+
+.courseRow:hover { background: #f9fafb; }
+
+
+.courseTitle {
+  font-size: 13.5px;
+  color: #111827;
+  flex: 1;
+}
+
+
+
+/* Form actions */
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 6px;
+  grid-column: 1 / -1;
+}
+
+
+
+/* Form actions */
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 6px;
+  grid-column: 1 / -1;
+}
+
+
+.btnCancel {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+
+.btnCancel:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); }
+
+
+.btnSubmit {
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 26px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+
+.btnSubmit:hover:not(:disabled) { opacity: 0.88; }
+
+
+.btnSubmit:disabled { opacity: 0.6; cursor: default; }
+
+
+@media (max-width: 640px) { .formRow { grid-template-columns: 1fr; } }
+
+
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 18px;
+  }
+
+  .sectionHeader {
+    padding: 12px 14px;
+  }
+
+  .sectionBody {
+    padding: 16px 14px;
+  }
+
+  .formActions {
+    flex-wrap: wrap;
+  }
+
+  .imagePreviewWrap {
+    flex-wrap: wrap;
+  }
+
+  .backBtn {
+    width: auto;
+    white-space: nowrap;
+}
+}

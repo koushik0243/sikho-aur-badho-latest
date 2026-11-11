@@ -1,0 +1,178 @@
+/* Assign User Course — learner rows with course checkboxes.
+   Page chrome (back button, form card, buttons) comes from the shared
+   SuperAdmin stylesheet; the checkbox list matches the Edit page's look. */
+
+.rowsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 4px 0 24px;
+}
+
+/* One learner + their courses */
+.learnerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.learnerHead {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.learnerField {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.learnerField label,
+.coursesLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.learnerSelect {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.learnerSelect:focus {
+  border-color: #047279;
+  box-shadow: 0 0 0 3px rgba(4, 114, 121, 0.12);
+}
+.learnerSelect:disabled { background: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
+
+.inputError,
+.inputError:focus { border-color: #dc2626; }
+
+.coursesLabel { margin-top: 4px; }
+.coursesCount { font-weight: 400; color: #6b7280; margin-left: 6px; }
+
+.coursesHint {
+  margin: 0;
+  padding: 14px;
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  border: 1px dashed #e5e7eb;
+  border-radius: 8px;
+}
+
+/* ── Course checkboxes: two columns ───────────────────────────── */
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.courseOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background 0.12s;
+  user-select: none;
+}
+/* divider between the two columns */
+.courseOption:nth-child(odd) { border-right: 1px solid #f3f4f6; }
+.courseOption:hover { background: #f5f3ff; }
+
+.courseOption input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #7c3aed;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.courseOptionLocked { opacity: 0.75; cursor: default; }
+.courseOptionLocked:hover { background: transparent; }
+.courseOptionLocked input[type="checkbox"] { cursor: not-allowed; }
+
+.courseOptionTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: #374151;
+  overflow-wrap: anywhere;
+}
+
+.assignedTag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #047279;
+  background: #e6f4f4;
+  border-radius: 999px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+
+/* ── Row actions ───────────────────────────────────────────────── */
+.removeRowBtn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background: #fff;
+  color: #dc2626;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.removeRowBtn svg { width: 16px; height: 16px; }
+.removeRowBtn:hover:not(:disabled) { background: #fef2f2; }
+.removeRowBtn:disabled { border-color: #e5e7eb; color: #d1d5db; cursor: not-allowed; }
+
+.addMoreBtn {
+  align-self: flex-start;
+  border: 1px dashed #047279;
+  border-radius: 6px;
+  background: #fff;
+  color: #047279;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.addMoreBtn:hover:not(:disabled) { background: #f0f9f9; }
+.addMoreBtn:disabled { border-color: #d1d5db; color: #9ca3af; cursor: not-allowed; }
+
+.rowsHint {
+  margin: -8px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Phones: one column of courses. */
+@media (max-width: 640px) {
+  .learnerRow { padding: 12px; }
+  .courseGrid { grid-template-columns: minmax(0, 1fr); }
+  .courseOption:nth-child(odd) { border-right: none; }
+}

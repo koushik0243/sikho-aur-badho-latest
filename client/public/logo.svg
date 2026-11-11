@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 72" role="img" aria-label="sikhoaurbadho">
+  <!-- Open book icon integrated in the design -->
+  <g transform="translate(84, 14)">
+    <!-- Left page -->
+    <path d="M0 0 Q6-3 12 0 L12 32 Q6 29 0 32 Z" fill="#0b7b7b" opacity="0.18"/>
+    <!-- Right page -->
+    <path d="M12 0 Q18-3 24 0 L24 32 Q18 29 12 32 Z" fill="#0b7b7b" opacity="0.28"/>
+    <!-- Page lines left -->
+    <line x1="2" y1="8"  x2="10" y2="6"  stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <line x1="2" y1="14" x2="10" y2="12" stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <line x1="2" y1="20" x2="10" y2="18" stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <!-- Page lines right -->
+    <line x1="14" y1="6"  x2="22" y2="8"  stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <line x1="14" y1="12" x2="22" y2="14" stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <line x1="14" y1="18" x2="22" y2="20" stroke="#0b7b7b" stroke-width="1.5" opacity="0.5"/>
+    <!-- Spine -->
+    <line x1="12" y1="0" x2="12" y2="32" stroke="#0b7b7b" stroke-width="1.8"/>
+  </g>
+
+  <!-- Main logotype text -->
+  <text
+    font-family="'Trebuchet MS', 'Segoe UI', Arial, Helvetica, sans-serif"
+    font-size="46"
+    font-weight="900"
+    letter-spacing="-1.5">
+
+    <!-- "si" -->
+    <tspan x="4" y="52" fill="#0a5454">si</tspan>
+
+    <!-- "k" — dark teal, overlaps with the book icon visually -->
+    <tspan fill="#0a5454">k</tspan>
+
+    <!-- "ho" -->
+    <tspan fill="#0a5454">ho</tspan>
+
+    <!-- "aur" — slightly lighter teal -->
+    <tspan fill="#0b8f8f">aur</tspan>
+
+    <!-- "b" -->
+    <tspan fill="#0a5454">b</tspan>
+
+    <!-- "adh" — teal with slight gradient feel via fill -->
+    <tspan fill="#0b8080">adh</tspan>
+
+    <!-- "o" — with arrow accent -->
+    <tspan fill="#0a5454">o</tspan>
+  </text>
+
+  <!-- Upward arrow accent on the last letter -->
+  <g transform="translate(501, 4)">
+    <!-- Arrow shaft -->
+    <line x1="8" y1="28" x2="8" y2="6" stroke="#0b7b7b" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Arrow head -->
+    <polyline points="2,13 8,4 14,13" fill="none" stroke="#0b7b7b" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <!-- Decorative curved tail -->
+    <path d="M8 28 Q18 30 20 22" fill="none" stroke="#0b7b7b" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

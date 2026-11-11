@@ -1,0 +1,206 @@
+/* Learner course card — shared by the dashboard and the My Courses page. */
+
+/* ─── Course list header: title, summary, filter chips ─────────────────────────────────── */
+.coursesHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+}
+.coursesSub { margin: 3px 0 0; font-size: 12.5px; color: #6b7a7a; }
+
+.courseTabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.courseTab {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d7e4e4;
+  background: #fff;
+  color: #3d5151;
+  font-size: 12.5px; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.courseTab:hover { border-color: #0b7b7b; color: #0b7b7b; }
+.courseTab[aria-pressed="true"] { background: #0b7b7b; border-color: #0b7b7b; color: #fff; }
+.courseTab:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+.courseTabCount {
+  min-width: 20px; padding: 0 6px; border-radius: 999px;
+  background: rgba(11,123,123,0.10); color: inherit; font-size: 11.5px; line-height: 18px; text-align: center;
+}
+.courseTab[aria-pressed="true"] .courseTabCount { background: rgba(255,255,255,0.22); }
+
+/* ─── Course card ────────────────────────────────────────────── */
+.courseCard {
+  position: relative;
+  border: 1px solid #e3ecec;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(15, 60, 60, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.courseCard:hover {
+  transform: translateY(-3px);
+  border-color: #b9dcdc;
+  box-shadow: 0 10px 24px rgba(11, 123, 123, 0.14);
+}
+.courseCard:focus-within { border-color: #0b7b7b; }
+
+.courseThumb {
+  container-type: inline-size;
+  position: relative;
+  height: 138px;
+  background: #e8f5f5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.courseInitials {
+  font-size: 40px; font-weight: 800; letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  user-select: none;
+}
+
+.stageChip, .certChip {
+  position: absolute;
+  top: 10px;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 700;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+.stageChip { left: 10px; }
+.certChip  { right: 10px; background: rgba(255,255,255,0.95); color: #b45309; }
+/* Narrow cards (6 in a row): the certificate chip shrinks to its icon so it never runs into the stage chip. */
+@container (max-width: 250px) {
+  .certText { display: none; }
+  .certChip { padding: 4px; }
+}
+.stageChip svg, .certChip svg { width: 12px; height: 12px; }
+.chip_completed   { background: rgba(240,253,244,0.96); color: #15803d; }
+.chip_in_progress { background: rgba(240,253,250,0.96); color: #0f766e; }
+.chip_not_started { background: rgba(255,255,255,0.95); color: #4b5563; }
+
+.courseBody {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.courseCategory {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #0b7b7b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.courseTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2b2b;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.courseDesc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.45;
+}
+
+.courseProgress { margin-top: auto; padding-top: 10px; }
+.courseProgressRow {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12px; color: #6b7a7a; margin-bottom: 6px;
+}
+.courseProgressRow strong { font-size: 13px; color: #1a2b2b; font-variant-numeric: tabular-nums; }
+.courseBar {
+  height: 7px; border-radius: 999px; background: #e6f0f0; overflow: hidden;
+}
+.courseBar span {
+  display: block; height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, #0b7b7b 0%, #14b8a6 100%);
+  transition: width 0.5s ease;
+}
+.stage_completed .courseBar span { background: linear-gradient(90deg, #15803d 0%, #22c55e 100%); }
+.courseNext {
+  margin: 7px 0 0; font-size: 11.5px; color: #3d5151;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.courseBtns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.btnResume {
+  flex: 1;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(180deg, #047279 0%, #299c8f 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.btnResume:hover { background: linear-gradient(180deg, #036067 0%, #23897d 100%); box-shadow: 0 4px 12px rgba(4,114,121,0.25); }
+.btnResume:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .courseCard, .courseBar span { transition: none; }
+  .courseCard:hover { transform: none; }
+}
+
+/* globals.css forces * { font-size: 15px !important } — doubled classes + !important restore the card sizes. */
+.courseInitials.courseInitials { line-height: 1.1; max-width: 88%; text-align: center; overflow-wrap: anywhere; }
+.courseInitials.init_l  { font-size: clamp(26px, 17cqw, 46px) !important; }
+.courseInitials.init_m  { font-size: clamp(22px, 13cqw, 38px) !important; }
+.courseInitials.init_s  { font-size: clamp(18px, 10cqw, 30px) !important; }
+.courseInitials.init_xs { font-size: clamp(14px, 7.5cqw, 22px) !important; }
+.stageChip.stageChip, .certChip.certChip, .stageChip *, .certChip * { font-size: 12px !important; }
+.courseCategory.courseCategory { font-size: 11.5px !important; }
+.courseTitle.courseTitle { font-size: 16px !important; }
+.courseDesc.courseDesc { font-size: 13px !important; }
+.courseProgressRow.courseProgressRow, .courseProgressRow span { font-size: 12.5px !important; }
+.courseProgressRow strong { font-size: 14px !important; }
+.courseNext.courseNext { font-size: 12.5px !important; }
+.coursesSub.coursesSub { font-size: 13px !important; }
+.courseTab.courseTab { font-size: 13px !important; }
+.courseTabCount.courseTabCount { font-size: 12px !important; }
+.listTitle { font-weight: 700; color: #1a2b2b; margin: 0; }
+.listTitle.listTitle { font-size: 16px !important; }
+.listCount { color: #6b7a7a; font-weight: 500; }
+
+/* Course status chips (store owner course lists) */
+.chip_published { background: rgba(240,253,244,0.96); color: #15803d; }
+.chip_draft     { background: rgba(255,251,235,0.96); color: #b45309; }
+.chip_inactive  { background: rgba(255,255,255,0.95); color: #6b7280; }
+.stageChip.chip_published, .stageChip.chip_draft, .stageChip.chip_inactive { text-transform: capitalize; }
+
+/* ── Task 5: listing filters use 10px text (all accounts) — learner My Courses filter tabs ── */
+.courseTab.courseTab.courseTab,
+.courseTab.courseTab.courseTab *,
+.courseTabCount.courseTabCount.courseTabCount {
+  font-size: 10px !important;
+}

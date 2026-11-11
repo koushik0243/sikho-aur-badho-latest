@@ -1,0 +1,551 @@
+/* ═══════════════════════════════════════════════════════════
+   Dashboard — redesigned
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Outer wrapper ────────────────────────────────────────── */
+.dashWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Welcome row ──────────────────────────────────────────── */
+.welcomeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.welcomeTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+}
+
+.welcomeSub {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.createBtn {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+.createBtn:hover { background: #4f46e5; transform: translateY(-1px); }
+
+/* ── KPI row (5 cards) ────────────────────────────────────── */
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.kpiCard {
+  background: #fff;
+  border: 1px solid #f0f0f3;
+  border-radius: 14px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.kpiCard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.kpiIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.kpiIcon svg { width: 20px; height: 20px; }
+
+.kpiText { flex: 1; min-width: 0; }
+
+.kpiLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpiValue {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+}
+
+.kpiTrend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kpiTrendPct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.kpiTrendLbl {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ── Card base ────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #f0f0f3;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.periodTag {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.viewAllLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6366f1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.viewAllLink:hover { text-decoration: underline; }
+
+/* ── Mid row ─────────────────────────────────────────────── */
+.midRow {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ── Chart helpers ────────────────────────────────────────── */
+.chartSkel {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartEmpty {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* ── Top courses ──────────────────────────────────────────── */
+.topList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.topItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topThumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.topInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.topName {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 6px;
+}
+
+.topBarWrap {
+  height: 5px;
+  background: #f3f4f6;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.topBar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.topCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+.topCount span {
+  font-size: 10px;
+  font-weight: 400;
+  color: #9ca3af;
+  display: block;
+}
+
+/* ── Bottom row (3 cols) ─────────────────────────────────── */
+.bottomRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Recent Enrollments ──────────────────────────────────── */
+.enrollList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.enrollItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+.enrollItem:last-child { border-bottom: none; }
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.enrollInfo { flex: 1; min-width: 0; }
+
+.enrollName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.enrollCourse {
+  font-size: 11.5px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.enrollTime {
+  font-size: 11px;
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Recent Orders table ─────────────────────────────────── */
+.orderTbl {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orderRow {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.orderRow:hover td { background: #fafafa; }
+
+.orderRow td {
+  padding: 10px 6px 10px 0;
+  border-bottom: 1px solid #f9fafb;
+  vertical-align: middle;
+  font-size: 12.5px;
+}
+.orderRow:last-child td { border-bottom: none; }
+
+.orderId {
+  color: #6366f1;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.orderCompany {
+  color: #374151;
+  font-weight: 500;
+}
+
+.orderAmt {
+  color: #111827;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ── System Overview ─────────────────────────────────────── */
+.sysRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sysLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sysLegItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sysLegDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.sysLegLabel {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.sysLegVal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+.sysLegVal span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+/* ── View all / View report button ───────────────────────── */
+.viewAllBtn {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  padding: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+.viewAllBtn:hover { background: #f3f4f6; }
+
+/* ── Overview org table ──────────────────────────────────── */
+.tblWrap { overflow-x: auto; }
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tbl th {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  padding: 0 8px 10px 0;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tbl td {
+  padding: 11px 8px 11px 0;
+  border-bottom: 1px solid #f9fafb;
+  font-size: 13px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tbody tr { cursor: pointer; transition: background 0.12s; }
+.tbl tbody tr:hover td { background: #fafafa; }
+
+.modCount {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ── Misc ────────────────────────────────────────────────── */
+.emptyMsg {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+/* ── Skeleton shimmer ────────────────────────────────────── */
+.skel {
+  display: inline-block;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shim 1.4s infinite;
+}
+
+@keyframes shim {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Mid right column (Top Courses + Top Orgs stacked) ───── */
+.midRightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Top list scroll container ────────────────────────────── */
+.topListScroll {
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Chart filter controls ────────────────────────────────── */
+.chartFilters {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.filterSel {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  outline: none;
+}
+.filterSel:focus { border-color: #6366f1; }
+
+/* ── Bottom row card (fixed-height + scroll) ──────────────── */
+.bottomCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+}
+
+.scrollContent {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .kpiRow { grid-template-columns: repeat(3, 1fr); }
+  .midRow { grid-template-columns: 1fr; }
+}
+@media (max-width: 1100px) {
+  .bottomRow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .kpiRow { grid-template-columns: repeat(2, 1fr); }
+  .bottomRow { grid-template-columns: 1fr; }
+  .midRow { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .kpiRow { grid-template-columns: 1fr 1fr; }
+}
