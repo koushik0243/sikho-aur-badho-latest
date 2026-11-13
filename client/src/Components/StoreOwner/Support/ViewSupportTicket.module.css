@@ -645,3 +645,12 @@
 .logDate.logDate { color: #7a8c8c; font-size: 12.5px !important; }
 .logAdmin.logAdmin { color: #12302f; font-weight: 700; font-size: 13.5px !important; }
 .logComment.logComment { margin: 6px 0 0; color: #2b4141; line-height: 1.5; font-size: 14px !important; }
+
+/* ── Popup position (all accounts): opens at the top-middle of the page, not the vertical middle ── */
+.modalOverlay.modalOverlay.modalOverlay {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  place-items: start center !important;
+  padding-top: 30px !important;
+  overflow-y: auto;
+}

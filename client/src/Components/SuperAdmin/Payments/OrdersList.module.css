@@ -819,3 +819,13 @@
 .table thead tr th:not(:has(input[type="checkbox"])) { padding-left: 6px; padding-right: 6px; }
 /* Gateway and status labels have no pill background, so no side padding either. */
 .colGateway.colGateway, .badgeSuccess.badgeSuccess, .badgePending.badgePending, .badgeFailed.badgeFailed { padding-left: 0; padding-right: 0; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeSuccess.badgeSuccess.badgeSuccess:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

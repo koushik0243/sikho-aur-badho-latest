@@ -593,3 +593,9 @@
     min-width: 0;
   }
 }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeInactive.badgeInactive.badgeInactive:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

@@ -241,9 +241,9 @@
 }
 @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterLabel.filterLabel.filterLabel,
 .filterRow.filterRow.filterRow :is(label, select, option, input, textarea, button, span:not(:has(*))),
 .filterGroup.filterGroup.filterGroup :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }

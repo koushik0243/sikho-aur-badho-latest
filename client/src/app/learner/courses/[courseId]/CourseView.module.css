@@ -2658,3 +2658,9 @@
 .vidConfirmDelete:hover:not(:disabled) { filter: brightness(0.92); }
 .vidConfirmCancel:disabled, .vidConfirmDelete:disabled { opacity: 0.6; cursor: not-allowed; }
 .vidConfirmCancel:focus-visible, .vidConfirmDelete:focus-visible { outline: 2px solid #12302f; outline-offset: 2px; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

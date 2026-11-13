@@ -195,7 +195,7 @@ export default function UserManagementPage() {
   const inactivePct    = pctOfTotal(displayStats.inactive);
   const deactivatedPct = pctOfTotal(displayStats.deactivated);
 
-  const STATUS_TONE = { active: 'good', inactive: 'neutral', deactivated: 'bad' };
+  const STATUS_TONE = { active: 'good', inactive: 'bad', deactivated: 'bad' }; // active green, inactive red
 
   return (
     <div className={k.page}>

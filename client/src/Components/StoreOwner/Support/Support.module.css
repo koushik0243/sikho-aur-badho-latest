@@ -1063,3 +1063,12 @@
 /* ── Column alignment: headers line up with their values ── */
 /* Status labels have no pill background, so no side padding: the text lines up with its header. */
 .ticketIdBadge.ticketIdBadge, .statusBadge.statusBadge { padding-left: 0; padding-right: 0; }
+
+/* ── Popup position (all accounts): opens at the top-middle of the page, not the vertical middle ── */
+.modalOverlay.modalOverlay.modalOverlay {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  place-items: start center !important;
+  padding-top: 30px !important;
+  overflow-y: auto;
+}

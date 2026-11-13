@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import Chapter from './chapter.model.js';
 import { deleteLessonsWithVideos, deleteVideoFiles } from '../_helpers/deleteVideoFiles.js';
+import { isCourseDeleted } from '../_helpers/deletedCourse.js';
+
+// A deleted course's chapters are not shown to anyone (_helpers/deletedCourse.js).
+const ofDeletedCourse = (filters = {}) => isCourseDeleted(filters.courseId);
 
 const { ObjectId } = mongoose.Types;
 
@@ -70,6 +74,7 @@ export const updateChapter = async (updateId, data) => {
 
 export const listChapter = async (filters = {}) => {
     try {
+        if (await ofDeletedCourse(filters)) return [];
         const query = buildQuery(filters);
         return await Chapter.find(query).sort({ order: 1, title: 1 }).lean();
     } catch (error) {
@@ -79,6 +84,7 @@ export const listChapter = async (filters = {}) => {
 
 export const listChapterPagination = async (page, limit, filters = {}) => {
     try {
+        if (await ofDeletedCourse(filters)) return [];
         const query = buildQuery(filters);
         return await Chapter.find(query)
             .sort({ order: 1, title: 1 })
@@ -92,6 +98,7 @@ export const listChapterPagination = async (page, limit, filters = {}) => {
 
 export const getChapterCount = async (filters = {}) => {
     try {
+        if (await ofDeletedCourse(filters)) return 0;
         const query = buildQuery(filters);
         return await Chapter.countDocuments(query);
     } catch (error) {

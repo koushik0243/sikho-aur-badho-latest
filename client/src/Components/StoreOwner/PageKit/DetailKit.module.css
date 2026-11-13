@@ -80,3 +80,14 @@
 .badgeNeutral { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-weight: 700; text-transform: capitalize; }
 .badgeNeutral.badgeNeutral { background: #f1f5f5; color: #4d6464; font-size: 12px !important; }
 .badgeNeutral::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeSuccess.badgeSuccess.badgeSuccess:not(#_),
+.badgePaid.badgePaid.badgePaid:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

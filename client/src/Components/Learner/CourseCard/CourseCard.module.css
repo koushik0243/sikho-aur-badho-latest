@@ -198,9 +198,24 @@
 .chip_inactive  { background: rgba(255,255,255,0.95); color: #6b7280; }
 .stageChip.chip_published, .stageChip.chip_draft, .stageChip.chip_inactive { text-transform: capitalize; }
 
-/* ── Task 5: listing filters use 10px text (all accounts) — learner My Courses filter tabs ── */
+/* ── Listing filters: 15px text (all accounts) — learner My Courses filter tabs ── */
 .courseTab.courseTab.courseTab,
 .courseTab.courseTab.courseTab *,
 .courseTabCount.courseTabCount.courseTabCount {
-  font-size: 10px !important;
+  font-size: 15px !important;
+}
+
+/* Course deleted by the super admin: note under the progress bar, button greyed out */
+.deletedNote { margin: 8px 0 0; padding: 8px 10px; border-radius: 8px; background: #fdf2f2; color: #b91c1c; font-size: 13px !important; line-height: 1.4; }
+.btnResume:disabled { background: #e5e7eb !important; color: #6b7280 !important; cursor: not-allowed; box-shadow: none !important; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.chip_published.chip_published.chip_published:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.chip_draft.chip_draft.chip_draft:not(#_),
+.chip_inactive.chip_inactive.chip_inactive:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
 }

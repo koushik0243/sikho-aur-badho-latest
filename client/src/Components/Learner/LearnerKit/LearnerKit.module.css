@@ -54,11 +54,11 @@
 /* Title sits directly above the filter row on Quiz results */
 .filterTitle.filterTitle + .filterRow { margin-top: 14px; }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterLabel.filterLabel.filterLabel,
 .selectorLabel.selectorLabel.selectorLabel,
 .filterRow.filterRow.filterRow :is(label, select, option, input, textarea, button, span:not(:has(*))),
 .select.select.select,
 .select.select.select option {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }

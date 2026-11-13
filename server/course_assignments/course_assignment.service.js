@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import CourseAssignment from './course_assignment.model.js';
+import { assertCourseAvailable } from '../_helpers/deletedCourse.js';
 
 const { ObjectId } = mongoose.Types;
 
@@ -25,6 +26,7 @@ const buildQuery = (filters = {}) => {
 
 export const createCourseAssignment = async (data) => {
     try {
+        await assertCourseAvailable(data.courseId); // a deleted course can't be assigned
         return await new CourseAssignment({
             organizationId: data.organizationId || null,
             userId: data.userId,
@@ -46,7 +48,7 @@ export const editCourseAssignment = async (editId) => {
             .populate('organizationId', '_id name org_name')
             .populate('userId', '_id name email emp_id')
             .populate('topicId', '_id title')
-            .populate('courseId', '_id title')
+            .populate('courseId', '_id title status deletedAt')
             .lean();
     } catch (error) {
         throw error;
@@ -59,7 +61,10 @@ export const updateCourseAssignment = async (updateId, data) => {
         if (data.organizationId !== undefined) updateFields.organizationId = data.organizationId;
         if (data.userId !== undefined) updateFields.userId = data.userId;
         if (data.topicId !== undefined) updateFields.topicId = data.topicId;
-        if (data.courseId !== undefined) updateFields.courseId = data.courseId;
+        if (data.courseId !== undefined) {
+            await assertCourseAvailable(data.courseId);
+            updateFields.courseId = data.courseId;
+        }
         if (data.answers !== undefined) updateFields.answers = data.answers;
         if (data.score !== undefined) updateFields.score = data.score;
         if (data.passed !== undefined) updateFields.passed = data.passed;
@@ -70,7 +75,7 @@ export const updateCourseAssignment = async (updateId, data) => {
                 .populate('organizationId', '_id name org_name')
                 .populate('userId', '_id name email emp_id')
                 .populate('topicId', '_id title')
-                .populate('courseId', '_id title')
+                .populate('courseId', '_id title status deletedAt')
                 .lean();
         }
 
@@ -91,7 +96,7 @@ export const listCourseAssignment = async (filters = {}) => {
             .populate('organizationId', '_id name org_name')
             .populate('userId', '_id name email emp_id')
             .populate('topicId', '_id title')
-            .populate('courseId', '_id title')
+            .populate('courseId', '_id title status deletedAt')
             .sort({ attemptedAt: -1 })
             .lean();
     } catch (error) {
@@ -106,7 +111,7 @@ export const listCourseAssignmentPagination = async (page, limit, filters = {}) 
             .populate('organizationId', '_id name org_name')
             .populate('userId', '_id name email emp_id')
             .populate('topicId', '_id title')
-            .populate('courseId', '_id title')
+            .populate('courseId', '_id title status deletedAt')
             .sort({ attemptedAt: -1 })
             .skip((page - 1) * limit)
             .limit(limit)

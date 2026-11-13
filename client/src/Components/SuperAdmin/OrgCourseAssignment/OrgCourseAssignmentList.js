@@ -9,6 +9,7 @@ import ConfirmModal from '../ConfirmModal';
 import sPage from "./OrgCourseAssignmentList.module.css";
 import { withAdminKit } from '../AdminKit/AdminKit';
 import { EmptyState, PageGap, PlusIcon, ResultCount, SkeletonRows, SortArrow, pageItems } from '../AdminKit/ListParts';
+import useBulkDelete from '../AdminKit/useBulkDelete';
 import { orDash } from '../../../lib/displayValue';
 
 // Page styles + the shared super admin look.
@@ -138,6 +139,20 @@ export default function OrgCourseAssignmentList() {
   const from = totalOrgs === 0 ? 0 : (page - 1) * LIMIT + 1;
   const to   = Math.min(page * LIMIT, totalOrgs);
 
+  // One checkbox per organization on this page → "Delete Selected (N)" removes every course
+  // assignment shown for the ticked organizations.
+  const orgKeyOf = (g, idx) => String(g.orgId ?? `row-${idx}`);
+  const coursesByOrg = new Map(pagedFiltered.map((g, idx) => [orgKeyOf(g, idx), g.courses.map(c => String(c.recordId))]));
+  const bulk = useBulkDelete({
+    visibleIds: [...coursesByOrg.keys()],
+    recordsOf: key => coursesByOrg.get(key) || [],
+    deletePath: id => `organization-course/delete/${id}`,
+    singular: 'organization',
+    plural: 'organizations',
+    confirmMessage: n => `Remove all course assignments of ${n} selected organization${n !== 1 ? 's' : ''}? This cannot be undone.`,
+    onDeleted: fetchRecords,
+  });
+
   function doDelete() {
     const { id } = confirm;
     setConfirm({ show: false, id: null, label: '' });
@@ -158,6 +173,7 @@ export default function OrgCourseAssignmentList() {
         onConfirm={doDelete}
         onCancel={() => setConfirm({ show: false, id: null, label: '' })}
       />
+      <ConfirmModal {...bulk.confirmProps} />
 
       <div className={s.pageHeader} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
         <div>
@@ -198,6 +214,9 @@ export default function OrgCourseAssignmentList() {
           <table className={s.table}>
             <thead>
               <tr>
+                <th className={s.checkTh}>
+                  <input type="checkbox" aria-label="Select all organizations on this page" checked={bulk.allSelected} onChange={bulk.toggleAll} />
+                </th>
                 <th>#</th>
                 <th style={{cursor:'pointer',userSelect:'none',whiteSpace:'nowrap'}} onClick={() => toggleSort('orgName')}>Organization{sortArrow('orgName')}</th>
                 <th>Course</th>
@@ -209,12 +228,13 @@ export default function OrgCourseAssignmentList() {
             </thead>
             <tbody>
               {loading ? (
-                <SkeletonRows columns={7} />
+                <SkeletonRows columns={8} />
               ) : filtered.length === 0 ? (
-                <tr className={s.emptyRow}><td colSpan={7}><EmptyState>No assignments found.</EmptyState></td></tr>
+                <tr className={s.emptyRow}><td colSpan={8}><EmptyState>No assignments found.</EmptyState></td></tr>
               ) : (
                 pagedFiltered.flatMap((g, idx) => {
-                  const orgKey  = String(g.orgId ?? idx);
+                  const orgKey  = orgKeyOf(g, idx);
+                  const orgTicked = bulk.isSelected(orgKey);
                   const hovered = hoveredOrg === orgKey ? s.orgHover : '';
                   const stripe  = idx % 2 !== 0 ? s.stripeAlt : '';
                   rowCounter++;
@@ -223,12 +243,20 @@ export default function OrgCourseAssignmentList() {
                   return g.courses.map((course, ci) => (
                     <tr
                       key={`${orgKey}-${ci}`}
-                      className={[stripe, hovered, ci > 0 ? s.subRow : ''].filter(Boolean).join(' ') || undefined}
+                      className={[stripe, hovered, ci > 0 ? s.subRow : '', orgTicked ? s.rowSelected : ''].filter(Boolean).join(' ') || undefined}
                       onMouseEnter={() => setHoveredOrg(orgKey)}
                       onMouseLeave={() => setHoveredOrg(null)}
                     >
                       {ci === 0 && (
                         <>
+                          <td rowSpan={g.courses.length} className={s.checkTd}>
+                            <input
+                              type="checkbox"
+                              aria-label={`Select ${g.orgName}`}
+                              checked={orgTicked}
+                              onChange={() => bulk.toggle(orgKey)}
+                            />
+                          </td>
                           <td rowSpan={g.courses.length}>{orgSerial}</td>
                           <td rowSpan={g.courses.length}>
                             <div className={s.cellMain}>{orDash(g.orgName)}</div>
@@ -277,7 +305,15 @@ export default function OrgCourseAssignmentList() {
         </div>
 
         <div className={s.pagination}>
-          <span><ResultCount from={from} to={to} total={totalOrgs} singular="organization" plural="organizations" /></span>
+          <div className={s.footerLeft}>
+            {bulk.selected.length > 0 && (
+              <button type="button" data-bulk-action="delete" className={s.btnBulkDelete} onClick={bulk.askToDelete} disabled={bulk.deleting}>
+                <TrashIcon />
+                Delete Selected ({bulk.selected.length})
+              </button>
+            )}
+            <span><ResultCount from={from} to={to} total={totalOrgs} singular="organization" plural="organizations" /></span>
+          </div>
           <div className={s.paginationBtns}>
             <button className={s.pageBtn} disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Previous</button>
             {pageItems(page, totalPages).map(p => typeof p !== 'number' ? <PageGap key={p} /> : (

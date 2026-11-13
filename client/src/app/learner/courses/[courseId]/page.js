@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { selectUser } from '../../../../redux/slices/authSlice';
 import apiServiceHandler, { clearGetCache } from '../../../../service/apiService';
+import { COURSE_DELETED_NOTE, isCourseDeletedError } from '../../../../lib/courseAvailability';
 import { toast } from 'sonner';
 import { API_URL } from '../../../../lib/constant';
 import { useMediaToken, getMediaToken, secureMediaUrl } from '../../../../lib/mediaToken';
@@ -1884,6 +1885,7 @@ export default function CourseDetailPage({ params }) {
   const router   = useRouter();
 
   const [course,       setCourse]       = useState(null);
+  const [courseDeleted, setCourseDeleted] = useState(false); // deleted by the super admin: can't be opened
   const [chapters,     setChapters]     = useState([]);
   const [topics,       setTopics]       = useState([]);
   const [reviewStats,  setReviewStats]  = useState({ avgRating: 0, total: 0 });
@@ -1938,7 +1940,10 @@ export default function CourseDetailPage({ params }) {
     async function load() {
       try {
         const [courseRes, chRes, topRes, statsRes, progRes, quizRes, assignRes, completionRec] = await Promise.all([
-          apiServiceHandler('GET', `course/${courseId}`).catch(() => null),
+          apiServiceHandler('GET', `course/${courseId}`).catch(err => {
+            if (isCourseDeletedError(err) && !cancelled) setCourseDeleted(true);
+            return null;
+          }),
           apiServiceHandler('GET', `chapter/list?courseId=${courseId}`).catch(() => null),
           apiServiceHandler('GET', `topic/list?courseId=${courseId}`).catch(() => null),
           apiServiceHandler('GET', `review/stats?courseId=${courseId}`).catch(() => null),
@@ -2418,7 +2423,7 @@ export default function CourseDetailPage({ params }) {
   if (!course) {
     return (
       <div className={s.errorWrap}>
-        <p>Course not found.</p>
+        <p role={courseDeleted ? 'alert' : undefined}>{courseDeleted ? COURSE_DELETED_NOTE : 'Course not found.'}</p>
         <button className={s.backBtn} onClick={() => router.push('/learner/courses')}>
           {BackArrow} Back to Courses
         </button>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { toast } from 'sonner';
 import apiServiceHandler from '../../../service/apiService';
+import { isCourseDeleted } from '../../../lib/courseAvailability';
 import SuperAdminShell from '../SuperAdminShell';
 import sPage from '../OrgCourseAssignment/EditOrgCourseAssignment.module.css';
 import { withAdminKit } from '../AdminKit/AdminKit';
@@ -55,7 +56,8 @@ export default function EditUserCourseAssignment() {
       // The organization's courses, plus any course the learner still has that
       // was since removed from the organization (so it can be unassigned too).
       const byId = new Map();
-      for (const oc of listOf(ocRes)) byId.set(idOf(oc.courseId), oc.courseId?.title || '—');
+      // A deleted course is never offered; one the learner already has stays listed (to unassign).
+      for (const oc of listOf(ocRes)) if (!isCourseDeleted(oc.courseId)) byId.set(idOf(oc.courseId), oc.courseId?.title || '—');
       for (const a of mine) if (!byId.has(idOf(a.courseId))) byId.set(idOf(a.courseId), a.courseId?.title || '—');
 
       setOrgName(orgRes?.data?.org_name || '—');

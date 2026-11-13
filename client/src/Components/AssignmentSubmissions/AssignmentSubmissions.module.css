@@ -66,3 +66,12 @@
 .pillGood { background: #e7f7ee; color: #15803d; }
 .pillWarn { background: #fff4e0; color: #b45309; }
 .pillInfo { background: #eaf1fe; color: #1d4ed8; }
+
+/* ── Popup position (all accounts): opens at the top-middle of the page, not the vertical middle ── */
+.overlay.overlay.overlay {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  place-items: start center !important;
+  padding-top: 30px !important;
+  overflow-y: auto;
+}

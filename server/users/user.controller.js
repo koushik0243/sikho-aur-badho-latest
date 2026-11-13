@@ -6,6 +6,8 @@ const Router = express.Router();
 import * as UserHelper from './user.service.js';
 import User from './user.model.js';
 import protect, { requireSuperAdmin } from '../middleware/authMiddleware.js';
+// Who may read / change / list / create which accounts: user.access.js
+import { canReadUser, canUpdateUser, scopeUserCreate, scopeUserList, superAdminOrStoreOwner } from './user.access.js';
 import RolePermission from '../role_permissions/role_permission.model.js';
 //import otpGenerator from 'otp-generator';
 import nodemailer from 'nodemailer';
@@ -980,15 +982,15 @@ const getGoogleClientId = (req, res, next) => {
 };
 
 // Route bindings
-Router.post('/admin/create', protect, createUser);
-Router.get('/admin/check-exists', protect, checkUserExists);
-Router.get('/admin/edit/:id', protect, editUser);
-Router.get('/admin/details/:id/:type', protect, detailsUser);
-Router.put('/admin/update/:id', protect, updateUser);
-Router.get('/admin/list', protect, listUser);
-Router.get('/admin/delete/:id', protect, deleteUser);
-Router.get('/admin/list-pagination', protect, listUserPagination);
-Router.get('/admin/export', protect, exportUsers);
+Router.post('/admin/create', protect, scopeUserCreate, createUser);
+Router.get('/admin/check-exists', protect, superAdminOrStoreOwner, checkUserExists);
+Router.get('/admin/edit/:id', protect, canReadUser, editUser);
+Router.get('/admin/details/:id/:type', protect, canReadUser, detailsUser);
+Router.put('/admin/update/:id', protect, canUpdateUser, updateUser);
+Router.get('/admin/list', protect, scopeUserList, listUser);
+Router.get('/admin/delete/:id', protect, requireSuperAdmin, deleteUser);
+Router.get('/admin/list-pagination', protect, scopeUserList, listUserPagination);
+Router.get('/admin/export', protect, requireSuperAdmin, exportUsers);
 Router.post('/register', registerUser);
 Router.post('/login', loginUser);
 Router.post('/admin/impersonate', protect, requireSuperAdmin, impersonateUser);

@@ -311,3 +311,16 @@ html.protected-area :is(button, a[role="button"], input[type="submit"], input[ty
   white-space: nowrap;
   box-sizing: border-box;
 }
+
+/* ── Form text (every page of the super admin, store owner and learner accounts): 15px ──
+   Labels, typed values, placeholders, dropdowns and button text — in listing filters, forms
+   and pop-ups alike. Page stylesheets set their own smaller sizes (12–14px); :not(#_) lifts
+   this above them. Left alone: table headers (their sort buttons stay at the 12px header
+   size), the sidebar and top bar (navigation), and the date picker's calendar. */
+html.protected-area :is(
+  label, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+  select, select option, textarea, button, a[role="button"]
+):not(:where(table *, header *, aside *, .react-datepicker *)):not(#_),
+html.protected-area :is(input, textarea):not(:where(table *, header *, aside *, .react-datepicker *)):not(#_)::placeholder {
+  font-size: 15px !important;
+}

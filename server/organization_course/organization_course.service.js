@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import OrganizationCourse from './organization_course.model.js';
+import { assertCourseAvailable } from '../_helpers/deletedCourse.js';
 
 const { ObjectId } = mongoose.Types;
 
@@ -21,11 +22,12 @@ const buildQuery = (filters = {}) => {
 const populateRefs = (query) =>
     query
         .populate('orgId', '_id org_name')
-        .populate('courseId', '_id title slug status')
+        .populate('courseId', '_id title slug status deletedAt')
         .populate('coursePriceId', '_id price mrp_price quantity');
 
 export const createOrganizationCourse = async (data) => {
     try {
+        await assertCourseAvailable(data.courseId); // a deleted course can't be added
         return await new OrganizationCourse({
             orgId: data.orgId,
             courseId: data.courseId,

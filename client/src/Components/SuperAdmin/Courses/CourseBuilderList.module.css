@@ -1231,7 +1231,7 @@
 .subCatTag.subCatTag { padding-left: 0; padding-right: 0; }
 .subCatWrap.subCatWrap { gap: 4px 10px; }
 
-/* ── Filter row text = table header size (12px), super admin listings ── */
+/* ── Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 .filterInput.filterInput.filterInput,
 .filterSearch.filterSearch.filterSearch,
 .filterClearBtn.filterClearBtn.filterClearBtn,
@@ -1242,8 +1242,26 @@
 .filterClearBtn.filterClearBtn.filterClearBtn::placeholder,
 .filterClearAll.filterClearAll.filterClearAll::placeholder,
 .filterBar.filterBar.filterBar :is(input, textarea)::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
 }
 
 /* Bulk delete ("Delete Selected (N)") sits left of the "Showing …" text, as on the other lists. */
 .footerLeft { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* Search box: wide enough for its 15px placeholder */
+.filterSearch.filterSearch { flex: 0 1 240px; min-width: 220px; }
+.filterSearch .filterInput.filterInput { width: 100%; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.statusPublished.statusPublished.statusPublished:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.statusDraft.statusDraft.statusDraft:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}
+
+/* Sub-category values: black text, like the other columns */
+.subCatTag.subCatTag.subCatTag { color: #111827 !important; }
+.subCatMore.subCatMore.subCatMore { color: #111827 !important; }

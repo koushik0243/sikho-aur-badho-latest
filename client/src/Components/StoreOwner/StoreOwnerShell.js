@@ -3,7 +3,10 @@
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser, selectAuthReady, selectIsAuthenticated, clearAuth } from '../../redux/slices/authSlice';
+import { selectUser, selectUserType, selectAuthReady, selectIsAuthenticated, clearAuth, USER_TYPE_ROUTES } from '../../redux/slices/authSlice';
+
+// Only store owner accounts may use these pages; anyone else is sent to their own dashboard.
+const ACCOUNT_TYPE = 'organization';
 import useIdleLogout from '../../hooks/useIdleLogout';
 import useStoreProfileGate from '../../hooks/useStoreProfileGate';
 import s from "./StoreOwnerShell.module.css";
@@ -117,6 +120,16 @@ export default function StoreOwnerShell({ children }) {
   useEffect(() => {
     if (authReady && !isAuthed) router.replace('/login');
   }, [authReady, isAuthed, router]);
+
+  // Signed in as another account type (e.g. a learner opening a super admin link): send
+  // them to their own dashboard. The API refuses the other account's data in any case.
+  const userType = useSelector(selectUserType);
+  const accountType = userType || user?.user_type || null;
+  useEffect(() => {
+    if (authReady && isAuthed && accountType && accountType !== ACCOUNT_TYPE) {
+      router.replace(USER_TYPE_ROUTES[accountType] || '/login');
+    }
+  }, [authReady, isAuthed, accountType, router]);
 
   const activeSection  = getActiveSectionFromPath(pathname);
   const activeItemId   = itemForPath(pathname)?.id || 'dashboard';

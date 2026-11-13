@@ -791,8 +791,8 @@
 /* Header text starts where the column values start (same side padding as the cells). */
 .table thead tr th:not(:has(input[type="checkbox"])) { padding-left: 6px; padding-right: 6px; }
 
-/* ── Filter row text = table header size (12px), super admin listings ── */
+/* ── Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 .filterSelect.filterSelect.filterSelect,
 .filterSelect.filterSelect.filterSelect::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
 }

@@ -10,6 +10,7 @@ import ListFilterBar, { EMPTY_LIST_FILTERS, isDateRangeInvalid, listFilterParams
 import sPage from "./OrgCreditAssignmentList.module.css";
 import { withAdminKit } from '../AdminKit/AdminKit';
 import { EmptyState, PageGap, PlusIcon, ResultCount, SkeletonRows, SortArrow, pageItems } from '../AdminKit/ListParts';
+import useBulkDelete from '../AdminKit/useBulkDelete';
 import { orDash } from '../../../lib/displayValue';
 
 // Page styles + the shared super admin look.
@@ -138,6 +139,15 @@ export default function OrgCreditAssignmentList() {
   const from = shownTotal === 0 ? 0 : (page - 1) * LIMIT + 1;
   const to   = Math.min(page * LIMIT, shownTotal);
 
+  // Ticked rows on this page → "Delete Selected (N)".
+  const bulk = useBulkDelete({
+    visibleIds: rows.map(r => String(r._id)),
+    deletePath: id => `organization-credit-assignment/delete/${id}`,
+    singular: 'credit assignment',
+    plural: 'credit assignments',
+    onDeleted: () => setReloadToken(n => n + 1),
+  });
+
   return (
     <SuperAdminShell activeSection="assign-credit">
       <ConfirmModal
@@ -148,6 +158,7 @@ export default function OrgCreditAssignmentList() {
         onConfirm={doDelete}
         onCancel={() => setConfirm({ show: false, id: null, label: '' })}
       />
+      <ConfirmModal {...bulk.confirmProps} />
 
       <div className={s.pageHeader} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
         <div>
@@ -175,6 +186,9 @@ export default function OrgCreditAssignmentList() {
           <table className={s.table}>
             <thead>
               <tr>
+                <th className={s.checkTh}>
+                  <input type="checkbox" aria-label="Select all credit assignments on this page" checked={bulk.allSelected} onChange={bulk.toggleAll} />
+                </th>
                 <th>#</th>
                 <th style={{cursor:'pointer',userSelect:'none',whiteSpace:'nowrap'}} onClick={() => toggleSort('orgName')}>Organization{sortArrow('orgName')}</th>
                 <th>Assigned Credits</th>
@@ -185,15 +199,23 @@ export default function OrgCreditAssignmentList() {
             </thead>
             <tbody>
               {loading ? (
-                <SkeletonRows columns={6} />
+                <SkeletonRows columns={7} />
               ) : rows.length === 0 ? (
-                <tr className={s.emptyRow}><td colSpan={6}><EmptyState>{hasFilters ? 'No credit assignments match these filters.' : 'No credit assignments found.'}</EmptyState></td></tr>
+                <tr className={s.emptyRow}><td colSpan={7}><EmptyState>{hasFilters ? 'No credit assignments match these filters.' : 'No credit assignments found.'}</EmptyState></td></tr>
               ) : rows.map((rec, idx) => {
                 const org = rec.orgId;
                 const credit = rec.creditId;
                 const orgName = org?.org_name || '—';
                 return (
                   <tr key={rec._id}>
+                    <td className={s.checkTd}>
+                      <input
+                        type="checkbox"
+                        aria-label={`Select ${credit?.title || 'credit'} assignment for ${orgName}`}
+                        checked={bulk.isSelected(rec._id)}
+                        onChange={() => bulk.toggle(rec._id)}
+                      />
+                    </td>
                     <td>{(page - 1) * LIMIT + idx + 1}</td>
                     <td>
                       <div className={s.cellMain}>{orgName}</div>
@@ -233,7 +255,15 @@ export default function OrgCreditAssignmentList() {
         </div>
 
         <div className={s.pagination}>
-          <span><ResultCount from={from} to={to} total={shownTotal} singular="credit assignment" plural="credit assignments" /></span>
+          <div className={s.footerLeft}>
+            {bulk.selected.length > 0 && (
+              <button type="button" data-bulk-action="delete" className={s.btnBulkDelete} onClick={bulk.askToDelete} disabled={bulk.deleting}>
+                <TrashIcon />
+                Delete Selected ({bulk.selected.length})
+              </button>
+            )}
+            <span><ResultCount from={from} to={to} total={shownTotal} singular="credit assignment" plural="credit assignments" /></span>
+          </div>
           <div className={s.paginationBtns}>
             <button className={s.pageBtn} disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Previous</button>
             {pageItems(page, totalPages).map(p => typeof p !== 'number' ? <PageGap key={p} /> : (

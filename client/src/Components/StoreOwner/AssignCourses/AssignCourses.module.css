@@ -925,3 +925,12 @@
 /* ── Column alignment: headers line up with their values ── */
 /* Action cells use the same side padding as the header, so the button sits under "Action". */
 .tdAction.tdAction { padding-left: 10px; padding-right: 10px; }
+
+/* ── Popup position (all accounts): opens at the top-middle of the page, not the vertical middle ── */
+.modalOverlay.modalOverlay.modalOverlay {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  place-items: start center !important;
+  padding-top: 30px !important;
+  overflow-y: auto;
+}

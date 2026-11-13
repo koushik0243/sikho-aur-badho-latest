@@ -521,13 +521,27 @@
 }
 @media (max-width: 420px) { .ctStats { grid-template-columns: minmax(0, 1fr); } }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filters.filters.filters :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }
 
-/* ── Filter row text = table header size (12px) — super admin only; other accounts keep 10px ── */
+/* ── Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 [data-superadmin] .filters.filters.filters :is(label, select, option, input, textarea, button, span:not(:has(*))),
 [data-superadmin] .filters.filters.filters :is(input, textarea)::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
+}
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.status_active.status_active.status_active:not(#_),
+.status_success.status_success.status_success:not(#_),
+.st_pass.st_pass.st_pass:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.status_inactive.status_inactive.status_inactive:not(#_),
+.status_failed.status_failed.status_failed:not(#_),
+.st_fail.st_fail.st_fail:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
 }

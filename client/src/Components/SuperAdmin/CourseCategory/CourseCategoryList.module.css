@@ -916,3 +916,13 @@
 /* ── Column alignment: headers line up with their values ── */
 /* Status labels have no pill background, so no side padding: the text lines up with its header. */
 .badgeActive.badgeActive, .badgeInactive.badgeInactive { padding-left: 0; padding-right: 0; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeActive.badgeActive.badgeActive:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeInactive.badgeInactive.badgeInactive:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

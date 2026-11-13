@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { toast } from 'sonner';
 import apiServiceHandler from '../../../service/apiService';
+import { isCourseDeleted } from '../../../lib/courseAvailability';
 import SuperAdminShell from '../SuperAdminShell';
 import fPage from '../OrgCourseAssignment/AddOrgCourseAssignment.module.css';
 import sPage from './UserCourseAssignment.module.css';
@@ -75,6 +76,7 @@ export default function AddUserCourseAssignment() {
       const learnerList = listOf(learnerRes);
       const seen = new Set();
       const courseList = listOf(courseRes)
+        .filter(oc => !isCourseDeleted(oc.courseId)) // a deleted course can't be assigned
         .map(oc => ({ id: idOf(oc.courseId), title: oc.courseId?.title || '—' }))
         .filter(c => c.id && !seen.has(c.id) && seen.add(c.id));
       const assigned = new Map();

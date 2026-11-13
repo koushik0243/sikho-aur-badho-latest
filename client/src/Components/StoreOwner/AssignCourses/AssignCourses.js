@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'sonner';
 import { selectUser } from '../../../redux/slices/authSlice';
 import apiServiceHandler from '../../../service/apiService';
+import { isCourseDeleted } from '../../../lib/courseAvailability';
 import pageStyles from "./AssignCourses.module.css";
 import { withFormKit } from '../PageKit/PageKit';
 
@@ -92,7 +93,8 @@ export default function AssignCoursesPage() {
 
       const courseList = Array.isArray(coursesRes?.data) ? coursesRes.data
                        : Array.isArray(coursesRes) ? coursesRes : [];
-      setCourses(courseList);
+      // A course the super admin deleted can't be assigned any more.
+      setCourses(courseList.filter(item => !isCourseDeleted(item.courseId)));
 
       await loadAssignments(effectiveOrgId);
     } catch {

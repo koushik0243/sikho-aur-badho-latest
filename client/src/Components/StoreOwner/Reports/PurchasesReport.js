@@ -99,7 +99,11 @@ export default function PurchasesReport() {
               { label: 'Credits', align: 'right', render: r => r.credits },
               { label: 'Price', align: 'right', render: r => money(r.price) },
               { label: 'Due date', className: s.nowrap, render: r => (r.dueDate ? dateLabel(r.dueDate) : '—') },
-              { label: 'Status', render: r => (r.status === 'active' ? 'Active' : 'Inactive') },
+              { label: 'Status', render: r => (
+                <span className={`${s.status} ${r.status === 'active' ? s.status_active : s.status_inactive}`}>
+                  {r.status === 'active' ? 'Active' : 'Inactive'}
+                </span>
+              ) },
             ]} />
 
           <div className={s.twoCol}>

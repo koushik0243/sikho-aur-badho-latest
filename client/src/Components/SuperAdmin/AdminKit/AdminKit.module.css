@@ -191,14 +191,14 @@
 .logsCard.logsCard { background: #fff; border: 1px solid #e6eded; border-radius: 14px; box-shadow: 0 1px 2px rgba(15, 60, 60, 0.04); }
 .logsTitle.logsTitle { color: #12302f; font-weight: 800; text-transform: none; letter-spacing: 0; font-size: 16px !important; }
 
-/* ── Filter row text = table header size (12px), super admin listings ── */
+/* ── Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 .filterControl.filterControl.filterControl,
 .filterSelect.filterSelect.filterSelect,
 .orgSelect.orgSelect.orgSelect,
 .filterControl.filterControl.filterControl::placeholder,
 .filterSelect.filterSelect.filterSelect::placeholder,
 .orgSelect.orgSelect.orgSelect::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
 }
 
 /* ══ List pages: one finished look ═══════════════════════════════════════════
@@ -294,8 +294,8 @@
 }
 .pagination :where(span, div, p, strong, b) { font-size: 13px !important; font-variant-numeric: tabular-nums; }
 
-/* Search box in the filter row: same 12px as the table header */
-.searchInput.searchInput.searchInput, .searchInput.searchInput.searchInput::placeholder { font-size: 12px !important; }
+/* Search box in the filter row: 15px, like every listing filter */
+.searchInput.searchInput.searchInput, .searchInput.searchInput.searchInput::placeholder { font-size: 15px !important; }
 
 /* ── Lines around the table (every list page) ──────────────
    One line under the filter / search row and one above the pagination row. The table area
@@ -313,4 +313,25 @@
 /* Main name / title in a row: dark and semibold, as on Tags (some pages drew it teal) */
 .catName.catName, .certName.certName, .courseTitle.courseTitle, .cellMain.cellMain, .orgName.orgName, .tagName.tagName {
   color: #12302f !important; font-weight: 600 !important;
+}
+
+/* Footer left side: "Delete Selected (N)" before the "Showing …" count */
+.footerLeft { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* A ticked group row (one organization / learner spanning several lines): every line of it
+   gets the "ticked" background, not only the first */
+.table.table.table tbody tr.rowSelected,
+.table.table.table tbody tr.rowSelected:hover { background: #eef8f7; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeActive.badgeActive.badgeActive:not(#_),
+.badgeSuccess.badgeSuccess.badgeSuccess:not(#_),
+.badgePaid.badgePaid.badgePaid:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeInactive.badgeInactive.badgeInactive:not(#_),
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
 }

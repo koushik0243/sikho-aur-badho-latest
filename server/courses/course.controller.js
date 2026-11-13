@@ -7,6 +7,7 @@ import multer from 'multer';
 import * as CourseHelper from './course.service.js';
 import Course from './course.model.js';
 import { requireSuperAdmin } from '../middleware/authMiddleware.js';
+import { deletedCourseError, isCourseDeleted } from '../_helpers/deletedCourse.js';
 import {
     initialVideoStatus, isLocalUploadPath, queueVideoConversion,
     isAllowedVideoName, ALLOWED_VIDEO_FORMATS_LABEL, MAX_VIDEO_BYTES, MAX_VIDEO_LABEL,
@@ -162,6 +163,9 @@ const createCourse = async (req, res, next) => {
 const editCourse = async (req, res, next) => {
     try {
         const data = await CourseHelper.editCourse(req.params.id);
+        // A deleted course: say so (410) instead of an empty reply, so store owner and
+        // learner screens can show "deleted, no longer available".
+        if (!data && await isCourseDeleted(req.params.id)) throw deletedCourseError();
         res.status(200).json({ status: 200, message: "Successfully fetched.", data });
     } catch (error) {
         next(error);

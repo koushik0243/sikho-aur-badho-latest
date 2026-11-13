@@ -3,6 +3,7 @@
 import CourseCardFrame from '../../Learner/CourseCard/CourseCardFrame';
 import cc from '../../Learner/CourseCard/CourseCard.module.css';
 import s from './StoreCourseCard.module.css';
+import { COURSE_DELETED_LABEL, COURSE_DELETED_NOTE, COURSE_UNAVAILABLE_ACTION, isCourseDeleted } from '../../../lib/courseAvailability';
 
 // Store owner course card (All Courses, My Courses) — the learner card's look
 // with the store owner's content: status, category, level, duration, chapters.
@@ -30,8 +31,11 @@ const STATUS_CHIP = { published: 'chip_published', draft: 'chip_draft' };
  *   action: { label: string, onClick?: () => void, disabled?: boolean, done?: boolean },
  * }} props
  */
-export default function StoreCourseCard({ course: c, footer, action }) {
-  const status = (c.status || 'published').toLowerCase();
+export default function StoreCourseCard({ course: c, footer, action: requested }) {
+  // A course the super admin deleted: still listed, marked inactive, can't be opened.
+  const deleted = isCourseDeleted(c);
+  const action = deleted ? { label: COURSE_UNAVAILABLE_ACTION, disabled: true } : requested;
+  const status = deleted ? COURSE_DELETED_LABEL.toLowerCase() : (c.status || 'published').toLowerCase();
   const duration = fmtDuration(c.duration_hr, c.duration_min);
   const chapters = parseInt(c.totalChapters, 10) || 0;
   const title = c.title || '—';
@@ -53,6 +57,7 @@ export default function StoreCourseCard({ course: c, footer, action }) {
         </ul>
       )}
       <div className={s.push} aria-hidden="true" />
+      {deleted && <p className={s.deletedNote} role="note">{COURSE_DELETED_NOTE}</p>}
       {footer && <div className={s.footer}>{footer}</div>}
     </CourseCardFrame>
   );

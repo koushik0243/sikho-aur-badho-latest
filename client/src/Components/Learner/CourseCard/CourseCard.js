@@ -3,6 +3,7 @@
 import { STAGE_LABEL } from './courseCardData';
 import CourseCardFrame from './CourseCardFrame';
 import s from './CourseCard.module.css';
+import { COURSE_DELETED_LABEL, COURSE_DELETED_NOTE, COURSE_UNAVAILABLE_ACTION } from '../../../lib/courseAvailability';
 
 const Icon = {
   trend: <svg viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd"/></svg>,
@@ -19,9 +20,10 @@ const Icon = {
  *   chapters?: number|null, chaptersDone?: number|null, currentChapter?: string|null, certificate?: boolean,
  *   extra?: import('react').ReactNode,   // extra lines under the category (e.g. chapters, duration, rating)
  *   onOpen: () => void,
+ *   deleted?: boolean,                   // course deleted by the super admin: shown as inactive, can't be opened
  * }} props
  */
-export default function CourseCard({ title, category, desc, stage, started, progress, chapters, chaptersDone, currentChapter, certificate, extra, onOpen }) {
+export default function CourseCard({ title, category, desc, stage, started, progress, chapters, chaptersDone, currentChapter, certificate, extra, onOpen, deleted = false }) {
   const pct = Math.max(0, Math.min(100, Number(progress || 0)));
   return (
     <CourseCardFrame
@@ -29,15 +31,19 @@ export default function CourseCard({ title, category, desc, stage, started, prog
       title={title}
       category={category}
       desc={desc}
-      chipLeft={
-        <span className={`${s.stageChip} ${s[`chip_${stage}`]}`}>
-          {stage === 'completed' ? Icon.check : stage === 'in_progress' ? Icon.trend : Icon.clock}
-          {STAGE_LABEL[stage]}
-        </span>
-      }
+      chipLeft={deleted
+        ? <span className={`${s.stageChip} ${s.chip_inactive}`}>{COURSE_DELETED_LABEL}</span>
+        : (
+          <span className={`${s.stageChip} ${s[`chip_${stage}`]}`}>
+            {stage === 'completed' ? Icon.check : stage === 'in_progress' ? Icon.trend : Icon.clock}
+            {STAGE_LABEL[stage]}
+          </span>
+        )}
       chipRight={certificate && <span className={s.certChip} title="Certificate earned">{Icon.cert}<span className={s.certText}>Certificate</span></span>}
       beforeTitle={extra}
-      actions={<button type="button" className={s.btnResume} onClick={onOpen}>{started ? 'Resume' : 'Start'}</button>}
+      actions={deleted
+        ? <button type="button" className={s.btnResume} disabled aria-disabled="true">{COURSE_UNAVAILABLE_ACTION}</button>
+        : <button type="button" className={s.btnResume} onClick={onOpen}>{started ? 'Resume' : 'Start'}</button>}
     >
       <div className={s.courseProgress}>
         <div className={s.courseProgressRow}>
@@ -47,7 +53,8 @@ export default function CourseCard({ title, category, desc, stage, started, prog
         <div className={s.courseBar} role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${title} progress`}>
           <span style={{ width: `${pct}%` }}/>
         </div>
-        {stage === 'in_progress' && currentChapter && <p className={s.courseNext}>Up next: {currentChapter}</p>}
+        {!deleted && stage === 'in_progress' && currentChapter && <p className={s.courseNext}>Up next: {currentChapter}</p>}
+        {deleted && <p className={s.deletedNote} role="note">{COURSE_DELETED_NOTE}</p>}
       </div>
     </CourseCardFrame>
   );

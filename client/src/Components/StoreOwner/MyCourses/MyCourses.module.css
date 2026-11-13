@@ -953,11 +953,26 @@
   }
 }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterInput.filterInput.filterInput,
 .filterSearch.filterSearch.filterSearch,
 .filterClearBtn.filterClearBtn.filterClearBtn,
 .filterClearAll.filterClearAll.filterClearAll,
 .filterBar.filterBar.filterBar :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
+}
+
+/* Search box: wide enough for its 15px placeholder */
+.filterSearch.filterSearch { flex: 0 1 240px; min-width: 220px; }
+.filterSearch .filterInput.filterInput { width: 100%; }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgePublished.badgePublished.badgePublished:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeInactive.badgeInactive.badgeInactive:not(#_),
+.badgeDraft.badgeDraft.badgeDraft:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
 }

@@ -7,7 +7,7 @@ export const SEVERITY = {
 };
 export const ACTIVITY = {
   active: { label: 'Active', tone: 'ok', rgb: [21, 128, 61] },
-  inactive: { label: 'Inactive', tone: 'info', rgb: [107, 114, 128] },
+  inactive: { label: 'Inactive', tone: 'critical', rgb: [185, 28, 28] }, // inactive = red, like every status
 };
 export const ACCOUNT_LABEL = { active: 'Active', inactive: 'Inactive', suspended: 'Suspended' };
 

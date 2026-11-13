@@ -28,3 +28,6 @@
 
 /* While adding */
 .btnBusy:disabled { opacity: 0.6; cursor: wait; }
+
+/* Course deleted by the super admin: short note above the footer */
+.deletedNote { margin: 8px 0 0; padding: 8px 10px; border-radius: 8px; background: #fdf2f2; color: #b91c1c; font-size: 13px !important; line-height: 1.4; }

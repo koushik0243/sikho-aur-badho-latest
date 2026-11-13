@@ -1093,3 +1093,14 @@
 @media (max-width: 640px) {
   .content { padding: 0; }
 }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.statusActive.statusActive.statusActive:not(#_),
+.courseStatusPublished.courseStatusPublished.courseStatusPublished:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.courseStatusDraft.courseStatusDraft.courseStatusDraft:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

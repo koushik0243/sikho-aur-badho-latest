@@ -453,9 +453,15 @@
 .threshold.threshold { color: #6b7d7d; font-size: 13px !important; }
 @media (max-width: 900px) { .qGrid { grid-template-columns: minmax(0, 1fr); } }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterLabel.filterLabel.filterLabel,
 .filterRow.filterRow.filterRow :is(label, select, option, input, textarea, button, span:not(:has(*))),
 .filterGroup.filterGroup.filterGroup :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
+}
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
 }

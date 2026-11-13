@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/slices/authSlice';
 import apiServiceHandler from '../../../service/apiService';
+import { COURSE_DELETED_LABEL, COURSE_DELETED_NOTE, isCourseDeletedError } from '../../../lib/courseAvailability';
 import { API_URL } from '../../../lib/constant';
 import { useMediaToken, secureMediaUrl } from '../../../lib/mediaToken';
 import pageStyles from "./CourseDetail.module.css";
@@ -86,6 +87,7 @@ export default function CourseDetail() {
   const [questionMap,  setQuestionMap]  = useState({}); // topicId -> Question[]
   const [videoDurMap,  setVideoDurMap]  = useState({}); // topicId -> actual duration seconds
   const [loading,      setLoading]      = useState(true);
+  const [courseDeleted, setCourseDeleted] = useState(false); // deleted by the super admin
 
   useEffect(() => {
     if (!id) return;
@@ -182,8 +184,9 @@ export default function CourseDetail() {
           ).size;
           setLearnerCount(count);
         }
-      } catch {
-        // fail silently
+      } catch (err) {
+        // A course the super admin deleted can't be opened; anything else fails silently.
+        if (isCourseDeletedError(err)) setCourseDeleted(true);
       } finally {
         setLoading(false);
       }
@@ -206,9 +209,11 @@ export default function CourseDetail() {
       <nav className={vp.breadcrumb}>
         <button className={vp.breadcrumbLink} onClick={() => router.push('/storeowner/my-courses')}>My Courses</button>
         <span className={vp.breadcrumbSep}>›</span>
-        <span className={vp.breadcrumbCurr}>Not Found</span>
+        <span className={vp.breadcrumbCurr}>{courseDeleted ? COURSE_DELETED_LABEL : 'Not Found'}</span>
       </nav>
-      <p className={vp.loadingText}>Course not found.</p>
+      <p className={vp.loadingText} role={courseDeleted ? 'alert' : undefined}>
+        {courseDeleted ? COURSE_DELETED_NOTE : 'Course not found.'}
+      </p>
     </>
   );
 

@@ -440,3 +440,9 @@ select.select.select {
   background-position: right 12px center;
   background-size: 14px 14px;
 }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.statusSuccess.statusSuccess.statusSuccess:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}

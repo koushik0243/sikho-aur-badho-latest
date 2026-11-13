@@ -164,3 +164,13 @@
   .mapWrap { justify-content: center; }
   .qCard { padding: 14px; }
 }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.pillPass.pillPass.pillPass:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.pillFail.pillFail.pillFail:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

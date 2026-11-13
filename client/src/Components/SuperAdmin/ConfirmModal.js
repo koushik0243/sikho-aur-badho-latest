@@ -22,7 +22,7 @@ export default function ConfirmModal({
   onCancel,
 }) {
   return (
-    <Modal show={show} onHide={onCancel} centered>
+    <Modal show={show} onHide={onCancel}>
       <Modal.Header closeButton>
         <Modal.Title style={{ fontSize: 16, fontWeight: 600 }}>{title}</Modal.Title>
       </Modal.Header>

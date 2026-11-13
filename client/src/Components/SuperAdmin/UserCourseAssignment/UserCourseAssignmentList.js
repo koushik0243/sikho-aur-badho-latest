@@ -8,7 +8,8 @@ import SuperAdminShell from '../SuperAdminShell';
 import ConfirmModal from '../ConfirmModal';
 import sPage from '../OrgCourseAssignment/OrgCourseAssignmentList.module.css';
 import { withAdminKit } from '../AdminKit/AdminKit';
-import { EmptyState, PageGap, PlusIcon, ResultCount, SkeletonRows, pageItems } from '../AdminKit/ListParts';
+import { EmptyState, PageGap, PlusIcon, ResultCount, SkeletonRows, SortArrow, pageItems } from '../AdminKit/ListParts';
+import useBulkDelete from '../AdminKit/useBulkDelete';
 import { orDash } from '../../../lib/displayValue';
 
 // Page styles + the shared super admin look.
@@ -121,12 +122,25 @@ export default function UserCourseAssignmentList() {
   const from = total === 0 ? 0 : (page - 1) * LIMIT + 1;
   const to = Math.min(page * LIMIT, total);
 
+  // One checkbox per learner block (organization + learner) on this page → "Delete Selected (N)"
+  // removes every course assignment shown for the ticked learners.
+  const coursesByGroup = new Map(paged.map(g => [g.key, g.courses.map(c => String(c.recordId))]));
+  const bulk = useBulkDelete({
+    visibleIds: [...coursesByGroup.keys()],
+    recordsOf: key => coursesByGroup.get(key) || [],
+    deletePath: id => `course-assignment/delete/${id}`,
+    singular: 'learner',
+    plural: 'learners',
+    confirmMessage: n => `Remove all course assignments of ${n} selected learner${n !== 1 ? 's' : ''}? This cannot be undone.`,
+    onDeleted: fetchRecords,
+  });
+
   function toggleSort(key) {
     setPage(1);
     if (sortKey === key) setSortDir(d => (d === 'asc' ? 'desc' : 'asc'));
     else { setSortKey(key); setSortDir('asc'); }
   }
-  const sortArrow = key => (sortKey !== key ? ' ↕' : sortDir === 'asc' ? ' ↑' : ' ↓');
+  const sortArrow = key => <SortArrow active={sortKey === key} dir={sortDir} />;
   const sortable = { cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' };
 
   function doDelete() {
@@ -149,6 +163,7 @@ export default function UserCourseAssignmentList() {
         onConfirm={doDelete}
         onCancel={() => setConfirm({ show: false, id: null, label: '' })}
       />
+      <ConfirmModal {...bulk.confirmProps} />
 
       <div className={s.pageHeader} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
         <div>
@@ -183,6 +198,9 @@ export default function UserCourseAssignmentList() {
           <table className={s.table}>
             <thead>
               <tr>
+                <th className={s.checkTh}>
+                  <input type="checkbox" aria-label="Select all learners on this page" checked={bulk.allSelected} onChange={bulk.toggleAll} />
+                </th>
                 <th>#</th>
                 <th style={sortable} onClick={() => toggleSort('orgName')}>Organization{sortArrow('orgName')}</th>
                 <th style={sortable} onClick={() => toggleSort('learnerName')}>Learner{sortArrow('learnerName')}</th>
@@ -194,13 +212,14 @@ export default function UserCourseAssignmentList() {
             </thead>
             <tbody>
               {loading ? (
-                <SkeletonRows columns={7} />
+                <SkeletonRows columns={8} />
               ) : paged.length === 0 ? (
-                <tr className={s.emptyRow}><td colSpan={7}><EmptyState>No assignments found.</EmptyState></td></tr>
+                <tr className={s.emptyRow}><td colSpan={8}><EmptyState>No assignments found.</EmptyState></td></tr>
               ) : (
                 paged.flatMap((g, idx) => {
                   const serial = (page - 1) * LIMIT + idx + 1;
-                  const rowClass = [idx % 2 !== 0 ? s.stripeAlt : '', hoveredKey === g.key ? s.orgHover : ''];
+                  const groupTicked = bulk.isSelected(g.key);
+                  const rowClass = [idx % 2 !== 0 ? s.stripeAlt : '', hoveredKey === g.key ? s.orgHover : '', groupTicked ? s.rowSelected : ''];
                   return g.courses.map((course, ci) => (
                     <tr
                       key={course.recordId}
@@ -210,6 +229,14 @@ export default function UserCourseAssignmentList() {
                     >
                       {ci === 0 && (
                         <>
+                          <td rowSpan={g.courses.length} className={s.checkTd}>
+                            <input
+                              type="checkbox"
+                              aria-label={`Select ${g.learnerName} (${g.orgName})`}
+                              checked={groupTicked}
+                              onChange={() => bulk.toggle(g.key)}
+                            />
+                          </td>
                           <td rowSpan={g.courses.length}>{serial}</td>
                           <td rowSpan={g.courses.length}><div className={s.cellMain}>{orDash(g.orgName)}</div></td>
                           <td rowSpan={g.courses.length}>
@@ -255,7 +282,15 @@ export default function UserCourseAssignmentList() {
         </div>
 
         <div className={s.pagination}>
-          <span><ResultCount from={from} to={to} total={total} singular="assignment" plural="assignments" /></span>
+          <div className={s.footerLeft}>
+            {bulk.selected.length > 0 && (
+              <button type="button" data-bulk-action="delete" className={s.btnBulkDelete} onClick={bulk.askToDelete} disabled={bulk.deleting}>
+                <TrashIcon />
+                Delete Selected ({bulk.selected.length})
+              </button>
+            )}
+            <span><ResultCount from={from} to={to} total={total} singular="assignment" plural="assignments" /></span>
+          </div>
           <div className={s.paginationBtns}>
             <button className={s.pageBtn} disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Previous</button>
             {pageItems(page, totalPages).map(p => typeof p !== 'number' ? <PageGap key={p} /> : (

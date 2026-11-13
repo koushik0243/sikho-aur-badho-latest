@@ -421,9 +421,9 @@
   .resultCard::before { top: 0; left: 0; right: 0; bottom: auto; width: 100%; height: 5px; }
 }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterLabel.filterLabel.filterLabel,
 .filterGroup.filterGroup.filterGroup :is(label, select, option, input, textarea, button, span:not(:has(*))),
 .filterLeft.filterLeft.filterLeft :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }

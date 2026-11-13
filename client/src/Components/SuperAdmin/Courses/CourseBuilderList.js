@@ -59,7 +59,7 @@ function fmtDuration(hr, min) {
 
 function StatusLabel({ status }) {
   if (status === 'published') return <span className={s.badgeActive}>Published</span>;
-  if (status === 'draft')     return <span className={s.badgePending}>Draft</span>;
+  if (status === 'draft')     return <span className={s.badgeInactive}>Draft</span>;
   if (status === 'deleted')   return <span className={s.badgeFailed}>Deleted</span>;
   return <span className={s.badgeInactive}>{orDash(status)}</span>;
 }

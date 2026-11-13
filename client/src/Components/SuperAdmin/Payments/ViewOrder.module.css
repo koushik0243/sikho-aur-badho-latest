@@ -345,3 +345,14 @@
     min-width: 0;
   }
 }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.badgeActive.badgeActive.badgeActive:not(#_),
+.badgePaid.badgePaid.badgePaid:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.badgeFailed.badgeFailed.badgeFailed:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

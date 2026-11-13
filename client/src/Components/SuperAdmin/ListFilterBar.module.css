@@ -43,16 +43,16 @@
 .btnClear.btnClear { height: 40px; padding: 0 16px; border-radius: 9px; border: 1px solid #b9dcdc; background: #fff; color: #0b6767; font-weight: 700; font-size: 13.5px !important; }
 .btnClear.btnClear:hover:not(:disabled) { background: #eef8f8; border-color: #0b7b7b; }
 
-/* ── Task 5: listing filters use 10px text (all accounts) ── */
+/* ── Listing filters: 15px text (all accounts) ── */
 .filterLabel.filterLabel.filterLabel,
 .filterControl.filterControl.filterControl,
 .btnClear.btnClear.btnClear,
 .filterBar.filterBar.filterBar :is(label, select, option, input, textarea, button, span:not(:has(*))),
 .filterField.filterField.filterField :is(label, select, option, input, textarea, button, span:not(:has(*))) {
-  font-size: 10px !important;
+  font-size: 15px !important;
 }
 
-/* ── Filter row text = table header size (12px) — super admin only; other accounts keep 10px ── */
+/* ── Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 [data-superadmin] .filterLabel.filterLabel.filterLabel,
 [data-superadmin] .filterControl.filterControl.filterControl,
 [data-superadmin] .btnClear.btnClear.btnClear,
@@ -60,5 +60,5 @@
 [data-superadmin] .filterField.filterField.filterField :is(label, select, option, input, textarea, button, span:not(:has(*))),
 [data-superadmin] .filterBar.filterBar.filterBar :is(input, textarea)::placeholder,
 [data-superadmin] .filterControl.filterControl.filterControl::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
 }

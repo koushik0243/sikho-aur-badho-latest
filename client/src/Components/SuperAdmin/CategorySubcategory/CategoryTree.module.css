@@ -167,10 +167,10 @@
   .search { max-width: none; }
 }
 
-/* Filter row text = table header size (12px): search box, its placeholder, Expand / Collapse all */
+/* Listing filters: 15px text (labels, values, placeholders, dropdowns, buttons) */
 .toolbar.toolbar.toolbar :is(input, button, label, span:not(:has(*))),
 .toolbar.toolbar.toolbar input::placeholder {
-  font-size: 12px !important;
+  font-size: 15px !important;
 }
 
 /* Footer left side: "Delete Selected (N)" before the "Showing …" text */

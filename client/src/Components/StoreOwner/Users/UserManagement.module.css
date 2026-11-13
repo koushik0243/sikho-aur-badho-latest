@@ -608,3 +608,12 @@
 .statusBtn:focus-visible { outline: 2px solid #0b7b7b; outline-offset: 2px; }
 .statusCaret { color: #9aa9a9; }
 .statusCaret { width: 14px; height: 14px; }
+
+/* ── Popup position (all accounts): opens at the top-middle of the page, not the vertical middle ── */
+.modalOverlay.modalOverlay.modalOverlay {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  place-items: start center !important;
+  padding-top: 30px !important;
+  overflow-y: auto;
+}

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { selectUser, selectAuthReady } from '../../../redux/slices/authSlice';
 import apiServiceHandler, { clearGetCache } from '../../../service/apiService';
+import { isCourseDeleted } from '../../../lib/courseAvailability';
 import CourseCard from '../../../Components/Learner/CourseCard/CourseCard';
 import CourseFilters from '../../../Components/Learner/CourseCard/CourseFilters';
 import { STAGE_LABEL, STAGE_RANK, courseState } from '../../../Components/Learner/CourseCard/courseCardData';
@@ -298,6 +299,7 @@ export default function LearnerCoursesPage() {
                   desc={course?.desc || course?.description || ''}
                   {...state}
                   extra={<CourseMeta course={course}/>}
+                  deleted={isCourseDeleted(course)}
                   onOpen={() => handleResume(course)}
                 />
               ))}

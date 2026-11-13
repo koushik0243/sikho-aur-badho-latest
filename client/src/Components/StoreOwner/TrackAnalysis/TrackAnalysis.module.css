@@ -186,3 +186,13 @@
   .failRow { grid-template-columns: 24px minmax(0, 1fr) 56px; gap: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } .table tbody tr { transition: none; } }
+
+/* ── Status colours (all accounts): active / published / success = green, inactive / draft / failed = red ── */
+.statusActive.statusActive.statusActive:not(#_) {
+  color: #15803d !important;
+  background-color: #e7f7ee !important;
+}
+.statusInactive.statusInactive.statusInactive:not(#_) {
+  color: #b91c1c !important;
+  background-color: #fdecec !important;
+}

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { selectUser, selectAuthReady } from '../../../redux/slices/authSlice';
 import apiServiceHandler from '../../../service/apiService';
+import { isCourseDeleted } from '../../../lib/courseAvailability';
 import { API_URL } from '../../../lib/constant';
 import CourseCard from '../../../Components/Learner/CourseCard/CourseCard';
 import CourseFilters from '../../../Components/Learner/CourseCard/CourseFilters';
@@ -277,6 +278,7 @@ export default function LearnerDashboardPage() {
                       desc={c.desc || c.description || ''}
                       stage={ca.stage} started={ca.started} progress={ca.progress}
                       chapters={ca.chapters} chaptersDone={ca.chaptersDone} currentChapter={ca.currentChapter} certificate={ca.certificate}
+                      deleted={isCourseDeleted(c)}
                       onOpen={() => cId && router.push(`/learner/courses/${cId}`)} />
                   );
                 })}

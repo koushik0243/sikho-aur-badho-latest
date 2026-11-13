@@ -8,6 +8,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import protect, { requireSuperAdmin } from './middleware/authMiddleware.js';
+// Which account types may use each API (super admin / store owner / learner): middleware/accountAccess.js
+import { allowAccounts, ALL_ACCOUNTS, SUPERADMIN, STORE_OWNER, LEARNER } from './middleware/accountAccess.js';
 import { guardUploads, mediaTokenRouter, mediaProtect } from './middleware/mediaAuth.js';
 import { resumeVideoConversionsOnStartup } from './_helpers/resumeVideoConversions.js';
 
@@ -100,56 +102,56 @@ app.use(cors({
 app.use('/uploads', guardUploads, express.static(path.join(__dirname, 'public', 'uploads')));
 app.use('/media', protect, mediaTokenRouter);
 
-app.use('/course-category', protect, courseCategoryRouter);
-app.use('/course-subcategory', protect, courseSubCategoryRouter);
-app.use('/course', protect, courseRouter);
-app.use('/chapter', protect, chapterRouter);
-app.use('/topic', protect, topicRouter);
-app.use('/course-assignment', protect, courseAssignmentRouter);
+app.use('/course-category', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), courseCategoryRouter);
+app.use('/course-subcategory', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), courseSubCategoryRouter);
+app.use('/course', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), courseRouter);
+app.use('/chapter', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), chapterRouter);
+app.use('/topic', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), topicRouter);
+app.use('/course-assignment', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN, STORE_OWNER] }), courseAssignmentRouter);
 
-app.use('/course-pricing', protect, coursePricingRouter);
-app.use('/plan', protect, planRouter);
-app.use('/subscription', protect, subscriptionRouter);
+app.use('/course-pricing', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), coursePricingRouter);
+app.use('/plan', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), planRouter);
+app.use('/subscription', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN, STORE_OWNER] }), subscriptionRouter);
 
-app.use('/organization', protect, organizationRouter);
-app.use('/credit', protect, creditRouter);
+app.use('/organization', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN], routes: { 'PUT /update': [SUPERADMIN, STORE_OWNER] } }), organizationRouter);
+app.use('/credit', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), creditRouter);
 
-app.use('/organization-course', protect, organizationCourseRouter);
-app.use('/organization-course-assignment', protect, organizationCourseAssignmentRouter);
-app.use('/organization-credit-assignment', protect, organizationCreditAssignmentRouter);
-app.use('/industry-type', protect, industryTypeRouter);
-app.use('/department', protect, departmentRouter);
-app.use('/designation', protect, designationRouter);
-app.use('/payment-method', protect, paymentMethodRouter);
+app.use('/organization-course', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN], routes: { 'POST /create': [SUPERADMIN, STORE_OWNER] } }), organizationCourseRouter);
+app.use('/organization-course-assignment', protect, allowAccounts({ read: [SUPERADMIN], write: [SUPERADMIN] }), organizationCourseAssignmentRouter);
+app.use('/organization-credit-assignment', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN], routes: { 'POST /create': [SUPERADMIN, STORE_OWNER] } }), organizationCreditAssignmentRouter);
+app.use('/industry-type', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), industryTypeRouter);
+app.use('/department', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), departmentRouter);
+app.use('/designation', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), designationRouter);
+app.use('/payment-method', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), paymentMethodRouter);
 app.use('/report', protect, requireSuperAdmin, reportRouter);
-app.use('/org-report', protect, orgReportRouter); // store owner: own organization only
-app.use('/my-report', protect, myReportRouter);   // learner: own data only
+app.use('/org-report', protect, allowAccounts({ read: [STORE_OWNER], write: [STORE_OWNER] }), orgReportRouter); // store owner: own organization only
+app.use('/my-report', protect, allowAccounts({ read: [LEARNER], write: [LEARNER] }), myReportRouter);   // learner: own data only
 // Submitted assignment videos are streamed straight into <video> tags (seekable, no 2 GB
 // download first), so this one route also accepts the media token; see mediaProtect.
 app.get('/topic-activity/submissions/:id/video', mediaProtect, submissionVideo);
-app.use('/topic-activity', protect, topicActivityRouter);
-app.use('/tags', protect, tagRouter);
-app.use('/certificate-template', protect, certificateTemplateRouter);
-app.use('/role', protect, roleRouter);
-app.use('/permission', protect, permissionRouter);
-app.use('/role-permission', protect, rolePermissionRouter);
-app.use('/order', protect, orderRouter);
-app.use('/invoice', protect, invoiceRouter);
-app.use('/support-ticket', protect, supportTicketRouter);
-app.use('/credit-used', protect, creditUsedRouter);
-app.use('/quiz-questions', protect, quizQuestionRouter);
-app.use('/quiz-attempt',   protect, quizAttemptRouter);
-app.use('/aptitude-questions', protect, aptitudeQuestionRouter);
-app.use('/aptitude-attempt', protect, aptitudeAttemptRouter);
-app.use('/progress',       protect, progressRouter);
-app.use('/course-completion', protect, courseCompletionRouter);
-app.use('/note', protect, noteRouter);
-app.use('/review', protect, reviewRouter);
-app.use('/speech', protect, speechRouter);
+app.use('/topic-activity', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER], routes: { 'POST /review': [SUPERADMIN, STORE_OWNER], 'POST /video-comment': [SUPERADMIN, STORE_OWNER, LEARNER] } }), topicActivityRouter);
+app.use('/tags', protect, allowAccounts({ read: [SUPERADMIN], write: [SUPERADMIN] }), tagRouter);
+app.use('/certificate-template', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), certificateTemplateRouter);
+app.use('/role', protect, allowAccounts({ read: [SUPERADMIN], write: [SUPERADMIN] }), roleRouter);
+app.use('/permission', protect, allowAccounts({ read: [SUPERADMIN], write: [SUPERADMIN] }), permissionRouter);
+app.use('/role-permission', protect, allowAccounts({ read: [SUPERADMIN], write: [SUPERADMIN] }), rolePermissionRouter);
+app.use('/order', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), orderRouter);
+app.use('/invoice', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN] }), invoiceRouter);
+app.use('/support-ticket', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN], routes: { 'POST /create': [SUPERADMIN, STORE_OWNER], 'GET /delete': [SUPERADMIN, STORE_OWNER] } }), supportTicketRouter);
+app.use('/credit-used', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [SUPERADMIN], routes: { 'POST /create': [SUPERADMIN, STORE_OWNER] } }), creditUsedRouter);
+app.use('/quiz-questions', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), quizQuestionRouter);
+app.use('/quiz-attempt',   protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER] }), quizAttemptRouter);
+app.use('/aptitude-questions', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [SUPERADMIN] }), aptitudeQuestionRouter);
+app.use('/aptitude-attempt', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER] }), aptitudeAttemptRouter);
+app.use('/progress',       protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER] }), progressRouter);
+app.use('/course-completion', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER] }), courseCompletionRouter);
+app.use('/note', protect, allowAccounts({ read: [LEARNER], write: [LEARNER] }), noteRouter);
+app.use('/review', protect, allowAccounts({ read: ALL_ACCOUNTS, write: [LEARNER] }), reviewRouter);
+app.use('/speech', protect, allowAccounts({ read: ALL_ACCOUNTS, write: ALL_ACCOUNTS }), speechRouter);
 // Public — self-service store owner signup, no auth required (creates its own org + owner account).
 app.use('/signup', organizationSignupRouter);
-app.use('/org-dashboard', protect, orgDashboardRouter);
-app.use('/activity-log', protect, activityLogRouter);
+app.use('/org-dashboard', protect, allowAccounts({ read: [SUPERADMIN, STORE_OWNER], write: [STORE_OWNER] }), orgDashboardRouter);
+app.use('/activity-log', protect, allowAccounts({ read: ALL_ACCOUNTS, write: ALL_ACCOUNTS }), activityLogRouter);
 app.use('/user', userRouter);
 
 app.use((error, req, res, next) => {
